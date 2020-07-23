@@ -8,34 +8,33 @@ declare(strict_types = 1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Handler;
 
-use Ergonode\Exporter\Domain\Repository\ExportProfileRepositoryInterface;
-use Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ExportProfileCommand;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6ExportApiProfile;
-use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
+use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
+use Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 /**
  */
-class CreateShopware6ExportProfileCommandHandler
+class CreateShopware6ChannelCommandHandler
 {
     /**
-     * @var ExportProfileRepositoryInterface
+     * @var ChannelRepositoryInterface
      */
-    private ExportProfileRepositoryInterface $repository;
+    private ChannelRepositoryInterface $repository;
 
     /**
-     * @param ExportProfileRepositoryInterface $repository
+     * @param ChannelRepositoryInterface $repository
      */
-    public function __construct(ExportProfileRepositoryInterface $repository)
+    public function __construct(ChannelRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
 
     /**
-     * @param CreateShopware6ExportProfileCommand $command
+     * @param CreateShopware6ChannelCommand $command
      */
-    public function __invoke(CreateShopware6ExportProfileCommand $command)
+    public function __invoke(CreateShopware6ChannelCommand $command)
     {
-        $exportProfile = new Shopware6ExportApiProfile(
+        $channel = new Shopware6Channel(
             $command->getId(),
             $command->getName(),
             $command->getHost(),
@@ -53,6 +52,6 @@ class CreateShopware6ExportProfileCommandHandler
             $command->getCustomField()
         );
 
-        $this->repository->save($exportProfile);
+        $this->repository->save($channel);
     }
 }

@@ -9,17 +9,17 @@ declare(strict_types = 1);
 namespace Ergonode\ExporterShopware6\Domain\Builder;
 
 use Ergonode\EventSourcing\Infrastructure\DomainCommandInterface;
-use Ergonode\Exporter\Application\Provider\UpdateExportProfileCommandBuilderInterface;
-use Ergonode\ExporterShopware6\Application\Form\Model\ExporterShopware6ConfigurationModel;
-use Ergonode\ExporterShopware6\Domain\Command\UpdateShopware6ExportProfileCommand;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6ExportApiProfile;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
 use Symfony\Component\Form\FormInterface;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\Channel\Application\Provider\CreateChannelCommandBuilderInterface;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
+use Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand;
+use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
 
 /**
  */
-class Shopware6UpdateExportProfileCommandBuilder implements UpdateExportProfileCommandBuilderInterface
+class Shopware6CreateChannelCommandBuilder implements CreateChannelCommandBuilderInterface
 {
     /**
      * @param string $type
@@ -28,18 +28,19 @@ class Shopware6UpdateExportProfileCommandBuilder implements UpdateExportProfileC
      */
     public function supported(string $type): bool
     {
-        return Shopware6ExportApiProfile::TYPE === $type;
+        return Shopware6Channel::TYPE === $type;
     }
 
     /**
-     * @param ExportProfileId $exportProfileId
-     * @param FormInterface   $form
+     * @param FormInterface $form
      *
      * @return DomainCommandInterface
+     *
+     * @throws \Exception
      */
-    public function build(ExportProfileId $exportProfileId, FormInterface $form): DomainCommandInterface
+    public function build(FormInterface $form): DomainCommandInterface
     {
-        /** @var ExporterShopware6ConfigurationModel $data */
+        /** @var Shopware6ChannelFormModel $data */
         $data = $form->getData();
 
         $name = $data->name;
@@ -65,8 +66,9 @@ class Shopware6UpdateExportProfileCommandBuilder implements UpdateExportProfileC
             $customField[] = new AttributeId($attribute->id);
         }
 
-        return new UpdateShopware6ExportProfileCommand(
-            $exportProfileId,
+
+        return new CreateShopware6ChannelCommand(
+            ChannelId::generate(),
             $name,
             $host,
             $clientId,

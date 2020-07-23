@@ -9,21 +9,21 @@ declare(strict_types = 1);
 namespace Ergonode\ExporterShopware6\Tests\Domain\Command;
 
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\ExporterShopware6\Domain\Command\UpdateShopware6ExportProfileCommand;
+use Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  */
-class UpdateShopware6ExportProfileCommandTest extends TestCase
+class CreateShopware6ChannelCommandTest extends TestCase
 {
     /**
-     * @var ExportProfileId|MockObject
+     * @var ChannelId|MockObject
      */
-    private ExportProfileId $id;
+    private ChannelId $id;
 
     /**
      * @var string
@@ -88,7 +88,7 @@ class UpdateShopware6ExportProfileCommandTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->id = $this->createMock(ExportProfileId::class);
+        $this->id = $this->createMock(ChannelId::class);
         $this->name = 'Any Name';
         $this->host = 'http://example';
         $this->clientId = 'Any Client ID';
@@ -107,7 +107,7 @@ class UpdateShopware6ExportProfileCommandTest extends TestCase
      */
     public function testCreateCommand(): void
     {
-        $command = new UpdateShopware6ExportProfileCommand(
+        $command = new CreateShopware6ChannelCommand(
             $this->id,
             $this->name,
             $this->host,
@@ -125,20 +125,20 @@ class UpdateShopware6ExportProfileCommandTest extends TestCase
             []
         );
 
-        $this->assertEquals($this->id, $command->getId());
-        $this->assertEquals($this->name, $command->getName());
-        $this->assertEquals($this->host, $command->getHost());
-        $this->assertEquals($this->clientId, $command->getClientId());
-        $this->assertEquals($this->clientKey, $command->getClientKey());
-        $this->assertEquals($this->defaultLanguage, $command->getDefaultLanguage());
-        $this->assertEquals($this->productName, $command->getProductName());
-        $this->assertEquals($this->productActive, $command->getProductActive());
-        $this->assertEquals($this->productStock, $command->getProductStock());
-        $this->assertEquals($this->productPrice, $command->getProductPrice());
-        $this->assertEquals($this->productTax, $command->getProductTax());
-        $this->assertEquals($this->productDescription, $command->getProductDescription());
-        $this->assertEquals($this->categoryTreeId, $command->getCategoryTree());
-        $this->assertIsArray($command->getPropertyGroup());
-        $this->assertIsArray($command->getCustomField());
+        self::assertEquals($this->id, $command->getId());
+        self::assertEquals($this->name, $command->getName());
+        self::assertEquals($this->host, $command->getHost());
+        self::assertEquals($this->clientId, $command->getClientId());
+        self::assertEquals($this->clientKey, $command->getClientKey());
+        self::assertEquals($this->defaultLanguage, $command->getDefaultLanguage());
+        self::assertEquals($this->productName, $command->getProductName());
+        self::assertEquals($this->productActive, $command->getProductActive());
+        self::assertEquals($this->productStock, $command->getProductStock());
+        self::assertEquals($this->productPrice, $command->getProductPrice());
+        self::assertEquals($this->productTax, $command->getProductTax());
+        self::assertEquals($this->productDescription, $command->getProductDescription());
+        self::assertEquals($this->categoryTreeId, $command->getCategoryTree());
+        self::assertIsArray($command->getPropertyGroup());
+        self::assertIsArray($command->getCustomField());
     }
 }

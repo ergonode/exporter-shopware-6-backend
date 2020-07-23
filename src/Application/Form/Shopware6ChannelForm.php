@@ -11,17 +11,17 @@ namespace Ergonode\ExporterShopware6\Application\Form;
 use Ergonode\Attribute\Application\Form\Type\AttributeIdType;
 use Ergonode\Attribute\Domain\Query\AttributeQueryInterface;
 use Ergonode\Core\Application\Form\Type\LanguageType;
-use Ergonode\ExporterShopware6\Application\Form\Model\ExporterShopware6ConfigurationModel;
 use Ergonode\ExporterShopware6\Application\Form\Type\AttributeMapType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
 
 /**
  */
-class ExporterShopware6ConfigurationForm extends AbstractType
+class Shopware6ChannelForm extends AbstractType
 {
     /**
      * @var AttributeQueryInterface
@@ -40,7 +40,7 @@ class ExporterShopware6ConfigurationForm extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $dictionary = $this->attributeQuery->getDictionary();
         $builder
@@ -168,7 +168,7 @@ class ExporterShopware6ConfigurationForm extends AbstractType
         $resolver->setDefaults(
             [
                 'translation_domain' => 'exporter',
-                'data_class' => ExporterShopware6ConfigurationModel::class,
+                'data_class' => Shopware6ChannelFormModel::class,
                 'allow_extra_fields' => true,
                 'label' => 'Export settings',
             ]

@@ -2,27 +2,36 @@
 /**
  * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
- *
  */
 
 declare(strict_types = 1);
 
-namespace Ergonode\ExporterShopware6\Domain\Entity;
+namespace Ergonode\ExporterShopware6\Domain\Command;
 
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\Exporter\Domain\Entity\Profile\AbstractExportProfile;
-use Ergonode\Exporter\Domain\Entity\Profile\ExportProfileInterface;
+use Ergonode\EventSourcing\Infrastructure\DomainCommandInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use JMS\Serializer\Annotation as JMS;
 
 /**
  */
-class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportProfileInterface
+class CreateShopware6ChannelCommand implements DomainCommandInterface
 {
-    public const TYPE = 'shopware-6-api';
+    /**
+     * @var  ChannelId
+     *
+     * @JMS\Type("Ergonode\SharedKernel\Domain\Aggregate\ChannelId")
+     */
+    protected ChannelId $id;
 
+    /**
+     * @var string
+     *
+     * @JMS\Type("string")
+     */
+    protected string $name;
     /**
      * @var string
      *
@@ -115,7 +124,7 @@ class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportP
     private array $customField;
 
     /**
-     * @param ExportProfileId     $id
+     * @param ChannelId           $id
      * @param string              $name
      * @param string              $host
      * @param string              $clientId
@@ -132,7 +141,7 @@ class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportP
      * @param array|AttributeId[] $customField
      */
     public function __construct(
-        ExportProfileId $id,
+        ChannelId $id,
         string $name,
         string $host,
         string $clientId,
@@ -148,8 +157,8 @@ class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportP
         array $propertyGroup,
         array $customField
     ) {
-        parent::__construct($id, $name);
-
+        $this->id = $id;
+        $this->name = $name;
         $this->host = $host;
         $this->clientId = $clientId;
         $this->clientKey = $clientKey;
@@ -166,11 +175,19 @@ class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportP
     }
 
     /**
+     * @return ChannelId
+     */
+    public function getId(): ChannelId
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string
      */
-    public function getType(): string
+    public function getName(): string
     {
-        return self::TYPE;
+        return $this->name;
     }
 
     /**
@@ -275,117 +292,5 @@ class Shopware6ExportApiProfile extends AbstractExportProfile implements ExportP
     public function getCustomField(): array
     {
         return $this->customField;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param string $host
-     */
-    public function setHost(string $host): void
-    {
-        $this->host = $host;
-    }
-
-    /**
-     * @param string $clientId
-     */
-    public function setClientId(string $clientId): void
-    {
-        $this->clientId = $clientId;
-    }
-
-    /**
-     * @param string $clientKey
-     */
-    public function setClientKey(string $clientKey): void
-    {
-        $this->clientKey = $clientKey;
-    }
-
-    /**
-     * @param Language $defaultLanguage
-     */
-    public function setDefaultLanguage(Language $defaultLanguage): void
-    {
-        $this->defaultLanguage = $defaultLanguage;
-    }
-
-    /**
-     * @param AttributeId $productName
-     */
-    public function setProductName(AttributeId $productName): void
-    {
-        $this->productName = $productName;
-    }
-
-    /**
-     * @param AttributeId $productActive
-     */
-    public function setProductActive(AttributeId $productActive): void
-    {
-        $this->productActive = $productActive;
-    }
-
-    /**
-     * @param AttributeId $productStock
-     */
-    public function setProductStock(AttributeId $productStock): void
-    {
-        $this->productStock = $productStock;
-    }
-
-    /**
-     * @param AttributeId $productPrice
-     */
-    public function setProductPrice(AttributeId $productPrice): void
-    {
-        $this->productPrice = $productPrice;
-    }
-
-    /**
-     * @param AttributeId $productTax
-     */
-    public function setProductTax(AttributeId $productTax): void
-    {
-        $this->productTax = $productTax;
-    }
-
-    /**
-     * @param AttributeId|null $productDescription
-     */
-    public function setProductDescription(?AttributeId $productDescription): void
-    {
-        $this->productDescription = $productDescription;
-    }
-
-    /**
-     * @param CategoryTreeId|null $categoryTree
-     */
-    public function setCategoryTree(?CategoryTreeId $categoryTree): void
-    {
-        $this->categoryTree = $categoryTree;
-    }
-
-    /**
-     * @param AttributeId[] $propertyGroup
-     */
-    public function setPropertyGroup(array $propertyGroup): void
-    {
-        $this->propertyGroup = $propertyGroup;
-    }
-
-    /**
-     * @param AttributeId[] $customField
-     */
-    public function setCustomField(array $customField): void
-    {
-        $this->customField = $customField;
     }
 }

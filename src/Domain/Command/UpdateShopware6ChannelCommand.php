@@ -12,19 +12,19 @@ use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\EventSourcing\Infrastructure\DomainCommandInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
 use JMS\Serializer\Annotation as JMS;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 
 /**
  */
-class CreateShopware6ExportProfileCommand implements DomainCommandInterface
+class UpdateShopware6ChannelCommand implements DomainCommandInterface
 {
     /**
-     * @var  ExportProfileId
+     * @var ChannelId
      *
-     * @JMS\Type("Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId")
+     * @JMS\Type("Ergonode\SharedKernel\Domain\Aggregate\ChannelId")
      */
-    protected ExportProfileId $id;
+    protected ChannelId $id;
 
     /**
      * @var string
@@ -59,7 +59,6 @@ class CreateShopware6ExportProfileCommand implements DomainCommandInterface
      * @JMS\Type("Ergonode\Core\Domain\ValueObject\Language")
      */
     private Language $defaultLanguage;
-
     /**
      * @var AttributeId
      *
@@ -124,7 +123,7 @@ class CreateShopware6ExportProfileCommand implements DomainCommandInterface
     private array $customField;
 
     /**
-     * @param ExportProfileId     $id
+     * @param ChannelId           $id
      * @param string              $name
      * @param string              $host
      * @param string              $clientId
@@ -141,7 +140,7 @@ class CreateShopware6ExportProfileCommand implements DomainCommandInterface
      * @param array|AttributeId[] $customField
      */
     public function __construct(
-        ExportProfileId $id,
+        ChannelId $id,
         string $name,
         string $host,
         string $clientId,
@@ -175,9 +174,9 @@ class CreateShopware6ExportProfileCommand implements DomainCommandInterface
     }
 
     /**
-     * @return ExportProfileId
+     * @return ChannelId
      */
-    public function getId(): ExportProfileId
+    public function getId(): ChannelId
     {
         return $this->id;
     }

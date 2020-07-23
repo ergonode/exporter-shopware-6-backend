@@ -2,36 +2,26 @@
 /**
  * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
+ *
  */
 
 declare(strict_types = 1);
 
-namespace Ergonode\ExporterShopware6\Domain\Command;
+namespace Ergonode\ExporterShopware6\Domain\Entity;
 
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\EventSourcing\Infrastructure\DomainCommandInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
 use JMS\Serializer\Annotation as JMS;
+use Ergonode\Channel\Domain\Entity\AbstractChannel;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 
 /**
  */
-class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
+class Shopware6Channel extends AbstractChannel
 {
-    /**
-     * @var  ExportProfileId
-     *
-     * @JMS\Type("Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId")
-     */
-    protected ExportProfileId $id;
+    public const TYPE = 'shopware-6-api';
 
-    /**
-     * @var string
-     *
-     * @JMS\Type("string")
-     */
-    protected string $name;
     /**
      * @var string
      *
@@ -59,6 +49,7 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
      * @JMS\Type("Ergonode\Core\Domain\ValueObject\Language")
      */
     private Language $defaultLanguage;
+
     /**
      * @var AttributeId
      *
@@ -123,7 +114,7 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
     private array $customField;
 
     /**
-     * @param ExportProfileId     $id
+     * @param ChannelId           $id
      * @param string              $name
      * @param string              $host
      * @param string              $clientId
@@ -140,7 +131,7 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
      * @param array|AttributeId[] $customField
      */
     public function __construct(
-        ExportProfileId $id,
+        ChannelId $id,
         string $name,
         string $host,
         string $clientId,
@@ -156,8 +147,8 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
         array $propertyGroup,
         array $customField
     ) {
-        $this->id = $id;
-        $this->name = $name;
+        parent::__construct($id, $name);
+
         $this->host = $host;
         $this->clientId = $clientId;
         $this->clientKey = $clientKey;
@@ -174,19 +165,11 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
     }
 
     /**
-     * @return ExportProfileId
-     */
-    public function getId(): ExportProfileId
-    {
-        return $this->id;
-    }
-
-    /**
      * @return string
      */
-    public function getName(): string
+    public function getType(): string
     {
-        return $this->name;
+        return self::TYPE;
     }
 
     /**
@@ -291,5 +274,109 @@ class UpdateShopware6ExportProfileCommand implements DomainCommandInterface
     public function getCustomField(): array
     {
         return $this->customField;
+    }
+
+    /**
+     * @param string $host
+     */
+    public function setHost(string $host): void
+    {
+        $this->host = $host;
+    }
+
+    /**
+     * @param string $clientId
+     */
+    public function setClientId(string $clientId): void
+    {
+        $this->clientId = $clientId;
+    }
+
+    /**
+     * @param string $clientKey
+     */
+    public function setClientKey(string $clientKey): void
+    {
+        $this->clientKey = $clientKey;
+    }
+
+    /**
+     * @param Language $defaultLanguage
+     */
+    public function setDefaultLanguage(Language $defaultLanguage): void
+    {
+        $this->defaultLanguage = $defaultLanguage;
+    }
+
+    /**
+     * @param AttributeId $productName
+     */
+    public function setProductName(AttributeId $productName): void
+    {
+        $this->productName = $productName;
+    }
+
+    /**
+     * @param AttributeId $productActive
+     */
+    public function setProductActive(AttributeId $productActive): void
+    {
+        $this->productActive = $productActive;
+    }
+
+    /**
+     * @param AttributeId $productStock
+     */
+    public function setProductStock(AttributeId $productStock): void
+    {
+        $this->productStock = $productStock;
+    }
+
+    /**
+     * @param AttributeId $productPrice
+     */
+    public function setProductPrice(AttributeId $productPrice): void
+    {
+        $this->productPrice = $productPrice;
+    }
+
+    /**
+     * @param AttributeId $productTax
+     */
+    public function setProductTax(AttributeId $productTax): void
+    {
+        $this->productTax = $productTax;
+    }
+
+    /**
+     * @param AttributeId|null $productDescription
+     */
+    public function setProductDescription(?AttributeId $productDescription): void
+    {
+        $this->productDescription = $productDescription;
+    }
+
+    /**
+     * @param CategoryTreeId|null $categoryTree
+     */
+    public function setCategoryTree(?CategoryTreeId $categoryTree): void
+    {
+        $this->categoryTree = $categoryTree;
+    }
+
+    /**
+     * @param AttributeId[] $propertyGroup
+     */
+    public function setPropertyGroup(array $propertyGroup): void
+    {
+        $this->propertyGroup = $propertyGroup;
+    }
+
+    /**
+     * @param AttributeId[] $customField
+     */
+    public function setCustomField(array $customField): void
+    {
+        $this->customField = $customField;
     }
 }

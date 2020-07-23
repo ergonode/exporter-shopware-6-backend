@@ -9,21 +9,21 @@ declare(strict_types = 1);
 namespace Ergonode\ExporterShopware6\Tests\Domain\Entity;
 
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6ExportApiProfile;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
-use Ergonode\SharedKernel\Domain\Aggregate\ExportProfileId;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 
 /**
  */
-class Shopware6ExportApiProfileTest extends TestCase
+class Shopware6ChannelTest extends TestCase
 {
     /**
-     * @var ExportProfileId|MockObject
+     * @var ChannelId|MockObject
      */
-    private ExportProfileId $id;
+    private ChannelId $id;
 
     /**
      * @var string
@@ -88,7 +88,7 @@ class Shopware6ExportApiProfileTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->id = $this->createMock(ExportProfileId::class);
+        $this->id = $this->createMock(ChannelId::class);
         $this->name = 'Any Name';
         $this->host = 'http://example';
         $this->clientId = 'Any Client ID';
@@ -107,7 +107,7 @@ class Shopware6ExportApiProfileTest extends TestCase
      */
     public function testCreateEntity(): void
     {
-        $entity = new Shopware6ExportApiProfile(
+        $entity = new Shopware6Channel(
             $this->id,
             $this->name,
             $this->host,
@@ -125,29 +125,30 @@ class Shopware6ExportApiProfileTest extends TestCase
             []
         );
 
-        $this->assertEquals($this->id, $entity->getId());
-        $this->assertEquals('shopware-6-api', $entity->getType());
-        $this->assertEquals($this->name, $entity->getName());
-        $this->assertEquals($this->host, $entity->getHost());
-        $this->assertEquals($this->clientId, $entity->getClientId());
-        $this->assertEquals($this->clientKey, $entity->getClientKey());
-        $this->assertEquals($this->defaultLanguage, $entity->getDefaultLanguage());
-        $this->assertEquals($this->productName, $entity->getProductName());
-        $this->assertEquals($this->productActive, $entity->getProductActive());
-        $this->assertEquals($this->productStock, $entity->getProductStock());
-        $this->assertEquals($this->productPrice, $entity->getProductPrice());
-        $this->assertEquals($this->productTax, $entity->getProductTax());
-        $this->assertEquals($this->productDescription, $entity->getProductDescription());
-        $this->assertEquals($this->categoryTreeId, $entity->getCategoryTree());
-        $this->assertIsArray($entity->getPropertyGroup());
-        $this->assertIsArray($entity->getCustomField());
+        self::assertEquals($this->id, $entity->getId());
+        self::assertEquals('shopware-6-api', $entity->getType());
+        self::assertEquals($this->name, $entity->getName());
+        self::assertEquals($this->host, $entity->getHost());
+        self::assertEquals($this->clientId, $entity->getClientId());
+        self::assertEquals($this->clientKey, $entity->getClientKey());
+        self::assertEquals($this->defaultLanguage, $entity->getDefaultLanguage());
+        self::assertEquals($this->productName, $entity->getProductName());
+        self::assertEquals($this->productActive, $entity->getProductActive());
+        self::assertEquals($this->productStock, $entity->getProductStock());
+        self::assertEquals($this->productPrice, $entity->getProductPrice());
+        self::assertEquals($this->productTax, $entity->getProductTax());
+        self::assertEquals($this->productDescription, $entity->getProductDescription());
+        self::assertEquals($this->categoryTreeId, $entity->getCategoryTree());
+        self::assertIsArray($entity->getPropertyGroup());
+        self::assertIsArray($entity->getCustomField());
     }
 
     /**
+     * @throws \Exception
      */
     public function testSetEntity(): void
     {
-        $entity = new Shopware6ExportApiProfile(
+        $entity = new Shopware6Channel(
             $this->id,
             $this->name,
             $this->host,
@@ -165,7 +166,7 @@ class Shopware6ExportApiProfileTest extends TestCase
             []
         );
 
-        $id = $this->createMock(ExportProfileId::class);
+        $id = $this->createMock(ChannelId::class);
         $name = 'New Name';
         $host = 'http://example2';
         $clientId = 'New Client ID';
@@ -196,20 +197,20 @@ class Shopware6ExportApiProfileTest extends TestCase
         $entity->setCustomField([]);
 
 
-        $this->assertEquals($id, $entity->getId());
-        $this->assertEquals($name, $entity->getName());
-        $this->assertEquals($host, $entity->getHost());
-        $this->assertEquals($clientId, $entity->getClientId());
-        $this->assertEquals($clientKey, $entity->getClientKey());
-        $this->assertEquals($defaultLanguage, $entity->getDefaultLanguage());
-        $this->assertEquals($productName, $entity->getProductName());
-        $this->assertEquals($productActive, $entity->getProductActive());
-        $this->assertEquals($productStock, $entity->getProductStock());
-        $this->assertEquals($productPrice, $entity->getProductPrice());
-        $this->assertEquals($productTax, $entity->getProductTax());
-        $this->assertEquals($productDescription, $entity->getProductDescription());
-        $this->assertEquals($categoryTreeId, $entity->getCategoryTree());
-        $this->assertIsArray($entity->getPropertyGroup());
-        $this->assertIsArray($entity->getCustomField());
+        self::assertEquals($id, $entity->getId());
+        self::assertEquals($name, $entity->getName());
+        self::assertEquals($host, $entity->getHost());
+        self::assertEquals($clientId, $entity->getClientId());
+        self::assertEquals($clientKey, $entity->getClientKey());
+        self::assertEquals($defaultLanguage, $entity->getDefaultLanguage());
+        self::assertEquals($productName, $entity->getProductName());
+        self::assertEquals($productActive, $entity->getProductActive());
+        self::assertEquals($productStock, $entity->getProductStock());
+        self::assertEquals($productPrice, $entity->getProductPrice());
+        self::assertEquals($productTax, $entity->getProductTax());
+        self::assertEquals($productDescription, $entity->getProductDescription());
+        self::assertEquals($categoryTreeId, $entity->getCategoryTree());
+        self::assertIsArray($entity->getPropertyGroup());
+        self::assertIsArray($entity->getCustomField());
     }
 }

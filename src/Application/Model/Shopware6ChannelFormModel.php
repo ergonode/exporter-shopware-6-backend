@@ -6,18 +6,18 @@
 
 declare(strict_types = 1);
 
-namespace Ergonode\ExporterShopware6\Application\Form\Model;
+namespace Ergonode\ExporterShopware6\Application\Model;
 
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\ExporterShopware6\Application\Form\Model\Type\AttributeModel;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6ExportApiProfile;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
 use Symfony\Component\Validator\Constraints as Assert;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\ExporterShopware6\Application\Model\Type\AttributeModel;
 
 /**
  */
-class ExporterShopware6ConfigurationModel
+class Shopware6ChannelFormModel
 {
     /**
      * @var string|null
@@ -118,29 +118,29 @@ class ExporterShopware6ConfigurationModel
     public array $customField = [];
 
     /**
-     * @param Shopware6ExportApiProfile|null $exportProfile
+     * @param Shopware6Channel|null $channel
      */
-    public function __construct(Shopware6ExportApiProfile $exportProfile = null)
+    public function __construct(Shopware6Channel $channel = null)
     {
-        if ($exportProfile) {
-            $this->name = $exportProfile->getName();
-            $this->host = $exportProfile->getHost();
-            $this->clientId = $exportProfile->getClientId();
-            $this->clientKey = $exportProfile->getClientKey();
-            $this->defaultLanguage = $exportProfile->getDefaultLanguage();
-            $this->attributeProductName = $exportProfile->getProductName();
-            $this->attributeProductActive = $exportProfile->getProductActive();
-            $this->attributeProductStock = $exportProfile->getProductStock();
-            $this->attributeProductPrice = $exportProfile->getProductPrice();
-            $this->attributeProductTax = $exportProfile->getProductTax();
-            $this->attributeProductDescription = $exportProfile->getProductDescription();
-            $this->categoryTree = $exportProfile->getCategoryTree();
+        if ($channel) {
+            $this->name = $channel->getName();
+            $this->host = $channel->getHost();
+            $this->clientId = $channel->getClientId();
+            $this->clientKey = $channel->getClientKey();
+            $this->defaultLanguage = $channel->getDefaultLanguage();
+            $this->attributeProductName = $channel->getProductName();
+            $this->attributeProductActive = $channel->getProductActive();
+            $this->attributeProductStock = $channel->getProductStock();
+            $this->attributeProductPrice = $channel->getProductPrice();
+            $this->attributeProductTax = $channel->getProductTax();
+            $this->attributeProductDescription = $channel->getProductDescription();
+            $this->categoryTree = $channel->getCategoryTree();
 
-            foreach ($exportProfile->getPropertyGroup() as $attributeId) {
+            foreach ($channel->getPropertyGroup() as $attributeId) {
                 $this->propertyGroup[] = new AttributeModel($attributeId->getValue());
             }
 
-            foreach ($exportProfile->getCustomField() as $attributeId) {
+            foreach ($channel->getCustomField() as $attributeId) {
                 $this->customField[] = new AttributeModel($attributeId->getValue());
             }
         }
