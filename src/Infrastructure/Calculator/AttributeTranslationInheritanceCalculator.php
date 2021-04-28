@@ -17,7 +17,7 @@ use Ergonode\Value\Domain\ValueObject\TranslatableStringValue;
 use Ergonode\Value\Domain\ValueObject\ValueInterface;
 
 /**
- * @deprecated
+ * @deprecated  Use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator::calculate() .
  */
 class AttributeTranslationInheritanceCalculator
 {
