@@ -15,7 +15,6 @@ use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\CurrencyRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\TaxRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterNoMapperException;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterNumericAttributeException;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterProductAttributeException;
@@ -23,6 +22,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPrice;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Webmozart\Assert\Assert;
 
@@ -32,7 +32,7 @@ class ProductPriceMapper implements ProductMapperInterface
 
     private AttributeRepositoryInterface $repository;
 
-    private AttributeTranslationInheritanceCalculator $calculator;
+    private TranslationInheritanceCalculator $calculator;
 
     private CurrencyRepositoryInterface $currencyRepository;
 
@@ -40,7 +40,7 @@ class ProductPriceMapper implements ProductMapperInterface
 
     public function __construct(
         AttributeRepositoryInterface $repository,
-        AttributeTranslationInheritanceCalculator $calculator,
+        TranslationInheritanceCalculator $calculator,
         CurrencyRepositoryInterface $currencyRepository,
         TaxRepositoryInterface $taxRepository
     ) {
@@ -117,7 +117,7 @@ class ProductPriceMapper implements ProductMapperInterface
         }
         $value = $product->getAttribute($attribute->getCode());
 
-        return (float) $this->calculator->calculate($attribute, $value, $channel->getDefaultLanguage());
+        return (float) $this->calculator->calculate($attribute->getScope(), $value, $channel->getDefaultLanguage());
     }
 
     /**
@@ -168,7 +168,7 @@ class ProductPriceMapper implements ProductMapperInterface
         $price = str_replace(
             ',',
             '.',
-            $this->calculator->calculate($attribute, $value, $defaultLanguage)
+            $this->calculator->calculate($attribute->getScope(), $value, $defaultLanguage)
         );
 
         if (!is_numeric($price)) {

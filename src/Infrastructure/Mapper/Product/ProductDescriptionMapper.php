@@ -12,21 +12,21 @@ use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Webmozart\Assert\Assert;
 
 class ProductDescriptionMapper implements ProductMapperInterface
 {
     private AttributeRepositoryInterface $repository;
 
-    private AttributeTranslationInheritanceCalculator $calculator;
+    private TranslationInheritanceCalculator $calculator;
 
     public function __construct(
         AttributeRepositoryInterface $repository,
-        AttributeTranslationInheritanceCalculator $calculator
+        TranslationInheritanceCalculator $calculator
     ) {
         $this->repository = $repository;
         $this->calculator = $calculator;
@@ -56,7 +56,7 @@ class ProductDescriptionMapper implements ProductMapperInterface
 
         $value = $product->getAttribute($attribute->getCode());
 
-        $name = $this->calculator->calculate($attribute, $value, $language ?: $channel->getDefaultLanguage());
+        $name = $this->calculator->calculate($attribute->getScope(), $value, $language ?: $channel->getDefaultLanguage());
         $shopware6Product->setDescription($name);
 
         return $shopware6Product;
