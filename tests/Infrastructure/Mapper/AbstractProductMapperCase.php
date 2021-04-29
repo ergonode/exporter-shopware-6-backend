@@ -12,8 +12,8 @@ use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -40,9 +40,9 @@ abstract class AbstractProductMapperCase extends TestCase
     protected AttributeRepositoryInterface $attributeRepository;
 
     /**
-     * @var AttributeTranslationInheritanceCalculator|MockObject
+     * @var TranslationInheritanceCalculator|MockObject
      */
-    protected AttributeTranslationInheritanceCalculator $calculator;
+    protected TranslationInheritanceCalculator $calculator;
 
     protected function setUp(): void
     {
@@ -56,6 +56,6 @@ abstract class AbstractProductMapperCase extends TestCase
 
         $this->attributeRepository = $this->createMock(AttributeRepositoryInterface::class);
 
-        $this->calculator = $this->createMock(AttributeTranslationInheritanceCalculator::class);
+        $this->calculator = $this->createMock(TranslationInheritanceCalculator::class);
     }
 }

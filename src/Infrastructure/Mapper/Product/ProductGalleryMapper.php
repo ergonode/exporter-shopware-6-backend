@@ -12,13 +12,13 @@ use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6ProductMediaClient;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Multimedia\Domain\Repository\MultimediaRepositoryInterface;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\MultimediaId;
 use Webmozart\Assert\Assert;
 
@@ -26,7 +26,7 @@ class ProductGalleryMapper implements ProductMapperInterface
 {
     private AttributeRepositoryInterface $repository;
 
-    private AttributeTranslationInheritanceCalculator $calculator;
+    private TranslationInheritanceCalculator $calculator;
 
     private MultimediaRepositoryInterface $multimediaRepository;
 
@@ -34,7 +34,7 @@ class ProductGalleryMapper implements ProductMapperInterface
 
     public function __construct(
         AttributeRepositoryInterface $repository,
-        AttributeTranslationInheritanceCalculator $calculator,
+        TranslationInheritanceCalculator $calculator,
         MultimediaRepositoryInterface $multimediaRepository,
         Shopware6ProductMediaClient $mediaClient
     ) {
@@ -66,7 +66,7 @@ class ProductGalleryMapper implements ProductMapperInterface
         }
 
         $value = $product->getAttribute($attribute->getCode());
-        $calculateValue = $this->calculator->calculate($attribute, $value, $language ?: $channel->getDefaultLanguage());
+        $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $language ?: $channel->getDefaultLanguage());
         if ($calculateValue) {
             $gallery = explode(',', $calculateValue);
             $position = 0;

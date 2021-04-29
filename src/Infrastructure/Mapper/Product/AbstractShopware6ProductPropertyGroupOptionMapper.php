@@ -13,10 +13,10 @@ use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupOptionsRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6PropertyGroupOptionClient;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\AggregateId;
 
 abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends AbstractProductPropertyGroupMapper
@@ -26,7 +26,7 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
     public function __construct(
         AttributeRepositoryInterface $repository,
         Shopware6PropertyGroupOptionClient $propertyGroupOptionClient,
-        AttributeTranslationInheritanceCalculator $calculator,
+        TranslationInheritanceCalculator $calculator,
         PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository
     ) {
         parent::__construct($repository, $propertyGroupOptionClient, $calculator);
@@ -45,7 +45,7 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
     ): Shopware6Product {
 
         $value = $product->getAttribute($attribute->getCode());
-        $calculateValue = $this->calculator->calculate($attribute, $value, $channel->getDefaultLanguage());
+        $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $channel->getDefaultLanguage());
         if ($calculateValue) {
             $options = explode(',', $calculateValue);
             foreach ($options as $optionValue) {

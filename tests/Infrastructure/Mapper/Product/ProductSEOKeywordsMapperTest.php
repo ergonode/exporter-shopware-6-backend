@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\Product;
 
 use Ergonode\Attribute\Domain\Entity\Attribute\TextareaAttribute;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductSEOKeywordsMapper;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\AbstractProductMapperCase;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\Value\Domain\ValueObject\ValueInterface;
 
@@ -75,7 +75,7 @@ class ProductSEOKeywordsMapperTest extends AbstractProductMapperCase
 
         $this->product->method('hasAttribute')->willReturn(true);
 
-        $this->calculator = $this->createMock(AttributeTranslationInheritanceCalculator::class);
+        $this->calculator = $this->createMock(TranslationInheritanceCalculator::class);
         $this->calculator->method('calculate')
             ->willReturn(self::KEYWORDS);
 

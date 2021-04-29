@@ -16,6 +16,9 @@ use Ergonode\Value\Domain\ValueObject\StringValue;
 use Ergonode\Value\Domain\ValueObject\TranslatableStringValue;
 use Ergonode\Value\Domain\ValueObject\ValueInterface;
 
+/**
+ * @deprecated  Use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator::calculate() .
+ */
 class AttributeTranslationInheritanceCalculator
 {
     private LanguageQueryInterface $languageQuery;

@@ -12,9 +12,9 @@ use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Attribute\Domain\Repository\OptionRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupOptionsRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\AggregateId;
 use Webmozart\Assert\Assert;
@@ -25,14 +25,14 @@ abstract class AbstractVariantOptionMapper implements ProductMapperInterface
 
     protected OptionRepositoryInterface $optionRepository;
 
-    protected AttributeTranslationInheritanceCalculator $calculator;
+    protected TranslationInheritanceCalculator $calculator;
 
     protected PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository;
 
     public function __construct(
         AttributeRepositoryInterface $attributeRepository,
         OptionRepositoryInterface $optionRepository,
-        AttributeTranslationInheritanceCalculator $calculator,
+        TranslationInheritanceCalculator $calculator,
         PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository
     ) {
         $this->attributeRepository = $attributeRepository;
@@ -52,7 +52,7 @@ abstract class AbstractVariantOptionMapper implements ProductMapperInterface
             return null;
         }
         $value = $product->getAttribute($binding->getCode());
-        $optionValue = $this->calculator->calculate($binding, $value, $channel->getDefaultLanguage());
+        $optionValue = $this->calculator->calculate($binding->getScope(), $value, $channel->getDefaultLanguage());
         $optionId = new AggregateId($optionValue);
 
         return $this->optionMap($channel, $bindingId, $optionId);

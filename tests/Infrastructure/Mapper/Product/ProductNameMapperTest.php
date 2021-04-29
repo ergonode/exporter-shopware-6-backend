@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\Product;
 
 use Ergonode\Attribute\Domain\Entity\Attribute\TextAttribute;
-use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterProductAttributeException;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductNameMapper;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\AbstractProductMapperCase;
+use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 
 class ProductNameMapperTest extends AbstractProductMapperCase
@@ -55,7 +55,7 @@ class ProductNameMapperTest extends AbstractProductMapperCase
     {
         $this->product->method('hasAttribute')->willReturn(true);
 
-        $this->calculator = $this->createMock(AttributeTranslationInheritanceCalculator::class);
+        $this->calculator = $this->createMock(TranslationInheritanceCalculator::class);
         $this->calculator->method('calculate')
             ->willReturn(self::NAME);
 

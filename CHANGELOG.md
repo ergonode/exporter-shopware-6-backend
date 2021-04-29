@@ -1,0 +1,1 @@
+- bugfix #1 Change TranslationInheritanceCalculator (wfajczyk)
