@@ -31,15 +31,16 @@ class GetPropertyGroupOptionsList extends AbstractAction
     {
         $this->propertyGroupId = $propertyGroupId;
 
-        $this->query = [
-            'query' => $query ? $query : [],
-        ];
         if ($limit > 0) {
-            $this->query['limit'] = $limit;
+            $query['limit'] = $limit;
         }
         if ($page > 0) {
-            $this->query['page'] = $page;
+            $query['page'] = $page;
         }
+
+        $this->query = [
+            'query' => $query,
+        ];
     }
 
     public function getRequest(): Request

@@ -18,6 +18,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Builder\CustomFieldBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6CustomFieldClient;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6CustomFieldSetClient;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6ExporterException;
+use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomFieldSet;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomFieldSetConfig;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomField;
@@ -102,7 +103,7 @@ class CustomFiledShopware6ExportProcess
         Shopware6Channel $channel,
         AbstractAttribute $attribute,
         ?Shopware6Language $shopware6Language = null
-    ): ?Shopware6CustomField {
+    ): ?AbstractShopware6CustomField {
         $shopwareId = $this->customFieldRepository->load($channel->getId(), $attribute->getId());
         if ($shopwareId) {
             try {
