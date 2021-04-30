@@ -24,7 +24,7 @@ class PostCategoryActionTest extends TestCase
         $this->category = new Shopware6Category(
             'any_id',
             'category_name',
-            null
+            null,
         );
     }
 

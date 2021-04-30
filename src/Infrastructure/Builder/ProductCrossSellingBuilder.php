@@ -43,7 +43,7 @@ class ProductCrossSellingBuilder
                 $shopware6ProductCrossSelling,
                 $productCollection,
                 $collectionElement,
-                $language
+                $language,
             );
         }
 

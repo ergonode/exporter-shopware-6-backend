@@ -111,7 +111,7 @@ class Shopware6ChannelTest extends TestCase
             $this->categoryTreeId,
             [],
             [],
-            [$this->crossSelling]
+            [$this->crossSelling],
         );
 
         self::assertEquals($this->id, $entity->getId());
@@ -169,7 +169,7 @@ class Shopware6ChannelTest extends TestCase
             $this->categoryTreeId,
             [],
             [],
-            [$this->crossSelling]
+            [$this->crossSelling],
         );
 
         $id = $this->createMock(ChannelId::class);

@@ -55,8 +55,8 @@ class ProductSEOKeywordsMapper implements ProductMapperInterface
             $this->calculator->calculate(
                 $attribute->getScope(),
                 $product->getAttribute($attribute->getCode()),
-                $language ?: $channel->getDefaultLanguage()
-            )
+                $language ?: $channel->getDefaultLanguage(),
+            ),
         );
 
         return $shopware6Product;

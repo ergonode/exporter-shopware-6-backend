@@ -51,7 +51,7 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
                 $propertyId = $this->propertyGroupOptionsRepository->load(
                     $channel->getId(),
                     $attribute->getId(),
-                    $optionId
+                    $optionId,
                 );
                 if ($propertyId) {
                     $shopware6Product->addProperty($propertyId);

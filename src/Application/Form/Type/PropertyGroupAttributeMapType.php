@@ -39,7 +39,7 @@ class PropertyGroupAttributeMapType extends AbstractType
                 [
                     'label' => 'Attribute',
                     'choices' => array_flip($dictionary),
-                ]
+                ],
             );
     }
 

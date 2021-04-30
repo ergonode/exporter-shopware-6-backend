@@ -58,7 +58,7 @@ class ProductExportCommandHandlerTest extends TestCase
             $this->exportRepository,
             $this->channelRepository,
             $this->productRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

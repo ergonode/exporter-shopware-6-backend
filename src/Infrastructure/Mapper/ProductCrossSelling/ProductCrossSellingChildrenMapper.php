@@ -45,7 +45,7 @@ class ProductCrossSellingChildrenMapper implements ProductCrossSellingMapperInte
                 $channel,
                 $shopware6ProductCrossSelling,
                 $element,
-                $this->getCurrentPosition($shopware6ProductCrossSelling)
+                $this->getCurrentPosition($shopware6ProductCrossSelling),
             );
         }
 
@@ -63,7 +63,7 @@ class ProductCrossSellingChildrenMapper implements ProductCrossSellingMapperInte
             $element = new AssignedProduct(
                 null,
                 $shopwareId,
-                $position
+                $position,
             );
             $shopware6ProductCrossSelling->addAssignedProduct($element);
         }

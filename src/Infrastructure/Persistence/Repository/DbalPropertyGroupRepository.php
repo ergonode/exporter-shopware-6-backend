@@ -74,7 +74,7 @@ class DbalPropertyGroupRepository implements PropertyGroupRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

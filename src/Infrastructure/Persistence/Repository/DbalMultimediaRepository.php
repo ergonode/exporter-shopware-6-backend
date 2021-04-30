@@ -73,7 +73,7 @@ class DbalMultimediaRepository implements MultimediaRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 
@@ -107,7 +107,7 @@ class DbalMultimediaRepository implements MultimediaRepositoryInterface
             [
                 'multimedia_id' => $multimediaId->getValue(),
                 'channel_id' => $channelId->getValue(),
-            ]
+            ],
         );
     }
 }

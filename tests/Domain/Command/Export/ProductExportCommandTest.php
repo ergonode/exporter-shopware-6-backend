@@ -35,7 +35,7 @@ class ProductExportCommandTest extends TestCase
         $command = new ProductExportCommand(
             $this->lineId,
             $this->exportId,
-            $this->productId
+            $this->productId,
         );
 
         self::assertEquals($this->lineId, $command->getLineId());

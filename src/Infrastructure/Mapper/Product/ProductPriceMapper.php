@@ -86,18 +86,18 @@ class ProductPriceMapper implements ProductMapperInterface
         $priceGross = $this->getPriceValue(
             $channel->getAttributeProductPriceGross(),
             $channel->getDefaultLanguage(),
-            $product
+            $product,
         );
         $priceNet = $this->getPriceValue(
             $channel->getAttributeProductPriceNet(),
             $channel->getDefaultLanguage(),
-            $product
+            $product,
         );
 
         return new Shopware6ProductPrice(
             $this->loadCurrencyId($channel, $attribute),
             round($priceNet, self::PRECISION),
-            round($priceGross, self::PRECISION)
+            round($priceGross, self::PRECISION),
         );
     }
 
@@ -166,14 +166,14 @@ class ProductPriceMapper implements ProductMapperInterface
         $price = str_replace(
             ',',
             '.',
-            $this->calculator->calculate($attribute->getScope(), $value, $defaultLanguage)
+            $this->calculator->calculate($attribute->getScope(), $value, $defaultLanguage),
         );
 
         if (!is_numeric($price)) {
             throw new Shopware6ExporterNumericAttributeException(
                 $attribute->getCode(),
                 $product->getSku(),
-                $price
+                $price,
             );
         }
 

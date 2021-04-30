@@ -58,7 +58,7 @@ class CategoryExportCommandHandlerTest extends TestCase
             $this->exportRepository,
             $this->channelRepository,
             $this->categoryRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

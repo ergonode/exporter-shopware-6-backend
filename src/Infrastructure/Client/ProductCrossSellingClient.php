@@ -62,7 +62,7 @@ class ProductCrossSellingClient
             $shopwareProductCrossSelling->getProductId(),
             $shopwareProductCrossSelling->isActive(),
             $shopwareProductCrossSelling->getType(),
-            $this->loadAssignedProducts($channel, $shopwareProductCrossSelling->getId())
+            $this->loadAssignedProducts($channel, $shopwareProductCrossSelling->getId()),
         );
     }
 
@@ -83,7 +83,7 @@ class ProductCrossSellingClient
             $channel->getId(),
             $productCollectionId,
             $productId,
-            $shopwareProductCrossSelling->getId()
+            $shopwareProductCrossSelling->getId(),
         );
 
         return $shopwareProductCrossSelling;

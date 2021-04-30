@@ -60,14 +60,14 @@ class Shopware6CategoryClient
                 sprintf(
                     'Expected an instance of %s. %s received.',
                     Shopware6Category::class,
-                    get_debug_type($newShopwareCategory)
-                )
+                    get_debug_type($newShopwareCategory),
+                ),
             );
         }
         $this->repository->save(
             $channel->getId(),
             $category->getId(),
-            $newShopwareCategory->getId()
+            $newShopwareCategory->getId(),
         );
 
         return $newShopwareCategory;

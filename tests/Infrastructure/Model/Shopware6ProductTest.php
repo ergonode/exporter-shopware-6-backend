@@ -99,7 +99,7 @@ class Shopware6ProductTest extends TestCase
                 'net' => 1.0,
                 'gross' => 1.23,
                 'linked' => false,
-            ]
+            ],
         );
         $this->price = [$price];
         $this->parentId = 'any_parent_id';
@@ -147,7 +147,7 @@ class Shopware6ProductTest extends TestCase
             $this->coverId,
             $this->metaTitle,
             $this->metaDescription,
-            $this->keywords
+            $this->keywords,
         );
 
         self::assertEquals($this->id, $model->getId());
@@ -240,7 +240,7 @@ class Shopware6ProductTest extends TestCase
             $this->coverId,
             $this->metaTitle,
             $this->metaDescription,
-            $this->keywords
+            $this->keywords,
         );
 
         self::assertEquals($this->json, json_encode($model->jsonSerialize(), JSON_THROW_ON_ERROR));

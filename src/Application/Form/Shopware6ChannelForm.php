@@ -76,7 +76,7 @@ class Shopware6ChannelForm extends AbstractType
                 TextType::class,
                 [
                     'label' => 'Name',
-                ]
+                ],
             )
             ->add(
                 'host',
@@ -84,7 +84,7 @@ class Shopware6ChannelForm extends AbstractType
                 [
                     'help' => 'Enter the host API address',
                     'label' => 'API host',
-                ]
+                ],
             )
             ->add(
                 'client_id',
@@ -92,7 +92,7 @@ class Shopware6ChannelForm extends AbstractType
                 [
                     'label' => 'Access key ID',
                     'property_path' => 'clientId',
-                ]
+                ],
             )
             ->add(
                 'client_key',
@@ -100,7 +100,7 @@ class Shopware6ChannelForm extends AbstractType
                 [
                     'label' => 'Secret access key',
                     'property_path' => 'clientKey',
-                ]
+                ],
             )
             ->add(
                 'segment',
@@ -110,7 +110,7 @@ class Shopware6ChannelForm extends AbstractType
                     'property_path' => 'segment',
                     'choices' => array_flip($segmentDictionary),
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'default_language',
@@ -119,7 +119,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Default Language',
                     'property_path' => 'defaultLanguage',
                     'choices' => $languages,
-                ]
+                ],
             )
             ->add(
                 'languages',
@@ -130,7 +130,7 @@ class Shopware6ChannelForm extends AbstractType
                     'multiple' => true,
                     'property_path' => 'languages',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'attribute_product_name',
@@ -139,7 +139,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Name',
                     'choices' => array_flip($textAttributeDictionary),
                     'property_path' => 'attributeProductName',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_active',
@@ -148,7 +148,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Active',
                     'choices' => array_flip($numericAttributeDictionary),
                     'property_path' => 'attributeProductActive',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_stock',
@@ -157,7 +157,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Stock',
                     'choices' => array_flip($numericAttributeDictionary),
                     'property_path' => 'attributeProductStock',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_price_gross',
@@ -166,7 +166,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Price Gross',
                     'choices' => array_flip($priceAttributeDictionary),
                     'property_path' => 'attributeProductPriceGross',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_price_net',
@@ -175,7 +175,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Price Net',
                     'choices' => array_flip($priceAttributeDictionary),
                     'property_path' => 'attributeProductPriceNet',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_tax',
@@ -184,7 +184,7 @@ class Shopware6ChannelForm extends AbstractType
                     'label' => 'Attribute Product Tax',
                     'choices' => array_flip($numericAttributeDictionary),
                     'property_path' => 'attributeProductTax',
-                ]
+                ],
             )
             ->add(
                 'attribute_product_description',
@@ -194,7 +194,7 @@ class Shopware6ChannelForm extends AbstractType
                     'choices' => array_flip($textareaAttributeDictionary),
                     'property_path' => 'attributeProductDescription',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'attribute_product_gallery',
@@ -204,7 +204,7 @@ class Shopware6ChannelForm extends AbstractType
                     'choices' => array_flip($galleryAttributeDictionary),
                     'property_path' => 'attributeProductGallery',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'attribute_product_meta_title',
@@ -215,7 +215,7 @@ class Shopware6ChannelForm extends AbstractType
                     'choices' => array_flip($textareaAttributeDictionary),
                     'property_path' => 'attributeProductMetaTitle',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'attribute_product_meta_description',
@@ -226,7 +226,7 @@ class Shopware6ChannelForm extends AbstractType
                     'choices' => array_flip($textareaAttributeDictionary),
                     'property_path' => 'attributeProductMetaDescription',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'attribute_product_keywords',
@@ -236,7 +236,7 @@ class Shopware6ChannelForm extends AbstractType
                     'choices' => array_flip($textareaAttributeDictionary),
                     'property_path' => 'attributeProductKeywords',
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'category_tree',
@@ -246,7 +246,7 @@ class Shopware6ChannelForm extends AbstractType
                     'property_path' => 'categoryTree',
                     'choices' => array_flip($categoryTrees),
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'property_group',
@@ -258,7 +258,7 @@ class Shopware6ChannelForm extends AbstractType
                     'allow_delete' => true,
                     'entry_type' => PropertyGroupAttributeMapType::class,
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'custom_field',
@@ -270,7 +270,7 @@ class Shopware6ChannelForm extends AbstractType
                     'allow_delete' => true,
                     'entry_type' => CustomFieldAttributeMapType::class,
                     'required' => false,
-                ]
+                ],
             )
             ->add(
                 'cross_selling',
@@ -281,7 +281,7 @@ class Shopware6ChannelForm extends AbstractType
                     'multiple' => true,
                     'property_path' => 'crossSelling',
                     'required' => false,
-                ]
+                ],
             );
     }
 
@@ -293,7 +293,7 @@ class Shopware6ChannelForm extends AbstractType
                 'data_class' => Shopware6ChannelFormModel::class,
                 'allow_extra_fields' => true,
                 'label' => 'Export settings',
-            ]
+            ],
         );
     }
 

@@ -43,7 +43,7 @@ class CategoryBuilder
                 $shopware6Category,
                 $category,
                 $parentCategoryId,
-                $language
+                $language,
             );
         }
 

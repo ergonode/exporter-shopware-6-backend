@@ -49,7 +49,7 @@ class CustomFieldLabelMapper implements CustomFieldMapperInterface
             $label[str_replace('_', '-', $channel->getDefaultLanguage()->getCode())] = $attribute
                 ->getLabel()
                 ->get(
-                    $channel->getDefaultLanguage()
+                    $channel->getDefaultLanguage(),
                 );
         }
 

@@ -19,7 +19,7 @@ class Shopware6InstanceOfException extends Shopware6ExporterException
             [
                 '{expected}' => $expected,
             ],
-            $previous
+            $previous,
         );
     }
 }

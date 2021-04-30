@@ -17,7 +17,7 @@ class Shopware6AuthenticationException extends Shopware6ExporterException
         parent::__construct(
             self::MESSAGE,
             [],
-            $previous
+            $previous,
         );
     }
 }

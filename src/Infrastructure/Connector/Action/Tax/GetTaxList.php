@@ -30,7 +30,7 @@ class GetTaxList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -46,7 +46,7 @@ class GetTaxList extends AbstractAction
             $result[] = new Shopware6Tax(
                 $row['id'],
                 $row['attributes']['taxRate'],
-                $row['attributes']['name']
+                $row['attributes']['name'],
             );
         }
 

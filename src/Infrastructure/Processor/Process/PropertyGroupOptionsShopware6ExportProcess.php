@@ -86,7 +86,7 @@ class PropertyGroupOptionsShopware6ExportProcess
             $channel,
             $attribute->getId(),
             $option->getId(),
-            $propertyGroupId
+            $propertyGroupId,
         );
 
         if ($propertyGroupOption) {
@@ -118,7 +118,7 @@ class PropertyGroupOptionsShopware6ExportProcess
                 $channel,
                 $propertyGroupId,
                 $propertyGroupOption,
-                $shopwareLanguage
+                $shopwareLanguage,
             );
         }
     }
@@ -138,7 +138,7 @@ class PropertyGroupOptionsShopware6ExportProcess
             $option->getAttributeId(),
             $option->getId(),
             $propertyGroupId,
-            $shopwareLanguage
+            $shopwareLanguage,
         );
         Assert::notNull($shopwarePropertyGroupOption);
 
@@ -149,7 +149,7 @@ class PropertyGroupOptionsShopware6ExportProcess
             $propertyGroupId,
             $option,
             $language,
-            $shopwareLanguage
+            $shopwareLanguage,
         );
     }
 
@@ -168,7 +168,7 @@ class PropertyGroupOptionsShopware6ExportProcess
                     $channel,
                     $propertyGroupId,
                     $shopwareId,
-                    $shopware6Language
+                    $shopware6Language,
                 );
             } catch (ClientException $exception) {
             }

@@ -63,15 +63,15 @@ class Shopware6PropertyGroupOptionClient
                 sprintf(
                     'Expected an instance of %s. %s received.',
                     Shopware6PropertyGroupOption::class,
-                    get_debug_type($shopwarePropertyGroupOptions)
-                )
+                    get_debug_type($shopwarePropertyGroupOptions),
+                ),
             );
         }
         $this->propertyGroupOptionsRepository->save(
             $channel->getId(),
             $option->getAttributeId(),
             $option->getId(),
-            $shopwarePropertyGroupOptions->getId()
+            $shopwarePropertyGroupOptions->getId(),
         );
 
         return $shopwarePropertyGroupOptions;

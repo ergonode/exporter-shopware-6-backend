@@ -142,7 +142,7 @@ class Shopware6Connector
                 'headers' => $action->getRequest()->getHeaders(),
                 'body' => $action->getRequest()->getBody()->getContents(),
                 'query' => $action->getRequest()->getUri()->getQuery(),
-            ]
+            ],
         );
     }
 
@@ -154,7 +154,7 @@ class Shopware6Connector
                 'action_id' => $uid,
                 'status' => $response->getStatusCode(),
                 'body' => $contents,
-            ]
+            ],
         );
     }
 
@@ -166,7 +166,7 @@ class Shopware6Connector
                 'action_id' => $actionUid,
                 'exception_message' => $exception->getMessage(),
                 'body' => json_decode($exception->getResponse()->getBody()->getContents(), true),
-            ]
+            ],
         );
     }
 }

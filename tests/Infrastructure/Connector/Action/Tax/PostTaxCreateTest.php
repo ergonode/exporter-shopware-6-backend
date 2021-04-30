@@ -22,7 +22,7 @@ class PostTaxCreateTest extends TestCase
         $tax = new Shopware6Tax(
             null,
             23,
-            '23%'
+            '23%',
         );
         $action = new PostTaxCreate($tax);
         $request = $action->getRequest();

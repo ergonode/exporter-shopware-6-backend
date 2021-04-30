@@ -29,7 +29,7 @@ class CategoryRemoveExportCommandTest extends TestCase
     {
         $command = new CategoryRemoveExportCommand(
             $this->exportId,
-            $this->categoryId
+            $this->categoryId,
         );
 
         self::assertEquals($this->exportId, $command->getExportId());

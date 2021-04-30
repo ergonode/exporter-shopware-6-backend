@@ -48,7 +48,7 @@ class CategoryRemoveExportCommandHandlerTest extends TestCase
         $handler = new CategoryRemoveExportCommandHandler(
             $this->exportRepository,
             $this->channelRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

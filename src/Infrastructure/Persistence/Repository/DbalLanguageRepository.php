@@ -52,7 +52,7 @@ class DbalLanguageRepository implements LanguageRepositoryInterface
                 '',
                 $record['locale_id'],
                 $record['translation_code_id'],
-                $record['iso']
+                $record['iso'],
             );
         }
 
@@ -86,7 +86,7 @@ class DbalLanguageRepository implements LanguageRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

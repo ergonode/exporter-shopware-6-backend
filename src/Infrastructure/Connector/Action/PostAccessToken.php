@@ -30,7 +30,7 @@ class PostAccessToken extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -55,7 +55,7 @@ class PostAccessToken extends AbstractAction
                 'client_secret' => $this->channel->getClientKey(),
                 'grant_type' => 'client_credentials',
             ],
-            JSON_THROW_ON_ERROR
+            JSON_THROW_ON_ERROR,
         );
     }
 

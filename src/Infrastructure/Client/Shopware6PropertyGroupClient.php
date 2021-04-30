@@ -70,15 +70,15 @@ class Shopware6PropertyGroupClient
                 sprintf(
                     'Expected an instance of %s. %s received.',
                     Shopware6PropertyGroup::class,
-                    get_debug_type($shopwarePropertyGroup)
-                )
+                    get_debug_type($shopwarePropertyGroup),
+                ),
             );
         }
         $this->repository->save(
             $channel->getId(),
             $attribute->getId(),
             $shopwarePropertyGroup->getId(),
-            $attribute->getType()
+            $attribute->getType(),
         );
 
         return $shopwarePropertyGroup;

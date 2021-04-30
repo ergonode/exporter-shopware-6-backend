@@ -60,7 +60,7 @@ class ProductSEOMetaTitleMapper implements ProductMapperInterface
         $value = $this->calculator->calculate(
             $attribute->getScope(),
             $product->getAttribute($attribute->getCode()),
-            $language ?: $channel->getDefaultLanguage()
+            $language ?: $channel->getDefaultLanguage(),
         );
         if ($value && mb_strlen($value) > self::MAX_LENGTH) {
             throw new ProductToLongValueException($attribute->getCode(), $product->getSku(), self::MAX_LENGTH);

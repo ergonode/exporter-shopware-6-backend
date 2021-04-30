@@ -84,7 +84,7 @@ class ProductCrossSellingExportProcess
         $productCrossSelling = $this->loadProductCrossSelling(
             $channel,
             $productCollection->getId(),
-            $collectionElement->getProductId()
+            $collectionElement->getProductId(),
         );
         try {
             if ($productCrossSelling) {
@@ -93,7 +93,7 @@ class ProductCrossSellingExportProcess
                     $export,
                     $productCrossSelling,
                     $productCollection,
-                    $collectionElement
+                    $collectionElement,
                 );
             } else {
                 $productCrossSelling = new ProductCrossSelling();
@@ -102,13 +102,13 @@ class ProductCrossSellingExportProcess
                     $export,
                     $productCrossSelling,
                     $productCollection,
-                    $collectionElement
+                    $collectionElement,
                 );
                 $this->productCrossSellingClient->insert(
                     $channel,
                     $productCrossSelling,
                     $productCollection->getId(),
-                    $collectionElement->getProductId()
+                    $collectionElement->getProductId(),
                 );
             }
 
@@ -120,7 +120,7 @@ class ProductCrossSellingExportProcess
                         $export,
                         $productCollection,
                         $collectionElement,
-                        $language
+                        $language,
                     );
                 }
             }
@@ -143,7 +143,7 @@ class ProductCrossSellingExportProcess
             $channel,
             $productCollection->getId(),
             $collectionElement->getProductId(),
-            $shopwareLanguage
+            $shopwareLanguage,
         );
         Assert::notNull($productCrossSelling);
 
@@ -154,7 +154,7 @@ class ProductCrossSellingExportProcess
             $productCollection,
             $collectionElement,
             $language,
-            $shopwareLanguage
+            $shopwareLanguage,
         );
     }
 
@@ -173,7 +173,7 @@ class ProductCrossSellingExportProcess
             $productCrossSelling,
             $productCollection,
             $collectionElement,
-            $language
+            $language,
         );
         if ($productCrossSelling->isModified()) {
             $this->productCrossSellingClient->update(
@@ -181,7 +181,7 @@ class ProductCrossSellingExportProcess
                 $productCrossSelling,
                 $productCollection->getId(),
                 $collectionElement->getProductId(),
-                $shopwareLanguage
+                $shopwareLanguage,
             );
         }
     }

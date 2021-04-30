@@ -31,7 +31,7 @@ class GetCustomFieldList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -53,7 +53,7 @@ class GetCustomFieldList extends AbstractAction
                     $row['attributes']['config']['componentName'] ?? null,
                     $row['attributes']['config']['dateType'] ?? null,
                     $row['attributes']['config']['numberType'] ?? null,
-                    $row['attributes']['config']['options'] ?? null
+                    $row['attributes']['config']['options'] ?? null,
                 );
 
                 $result[] = new Shopware6CustomField(
@@ -61,7 +61,7 @@ class GetCustomFieldList extends AbstractAction
                     $row['attributes']['name'],
                     $row['attributes']['type'],
                     $config,
-                    $row['attributes']['customFieldSetId']
+                    $row['attributes']['customFieldSetId'],
                 );
             }
         }

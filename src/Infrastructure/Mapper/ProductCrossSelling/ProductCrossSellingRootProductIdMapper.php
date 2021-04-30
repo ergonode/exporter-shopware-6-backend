@@ -48,7 +48,7 @@ class ProductCrossSellingRootProductIdMapper implements ProductCrossSellingMappe
         if (null === $shopwareId) {
             throw new Shopware6ExporterProductNoFoundException(
                 $collectionElement->getProductId(),
-                $this->productQuery->findSkuByProductId($collectionElement->getProductId())
+                $this->productQuery->findSkuByProductId($collectionElement->getProductId()),
             );
         }
 

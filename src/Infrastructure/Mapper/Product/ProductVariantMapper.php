@@ -82,7 +82,7 @@ class ProductVariantMapper extends AbstractVariantOptionMapper
             $shopwareId = $this->optionMap($channel, $bindingId, $optionId);
             if ($shopwareId) {
                 $shopware6Product->addConfiguratorSettings(
-                    new Shopware6ProductConfiguratorSettings(null, $shopwareId)
+                    new Shopware6ProductConfiguratorSettings(null, $shopwareId),
                 );
             }
         }

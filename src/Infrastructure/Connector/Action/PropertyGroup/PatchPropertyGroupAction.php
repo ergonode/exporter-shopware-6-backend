@@ -29,7 +29,7 @@ class PatchPropertyGroupAction extends AbstractAction
             HttpRequest::METHOD_PATCH,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
     /**

@@ -104,7 +104,7 @@ class Shopware6ProductMediaClient
                     $exception->getResponse()->getBody()->getContents(),
                     true,
                     512,
-                    JSON_THROW_ON_ERROR
+                    JSON_THROW_ON_ERROR,
                 );
 
                 if ($decode['errors'][0]['code'] !== 'CONTENT__MEDIA_DUPLICATED_FILE_NAME') {

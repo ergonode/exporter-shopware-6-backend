@@ -58,7 +58,7 @@ class PropertyGroupExportCommandHandlerTest extends TestCase
             $this->exportRepository,
             $this->channelRepository,
             $this->attributeRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

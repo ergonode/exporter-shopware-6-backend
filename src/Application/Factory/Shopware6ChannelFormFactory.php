@@ -38,7 +38,7 @@ class Shopware6ChannelFormFactory implements ChannelFormFactoryInterface
             return $this->formFactory->create(
                 Shopware6ChannelForm::class,
                 $model,
-                ['method' => Request::METHOD_PUT]
+                ['method' => Request::METHOD_PUT],
             );
         }
 

@@ -86,13 +86,13 @@ abstract class AbstractProductCustomFieldSetMapper implements ProductMapperInter
             $calculateValue = $this->calculator->calculate(
                 $attribute->getScope(),
                 $value,
-                $language ?: $channel->getDefaultLanguage()
+                $language ?: $channel->getDefaultLanguage(),
             );
 
             if ($calculateValue) {
                 $shopware6Product->addCustomField(
                     $attribute->getCode()->getValue(),
-                    $this->getValue($channel, $attribute, $calculateValue)
+                    $this->getValue($channel, $attribute, $calculateValue),
                 );
             }
         }

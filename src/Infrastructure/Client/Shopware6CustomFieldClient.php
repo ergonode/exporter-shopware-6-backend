@@ -59,7 +59,7 @@ class Shopware6CustomFieldClient
                 $channel->getId(),
                 $attribute->getId(),
                 $customField->getId(),
-                $attribute->getType()
+                $attribute->getType(),
             );
 
             return $customField;
@@ -100,7 +100,7 @@ class Shopware6CustomFieldClient
             $channel->getId(),
             $attribute->getId(),
             $shopwareCustomField->getId(),
-            $attribute->getType()
+            $attribute->getType(),
         );
 
         return $shopwareCustomField;

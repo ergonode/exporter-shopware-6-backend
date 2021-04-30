@@ -82,7 +82,7 @@ class DbalPropertyGroupOptionsRepository implements PropertyGroupOptionsReposito
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

@@ -75,8 +75,8 @@ class PropertyGroupStep implements ExportStepProcessInterface
                     sprintf(
                         'Expected an instance of %s. %s received.',
                         VariableProduct::class,
-                        get_debug_type($domainProduct)
-                    )
+                        get_debug_type($domainProduct),
+                    ),
                 );
             }
             $bindings = $domainProduct->getBindings();

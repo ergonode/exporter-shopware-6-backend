@@ -107,8 +107,8 @@ class TaxSynchronizer implements SynchronizerInterface
                 new Shopware6Tax(
                     null,
                     $tax,
-                    $tax.'%'
-                )
+                    $tax.'%',
+                ),
             );
             $this->connector->execute($channel, $action);
             $update = true;

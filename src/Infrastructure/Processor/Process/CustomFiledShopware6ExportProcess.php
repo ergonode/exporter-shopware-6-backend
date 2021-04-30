@@ -129,7 +129,7 @@ class CustomFiledShopware6ExportProcess
 
         $config = new Shopware6CustomFieldSetConfig(
             true,
-            $label
+            $label,
         );
 
         $customFieldSet = new Shopware6CustomFieldSet(
@@ -140,7 +140,7 @@ class CustomFiledShopware6ExportProcess
                 [
                     'entityName' => 'product',
                 ],
-            ]
+            ],
         );
         $newCustomFieldSet = $this->customFieldSetClient->insert($channel, $customFieldSet);
         Assert::notNull($newCustomFieldSet);

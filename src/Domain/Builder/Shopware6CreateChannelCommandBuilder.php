@@ -100,7 +100,7 @@ class Shopware6CreateChannelCommandBuilder implements CreateChannelCommandBuilde
             $categoryTree ? new CategoryTreeId($categoryTree) : null,
             $propertyGroup,
             $customField,
-            $crossSellingObjects
+            $crossSellingObjects,
         );
     }
 }

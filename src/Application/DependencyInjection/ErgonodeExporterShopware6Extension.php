@@ -25,7 +25,7 @@ class ErgonodeExporterShopware6Extension extends Extension implements PrependExt
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../../Resources/config')
+            new FileLocator(__DIR__.'/../../Resources/config'),
         );
 
         $loader->load('services.yml');

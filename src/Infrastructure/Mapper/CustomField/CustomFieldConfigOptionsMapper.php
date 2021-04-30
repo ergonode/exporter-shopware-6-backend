@@ -95,7 +95,7 @@ class CustomFieldConfigOptionsMapper implements CustomFieldMapperInterface
             $label[str_replace(
                 '_',
                 '-',
-                $channel->getDefaultLanguage()->getCode()
+                $channel->getDefaultLanguage()->getCode(),
             )] = $option['label'][$channel->getDefaultLanguage()->getCode()];
         }
 

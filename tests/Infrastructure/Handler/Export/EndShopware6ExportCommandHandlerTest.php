@@ -48,7 +48,7 @@ class EndShopware6ExportCommandHandlerTest extends TestCase
         $handler = new EndShopware6ExportCommandHandler(
             $this->exportRepository,
             $this->channelRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

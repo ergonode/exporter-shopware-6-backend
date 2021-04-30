@@ -48,7 +48,7 @@ class GetPropertyGroupOptionsList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -65,7 +65,7 @@ class GetPropertyGroupOptionsList extends AbstractAction
                 $datum['id'],
                 $datum['attributes']['name'],
                 $datum['attributes']['mediaId'],
-                $datum['attributes']['position']
+                $datum['attributes']['position'],
             );
         }
 

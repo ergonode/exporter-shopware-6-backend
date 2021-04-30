@@ -38,7 +38,7 @@ class CategoryExportCommandTest extends TestCase
             $this->lineId,
             $this->exportId,
             $this->categoryId,
-            $this->parentCategoryId
+            $this->parentCategoryId,
         );
 
         self::assertEquals($this->lineId, $command->getLineId());

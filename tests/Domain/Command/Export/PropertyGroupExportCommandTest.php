@@ -34,7 +34,7 @@ class PropertyGroupExportCommandTest extends TestCase
         $command = new PropertyGroupExportCommand(
             $this->lineId,
             $this->exportId,
-            $this->attributeId
+            $this->attributeId,
         );
 
         self::assertEquals($this->exportId, $command->getExportId());

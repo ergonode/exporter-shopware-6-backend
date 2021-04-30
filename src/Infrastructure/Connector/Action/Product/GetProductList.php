@@ -31,7 +31,7 @@ class GetProductList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -57,7 +57,7 @@ class GetProductList extends AbstractAction
                             $attributePrice['currencyId'],
                             $attributePrice['net'],
                             $attributePrice['gross'],
-                            $attributePrice['linked']
+                            $attributePrice['linked'],
                         );
                     }
                 }
@@ -95,7 +95,7 @@ class GetProductList extends AbstractAction
                     $row['attributes']['coverId'] ?? null,
                     $row['attributes']['metaTitle'] ?? null,
                     $row['attributes']['metaDescription'] ?? null,
-                    $row['attributes']['keywords'] ?? null
+                    $row['attributes']['keywords'] ?? null,
                 );
             }
         }

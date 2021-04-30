@@ -30,7 +30,7 @@ class GetCategoryList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -50,7 +50,7 @@ class GetCategoryList extends AbstractAction
                 $row['attributes']['name'],
                 $row['attributes']['parentId'],
                 $row['attributes']['active'],
-                $row['attributes']['visible']
+                $row['attributes']['visible'],
             );
         }
 

@@ -58,7 +58,7 @@ class ProductCrossSellingExportCommandHandlerTest extends TestCase
             $this->exportRepository,
             $this->channelRepository,
             $this->productCollectionRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

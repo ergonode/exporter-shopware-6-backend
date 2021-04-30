@@ -111,7 +111,7 @@ class CreateShopware6ChannelCommandTest extends TestCase
             $this->categoryTreeId,
             [],
             [],
-            [$this->crossSelling]
+            [$this->crossSelling],
         );
 
         self::assertEquals($this->id, $command->getId());

@@ -30,7 +30,7 @@ class GetAssignedProductsAction extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -52,7 +52,7 @@ class GetAssignedProductsAction extends AbstractAction
                 $result[] = new AssignedProduct(
                     $row['id'],
                     $row['attributes']['productId'],
-                    $row['attributes']['position']
+                    $row['attributes']['position'],
                 );
             }
 
