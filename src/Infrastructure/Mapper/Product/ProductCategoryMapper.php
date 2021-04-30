@@ -26,9 +26,6 @@ class ProductCategoryMapper implements ProductMapperInterface
         $this->categoryRepository = $categoryRepository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

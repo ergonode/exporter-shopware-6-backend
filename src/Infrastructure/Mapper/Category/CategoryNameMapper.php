@@ -18,9 +18,6 @@ use Ergonode\SharedKernel\Domain\Aggregate\CategoryId;
 
 class CategoryNameMapper implements CategoryMapperInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

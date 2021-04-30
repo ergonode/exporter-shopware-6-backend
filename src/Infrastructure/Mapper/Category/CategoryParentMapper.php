@@ -26,9 +26,6 @@ class CategoryParentMapper implements CategoryMapperInterface
         $this->repository = $repository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

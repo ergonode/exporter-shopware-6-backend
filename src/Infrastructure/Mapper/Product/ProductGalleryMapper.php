@@ -44,9 +44,6 @@ class ProductGalleryMapper implements ProductMapperInterface
         $this->mediaClient = $mediaClient;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

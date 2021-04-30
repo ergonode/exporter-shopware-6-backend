@@ -34,8 +34,6 @@ class ProductNameMapper implements ProductMapperInterface
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @throws Shopware6ExporterProductAttributeException
      */
     public function map(

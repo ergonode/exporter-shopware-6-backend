@@ -13,9 +13,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\AbstractShopware6Pr
 
 class ProductGroupMultiSelectMapper extends AbstractShopware6ProductPropertyGroupOptionMapper
 {
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return MultiSelectAttribute::TYPE;

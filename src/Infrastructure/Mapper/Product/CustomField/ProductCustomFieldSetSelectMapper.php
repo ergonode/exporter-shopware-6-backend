@@ -31,17 +31,12 @@ class ProductCustomFieldSetSelectMapper extends AbstractProductCustomFieldSetMap
         $this->optionRepository = $optionRepository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return SelectAttribute::TYPE;
     }
 
     /**
-     * {@inheritDoc}
-     *
      * @throws Shopware6ExporterOptionValueException
      */
     protected function getValue(Shopware6Channel $channel, AbstractAttribute $attribute, $calculateValue): string

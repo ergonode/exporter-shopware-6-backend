@@ -52,8 +52,6 @@ class ProductPriceMapper implements ProductMapperInterface
 
 
     /**
-     * {@inheritDoc}
-     *
      * @throws Shopware6ExporterNoMapperException
      * @throws Shopware6ExporterNumericAttributeException
      * @throws Shopware6ExporterProductAttributeException

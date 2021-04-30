@@ -32,9 +32,6 @@ class ProductStockMapper implements ProductMapperInterface
         $this->calculator = $calculator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

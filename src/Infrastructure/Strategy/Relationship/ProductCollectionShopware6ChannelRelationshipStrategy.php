@@ -31,18 +31,11 @@ class ProductCollectionShopware6ChannelRelationshipStrategy implements Relations
         $this->repository = $repository;
     }
 
-
-    /**
-     * {@inheritDoc}
-     */
     public function supports(AggregateId $id): bool
     {
         return $id instanceof ProductCollectionId;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getRelationshipGroup(AggregateId $id): RelationshipGroup
     {
         Assert::isInstanceOf($id, ProductCollectionId::class);

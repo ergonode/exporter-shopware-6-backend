@@ -17,9 +17,6 @@ use Ergonode\Product\Domain\Entity\AbstractProduct;
 
 class ProductSkuMapper implements ProductMapperInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

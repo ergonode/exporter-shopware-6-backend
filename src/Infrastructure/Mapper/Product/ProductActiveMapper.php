@@ -32,9 +32,6 @@ class ProductActiveMapper implements ProductMapperInterface
         $this->calculator = $calculator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,
@@ -56,7 +53,7 @@ class ProductActiveMapper implements ProductMapperInterface
         $value = $product->getAttribute($attribute->getCode());
         $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $channel->getDefaultLanguage());
 
-        if ($calculateValue > 0) {
+        if ((int) $calculateValue > 0) {
             $active = true;
         }
         $shopware6Product->setActive($active);

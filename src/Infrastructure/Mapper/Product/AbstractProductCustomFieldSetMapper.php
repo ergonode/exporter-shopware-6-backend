@@ -34,9 +34,6 @@ abstract class AbstractProductCustomFieldSetMapper implements ProductMapperInter
         $this->calculator = $calculator;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

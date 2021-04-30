@@ -17,9 +17,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6PropertyGroup;
 
 class PropertyGroupNameMapper implements PropertyGroupMapperInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

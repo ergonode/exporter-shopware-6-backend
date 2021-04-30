@@ -31,9 +31,6 @@ class ErgonodeExporterShopware6Extension extends Extension implements PrependExt
         $loader->load('services.yml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function prepend(ContainerBuilder $container): void
     {
         $this->prependMessenger($container);

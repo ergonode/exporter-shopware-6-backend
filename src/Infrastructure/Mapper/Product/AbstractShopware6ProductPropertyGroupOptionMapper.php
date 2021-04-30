@@ -33,9 +33,6 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
         $this->propertyGroupOptionsRepository = $propertyGroupOptionsRepository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function addProperty(
         Shopware6Product $shopware6Product,
         AbstractAttribute $attribute,
