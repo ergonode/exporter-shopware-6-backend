@@ -14,34 +14,18 @@ use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractProductMapperCase extends TestCase
 {
-    /**
-     * @var Shopware6Channel|MockObject
-     */
     protected Shopware6Channel $channel;
 
-    /**
-     * @var Export|MockObject
-     */
     protected Export $export;
 
-    /**
-     * @var AbstractProduct|MockObject
-     */
     protected AbstractProduct $product;
 
-    /**
-     * @var AttributeRepositoryInterface|MockObject
-     */
     protected AttributeRepositoryInterface $attributeRepository;
 
-    /**
-     * @var TranslationInheritanceCalculator|MockObject
-     */
     protected TranslationInheritanceCalculator $calculator;
 
     protected function setUp(): void

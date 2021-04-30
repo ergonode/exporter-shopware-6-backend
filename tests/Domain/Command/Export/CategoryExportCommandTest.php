@@ -12,29 +12,16 @@ use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryExportCommand;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryId;
 use Ergonode\SharedKernel\Domain\Aggregate\ExportId;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CategoryExportCommandTest extends TestCase
 {
-    /**
-     * @var ExportLineId|MockObject
-     */
     private ExportLineId $lineId;
 
-    /**
-     * @var ExportId|MockObject
-     */
     private ExportId $exportId;
 
-    /**
-     * @var CategoryId|MockObject
-     */
     private CategoryId $categoryId;
 
-    /**
-     * @var CategoryId|MockObject
-     */
     private CategoryId $parentCategoryId;
 
     protected function setUp(): void

@@ -17,29 +17,16 @@ use Ergonode\ExporterShopware6\Domain\Command\Export\CustomFieldExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\CustomFieldExportCommandHandler;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CustomFiledShopware6ExportProcess;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CustomFieldExportCommandHandlerTest extends TestCase
 {
-    /**
-     * @var ExportRepositoryInterface|MockObject
-     */
     private ExportRepositoryInterface $exportRepository;
 
-    /**
-     * @var ChannelRepositoryInterface|MockObject
-     */
     private ChannelRepositoryInterface $channelRepository;
 
-    /**
-     * @var AttributeRepositoryInterface|MockObject
-     */
     private AttributeRepositoryInterface $attributeRepository;
 
-    /**
-     * @var CustomFiledShopware6ExportProcess|MockObject
-     */
     private CustomFiledShopware6ExportProcess $process;
 
     protected function setUp(): void

@@ -2,3 +2,6 @@ parameters:
     level: 2
     paths:
         - src
+        - tests
+    ignoreErrors:
+        - '#Call to an undefined method ([a-zA-Z\\_]+)|PHPUnit\\Framework\\MockObject\\MockObject::expects\(\).#'

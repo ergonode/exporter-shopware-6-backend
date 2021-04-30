@@ -10,7 +10,6 @@ namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Model;
 
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomFieldSet;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomFieldSetConfig;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AbstractShopware6CustomFieldSetTest extends TestCase
@@ -19,9 +18,6 @@ class AbstractShopware6CustomFieldSetTest extends TestCase
 
     private string $name;
 
-    /**
-     * @var AbstractShopware6CustomFieldSetConfig|MockObject
-     */
     private AbstractShopware6CustomFieldSetConfig $config;
 
     private array $relations;

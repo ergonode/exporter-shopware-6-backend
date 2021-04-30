@@ -10,14 +10,10 @@ namespace Ergonode\ExporterShopware6\Tests\Domain\Command\Export;
 
 use Ergonode\ExporterShopware6\Domain\Command\Export\EndShopware6ExportCommand;
 use Ergonode\SharedKernel\Domain\Aggregate\ExportId;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class EndShopware6ExportCommandTest extends TestCase
 {
-    /**
-     * @var ExportId|MockObject
-     */
     private ExportId $exportId;
 
     protected function setUp(): void

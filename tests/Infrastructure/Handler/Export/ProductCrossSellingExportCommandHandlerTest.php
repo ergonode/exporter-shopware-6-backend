@@ -17,29 +17,16 @@ use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\ProductCrossSelling
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductCrossSellingExportProcess;
 use Ergonode\ProductCollection\Domain\Entity\ProductCollection;
 use Ergonode\ProductCollection\Domain\Repository\ProductCollectionRepositoryInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ProductCrossSellingExportCommandHandlerTest extends TestCase
 {
-    /**
-     * @var ExportRepositoryInterface|MockObject
-     */
     private ExportRepositoryInterface $exportRepository;
 
-    /**
-     * @var ChannelRepositoryInterface|MockObject
-     */
     private ChannelRepositoryInterface $channelRepository;
 
-    /**
-     * @var ProductCollectionRepositoryInterface|MockObject
-     */
     private ProductCollectionRepositoryInterface $productCollectionRepository;
 
-    /**
-     * @var ProductCrossSellingExportProcess|MockObject
-     */
     private ProductCrossSellingExportProcess $process;
 
     protected function setUp(): void

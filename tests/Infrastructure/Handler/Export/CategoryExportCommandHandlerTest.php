@@ -17,29 +17,16 @@ use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\CategoryExportCommandHandler;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CategoryShopware6ExportProcess;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CategoryExportCommandHandlerTest extends TestCase
 {
-    /**
-     * @var ExportRepositoryInterface|MockObject
-     */
     private ExportRepositoryInterface $exportRepository;
 
-    /**
-     * @var ChannelRepositoryInterface|MockObject
-     */
     private ChannelRepositoryInterface $channelRepository;
 
-    /**
-     * @var CategoryRepositoryInterface|MockObject
-     */
     private CategoryRepositoryInterface $categoryRepository;
 
-    /**
-     * @var CategoryShopware6ExportProcess|MockObject
-     */
     private CategoryShopware6ExportProcess $process;
 
     protected function setUp(): void
