@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\GetCustomFieldSetList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\PostCustomFieldSetAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomFieldSet;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class Shopware6CustomFieldSetClient
 {

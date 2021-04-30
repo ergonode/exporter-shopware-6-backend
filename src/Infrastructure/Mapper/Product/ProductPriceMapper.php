@@ -10,8 +10,8 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 
 use Ergonode\Attribute\Domain\Entity\Attribute\PriceAttribute;
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\CurrencyRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\TaxRepositoryInterface;
@@ -19,8 +19,8 @@ use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6Exporter
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterNumericAttributeException;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterProductAttributeException;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPrice;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;

@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Application\Factory;
 
+use Ergonode\Channel\Application\Provider\ChannelFormFactoryInterface;
+use Ergonode\Channel\Domain\Entity\AbstractChannel;
+use Ergonode\ExporterShopware6\Application\Form\Shopware6ChannelForm;
+use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Ergonode\Channel\Application\Provider\ChannelFormFactoryInterface;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\Channel\Domain\Entity\AbstractChannel;
-use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
-use Ergonode\ExporterShopware6\Application\Form\Shopware6ChannelForm;
 
 class Shopware6ChannelFormFactory implements ChannelFormFactoryInterface
 {

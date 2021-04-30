@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Tests\Domain\Entity;
 
 use Ergonode\Core\Domain\ValueObject\Language;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductCollectionId;
 use Ergonode\SharedKernel\Domain\Aggregate\SegmentId;
 use PHPUnit\Framework\TestCase;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 
 class Shopware6ChannelTest extends TestCase
 {

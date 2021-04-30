@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Handler\Export;
 
-use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryRemoveExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;

@@ -13,6 +13,7 @@ use Ergonode\Attribute\Domain\Entity\Attribute\SelectAttribute;
 use Ergonode\Attribute\Domain\Query\OptionQueryInterface;
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Query\TaxQueryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\TaxRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Tax\GetTaxList;
@@ -21,7 +22,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Tax;
 use Ergonode\Product\Domain\Query\AttributeValueQueryInterface;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class TaxSynchronizer implements SynchronizerInterface
 {

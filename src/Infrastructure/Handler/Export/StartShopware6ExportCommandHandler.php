@@ -8,13 +8,13 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Handler\Export;
 
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
-use Webmozart\Assert\Assert;
 use Ergonode\Channel\Domain\Entity\Export;
-use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\StartShopware6ExportProcess;
 use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\StartShopware6ExportCommand;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\StartShopware6ExportProcess;
+use Webmozart\Assert\Assert;
 
 class StartShopware6ExportCommandHandler
 {

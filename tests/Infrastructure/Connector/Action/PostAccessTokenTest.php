@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Connector\Action;
 
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PostAccessToken;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class PostAccessTokenTest extends TestCase
 {

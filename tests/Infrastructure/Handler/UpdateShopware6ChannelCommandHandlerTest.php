@@ -8,11 +8,11 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Handler;
 
+use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\UpdateShopware6ChannelCommand;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\UpdateShopware6ChannelCommandHandler;
 use PHPUnit\Framework\TestCase;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 
 class UpdateShopware6ChannelCommandHandlerTest extends TestCase
 {

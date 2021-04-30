@@ -13,12 +13,12 @@ use Ergonode\Category\Domain\Repository\TreeRepositoryInterface;
 use Ergonode\Category\Domain\ValueObject\Node;
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
-use Ergonode\SharedKernel\Domain\Bus\CommandBusInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\ExportStepProcessInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryId;
 use Ergonode\SharedKernel\Domain\Aggregate\ExportId;
+use Ergonode\SharedKernel\Domain\Bus\CommandBusInterface;
 use Webmozart\Assert\Assert;
 
 class CategoryStep implements ExportStepProcessInterface

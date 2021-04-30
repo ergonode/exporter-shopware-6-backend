@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Domain\Builder;
 
+use Ergonode\Channel\Application\Provider\UpdateChannelCommandBuilderInterface;
 use Ergonode\Channel\Domain\Command\ChannelCommandInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
+use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
+use Ergonode\ExporterShopware6\Domain\Command\UpdateShopware6ChannelCommand;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductCollectionId;
 use Ergonode\SharedKernel\Domain\Aggregate\SegmentId;
 use Symfony\Component\Form\FormInterface;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\Channel\Application\Provider\UpdateChannelCommandBuilderInterface;
-use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
-use Ergonode\ExporterShopware6\Domain\Command\UpdateShopware6ChannelCommand;
-use Ergonode\ExporterShopware6\Application\Model\Shopware6ChannelFormModel;
 
 class Shopware6UpdateChannelCommandBuilder implements UpdateChannelCommandBuilderInterface
 {

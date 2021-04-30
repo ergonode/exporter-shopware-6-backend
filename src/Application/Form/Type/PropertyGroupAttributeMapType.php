@@ -11,11 +11,11 @@ namespace Ergonode\ExporterShopware6\Application\Form\Type;
 use Ergonode\Attribute\Domain\Entity\Attribute\MultiSelectAttribute;
 use Ergonode\Attribute\Domain\Entity\Attribute\SelectAttribute;
 use Ergonode\Attribute\Domain\Query\AttributeQueryInterface;
+use Ergonode\ExporterShopware6\Application\Model\Type\PropertyGroupAttributeModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Ergonode\ExporterShopware6\Application\Model\Type\PropertyGroupAttributeModel;
 
 class PropertyGroupAttributeMapType extends AbstractType
 {

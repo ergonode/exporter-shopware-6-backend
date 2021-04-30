@@ -10,8 +10,8 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\Attribute\Domain\Entity\Attribute\AbstractNumericAttribute;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomFieldMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField;
