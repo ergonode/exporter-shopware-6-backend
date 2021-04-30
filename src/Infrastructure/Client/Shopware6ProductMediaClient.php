@@ -73,18 +73,17 @@ class Shopware6ProductMediaClient
         Shopware6Channel $channel,
         Multimedia $multimedia,
         Shopware6MediaDefaultFolder $folder
-    ): Shopware6Media {
-        $media = null;
+    ): Shopware6Media
+    {
+        $media = $this->createMediaResource($channel, $folder);
         try {
-            $media = $this->createMediaResource($channel, $folder);
             $this->upload($channel, $media, $multimedia);
             $this->multimediaRepository->save($channel->getId(), $multimedia->getId(), $media->getId());
 
             return $media;
         } catch (\Exception $exception) {
-            if ($media) {
-                $this->delete($channel, $media->getId(), $multimedia->getId());
-            }
+            $this->delete($channel, $media->getId(), $multimedia->getId());
+
             throw $exception;
         }
     }
