@@ -15,10 +15,14 @@ use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
 use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductCollectionId;
 use Ergonode\SharedKernel\Domain\Aggregate\SegmentId;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class Shopware6ChannelTest extends TestCase
 {
+    /**
+     * @var ChannelId|MockObject
+     */
     private ChannelId $id;
 
     private string $name;
@@ -29,36 +33,84 @@ class Shopware6ChannelTest extends TestCase
 
     private string $clientKey;
 
+    /**
+     * @var SegmentId|MockObject
+     */
     private SegmentId $segment;
 
+    /**
+     * @var Language|MockObject
+     */
     private Language $defaultLanguage;
 
+    /**
+     * @var Language[]|MockObject[]
+     */
     private array $languages;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productName;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productActive;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productStock;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productPriceGross;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productPriceNet;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productTax;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productDescription;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $productGallery;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $attributeProductMetaTitle;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $attributeProductMetaDescription;
 
+    /**
+     * @var AttributeId|MockObject
+     */
     private AttributeId $attributeProductKeywords;
 
+    /**
+     * @var CategoryTreeId|MockObject
+     */
     private CategoryTreeId $categoryTreeId;
 
+    /**
+     * @var ProductCollectionId|MockObject
+     */
     private ProductCollectionId $crossSelling;
 
     protected function setUp(): void

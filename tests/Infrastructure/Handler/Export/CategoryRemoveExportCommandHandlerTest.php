@@ -15,14 +15,24 @@ use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryRemoveExportCommand
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\CategoryRemoveExportCommandHandler;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CategoryRemoveShopware6ExportProcess;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CategoryRemoveExportCommandHandlerTest extends TestCase
 {
+    /**
+     * @var ExportRepositoryInterface|MockObject
+     */
     private ExportRepositoryInterface $exportRepository;
 
+    /**
+     * @var ChannelRepositoryInterface|MockObject
+     */
     private ChannelRepositoryInterface $channelRepository;
 
+    /**
+     * @var CategoryRemoveShopware6ExportProcess|MockObject
+     */
     private CategoryRemoveShopware6ExportProcess $process;
 
     protected function setUp(): void

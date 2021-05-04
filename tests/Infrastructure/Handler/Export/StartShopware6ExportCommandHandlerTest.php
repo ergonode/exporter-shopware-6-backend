@@ -15,14 +15,24 @@ use Ergonode\ExporterShopware6\Domain\Command\Export\StartShopware6ExportCommand
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\StartShopware6ExportCommandHandler;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\StartShopware6ExportProcess;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class StartShopware6ExportCommandHandlerTest extends TestCase
 {
+    /**
+     * @var ExportRepositoryInterface|MockObject
+     */
     private ExportRepositoryInterface $exportRepository;
 
+    /**
+     * @var ChannelRepositoryInterface|MockObject
+     */
     private ChannelRepositoryInterface $channelRepository;
 
+    /**
+     * @var StartShopware6ExportProcess|MockObject
+     */
     private StartShopware6ExportProcess $processor;
 
     protected function setUp(): void

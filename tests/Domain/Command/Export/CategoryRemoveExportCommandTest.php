@@ -11,12 +11,19 @@ namespace Ergonode\ExporterShopware6\Tests\Domain\Command\Export;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryRemoveExportCommand;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryId;
 use Ergonode\SharedKernel\Domain\Aggregate\ExportId;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CategoryRemoveExportCommandTest extends TestCase
 {
+    /**
+     * @var ExportId|MockObject
+     */
     private ExportId $exportId;
 
+    /**
+     * @var CategoryId|MockObject
+     */
     private CategoryId $categoryId;
 
     protected function setUp(): void

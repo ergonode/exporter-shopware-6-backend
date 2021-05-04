@@ -16,10 +16,14 @@ use Ergonode\Core\Domain\ValueObject\TranslatableString;
 use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\Value\Domain\ValueObject\StringValue;
 use Ergonode\Value\Domain\ValueObject\TranslatableStringValue;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AttributeTranslationInheritanceCalculatorTest extends TestCase
 {
+    /**
+     * @var LanguageQueryInterface|MockObject
+     */
     private LanguageQueryInterface $languageQuery;
 
     public function setUp(): void
