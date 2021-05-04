@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - er-1203-githubactions
   pull_request:
 
 jobs:
