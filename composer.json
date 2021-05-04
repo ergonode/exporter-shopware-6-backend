@@ -38,6 +38,9 @@
             "vendor/bin/phpunit",
             "vendor/bin/phpcs",
             "vendor/bin/docheader check src tests"
+        ],
+        "fix": [
+            "vendor/bin/phpcbf"
         ]
     }
 }
