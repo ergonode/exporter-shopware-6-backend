@@ -28,13 +28,12 @@
     <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration"/>
     <rule ref="SlevomatCodingStandard.Commenting.UselessInheritDocComment"/>
 
-<!--    <rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit"/>-->
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
 
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall"/>
 
-<!--    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>-->
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="1"/>
@@ -49,12 +48,9 @@
             <property name="spacesCountAroundEqualsSign" value="0"/>
         </properties>
     </rule>
-<!--    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>-->
+
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
-<!--    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">-->
-<!--        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint"/>-->
-<!--    </rule>-->
-<!--    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>-->
+
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing"/>
     <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
 
