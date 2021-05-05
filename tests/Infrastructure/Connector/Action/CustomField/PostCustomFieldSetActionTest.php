@@ -23,7 +23,7 @@ class PostCustomFieldSetActionTest extends TestCase
     {
         $this->customFieldSet = new Shopware6CustomFieldSet(
             'any_id',
-            'custom_field_name'
+            'custom_field_name',
         );
     }
 

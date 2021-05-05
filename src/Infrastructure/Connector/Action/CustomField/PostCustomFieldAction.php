@@ -35,7 +35,7 @@ class PostCustomFieldAction extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -57,7 +57,7 @@ class PostCustomFieldAction extends AbstractAction
             $data['data']['attributes']['config']['componentName'] ?? null,
             $data['data']['attributes']['config']['dateType'] ?? null,
             $data['data']['attributes']['config']['numberType'] ?? null,
-            $data['data']['attributes']['config']['options'] ?? null
+            $data['data']['attributes']['config']['options'] ?? null,
         );
 
         return new Shopware6CustomField(
@@ -65,7 +65,7 @@ class PostCustomFieldAction extends AbstractAction
             $data['data']['attributes']['name'],
             $data['data']['attributes']['type'],
             $config,
-            $data['data']['attributes']['customFieldSetId']
+            $data['data']['attributes']['customFieldSetId'],
         );
     }
 

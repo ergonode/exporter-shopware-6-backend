@@ -15,9 +15,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\AbstractProductCust
 
 class ProductCustomFieldSetDateTimeMapper extends AbstractProductCustomFieldSetMapper
 {
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return AbstractDateAttribute::TYPE;

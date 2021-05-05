@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\CategoryRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
@@ -26,9 +26,6 @@ class ProductCategoryMapper implements ProductMapperInterface
         $this->categoryRepository = $categoryRepository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

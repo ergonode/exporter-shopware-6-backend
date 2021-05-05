@@ -11,13 +11,13 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 use Ergonode\Attribute\Domain\Query\OptionQueryInterface;
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Attribute\Domain\Repository\OptionRepositoryInterface;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupOptionsRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductConfiguratorSettings;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Domain\Entity\VariableProduct;
 use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
@@ -82,7 +82,7 @@ class ProductVariantMapper extends AbstractVariantOptionMapper
             $shopwareId = $this->optionMap($channel, $bindingId, $optionId);
             if ($shopwareId) {
                 $shopware6Product->addConfiguratorSettings(
-                    new Shopware6ProductConfiguratorSettings(null, $shopwareId)
+                    new Shopware6ProductConfiguratorSettings(null, $shopwareId),
                 );
             }
         }

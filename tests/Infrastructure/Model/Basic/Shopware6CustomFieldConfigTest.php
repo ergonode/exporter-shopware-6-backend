@@ -51,7 +51,7 @@ class Shopware6CustomFieldConfigTest extends TestCase
             $this->componentName,
             $this->dateType,
             $this->numberType,
-            $this->option
+            $this->option,
         );
 
         self::assertEquals($this->type, $model->getType());
@@ -95,7 +95,7 @@ class Shopware6CustomFieldConfigTest extends TestCase
             $this->componentName,
             $this->dateType,
             $this->numberType,
-            $this->option
+            $this->option,
         );
 
         self::assertEquals($this->json, json_encode($model->jsonSerialize(), JSON_THROW_ON_ERROR));

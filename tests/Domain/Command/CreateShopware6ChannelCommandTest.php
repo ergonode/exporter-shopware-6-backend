@@ -42,9 +42,8 @@ class CreateShopware6ChannelCommandTest extends TestCase
      * @var Language|MockObject
      */
     private Language $defaultLanguage;
-
     /**
-     * @var array|MockObject
+     * @var Language[]|MockObject[]
      */
     private array $languages;
 
@@ -163,7 +162,7 @@ class CreateShopware6ChannelCommandTest extends TestCase
             $this->categoryTreeId,
             [],
             [],
-            [$this->crossSelling]
+            [$this->crossSelling],
         );
 
         self::assertEquals($this->id, $command->getId());

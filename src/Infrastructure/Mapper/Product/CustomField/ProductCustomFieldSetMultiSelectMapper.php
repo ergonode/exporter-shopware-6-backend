@@ -30,9 +30,6 @@ class ProductCustomFieldSetMultiSelectMapper extends AbstractProductCustomFieldS
         $this->optionRepository = $optionRepository;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return MultiSelectAttribute::TYPE;

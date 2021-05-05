@@ -31,15 +31,16 @@ class GetPropertyGroupOptionsList extends AbstractAction
     {
         $this->propertyGroupId = $propertyGroupId;
 
-        $this->query = [
-            'query' => $query ? $query : [],
-        ];
         if ($limit > 0) {
-            $this->query['limit'] = $limit;
+            $query['limit'] = $limit;
         }
         if ($page > 0) {
-            $this->query['page'] = $page;
+            $query['page'] = $page;
         }
+
+        $this->query = [
+            'query' => $query,
+        ];
     }
 
     public function getRequest(): Request
@@ -47,7 +48,7 @@ class GetPropertyGroupOptionsList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -64,7 +65,7 @@ class GetPropertyGroupOptionsList extends AbstractAction
                 $datum['id'],
                 $datum['attributes']['name'],
                 $datum['attributes']['mediaId'],
-                $datum['attributes']['position']
+                $datum['attributes']['position'],
             );
         }
 

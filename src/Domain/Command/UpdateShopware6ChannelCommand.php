@@ -12,9 +12,9 @@ use Ergonode\Channel\Domain\Command\ChannelCommandInterface;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\CategoryTreeId;
+use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductCollectionId;
 use Ergonode\SharedKernel\Domain\Aggregate\SegmentId;
-use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
 
 class UpdateShopware6ChannelCommand implements ChannelCommandInterface
 {

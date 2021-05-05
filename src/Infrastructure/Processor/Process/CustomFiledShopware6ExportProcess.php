@@ -9,23 +9,24 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Process;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
+use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\CustomFieldRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Builder\CustomFieldBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6CustomFieldClient;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6CustomFieldSetClient;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6ExporterException;
+use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomFieldSet;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomFieldSetConfig;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomField;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomFieldSet;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomFieldSetConfig;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use GuzzleHttp\Exception\ClientException;
 use Webmozart\Assert\Assert;
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 
 class CustomFiledShopware6ExportProcess
 {
@@ -102,7 +103,7 @@ class CustomFiledShopware6ExportProcess
         Shopware6Channel $channel,
         AbstractAttribute $attribute,
         ?Shopware6Language $shopware6Language = null
-    ): ?Shopware6CustomField {
+    ): ?AbstractShopware6CustomField {
         $shopwareId = $this->customFieldRepository->load($channel->getId(), $attribute->getId());
         if ($shopwareId) {
             try {
@@ -128,7 +129,7 @@ class CustomFiledShopware6ExportProcess
 
         $config = new Shopware6CustomFieldSetConfig(
             true,
-            $label
+            $label,
         );
 
         $customFieldSet = new Shopware6CustomFieldSet(
@@ -139,7 +140,7 @@ class CustomFiledShopware6ExportProcess
                 [
                     'entityName' => 'product',
                 ],
-            ]
+            ],
         );
         $newCustomFieldSet = $this->customFieldSetClient->insert($channel, $customFieldSet);
         Assert::notNull($newCustomFieldSet);

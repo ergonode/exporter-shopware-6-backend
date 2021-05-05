@@ -29,7 +29,7 @@ class PostCurrencyCreate extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 

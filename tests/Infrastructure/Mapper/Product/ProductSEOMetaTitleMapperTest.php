@@ -39,7 +39,7 @@ class ProductSEOMetaTitleMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductSEOMetaTitleMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();
@@ -58,7 +58,7 @@ class ProductSEOMetaTitleMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductSEOMetaTitleMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();
@@ -83,7 +83,7 @@ class ProductSEOMetaTitleMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductSEOMetaTitleMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();
@@ -104,7 +104,7 @@ class ProductSEOMetaTitleMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductSEOMetaTitleMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();

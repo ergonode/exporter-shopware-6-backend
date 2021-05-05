@@ -31,7 +31,7 @@ class ProductCrossSellingRemoveExportProcess
     {
         $shopware6ProductCrossSellingIds = $this->productCrossSellingQuery->getOthersCollection(
             $channel->getId(),
-            $channel->getCrossSelling()
+            $channel->getCrossSelling(),
         );
         foreach ($shopware6ProductCrossSellingIds as $productCrossSellingId) {
             $this->productCrossSellingClient->delete($channel, $productCrossSellingId);

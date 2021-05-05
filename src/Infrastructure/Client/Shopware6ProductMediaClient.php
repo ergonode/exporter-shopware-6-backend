@@ -73,18 +73,17 @@ class Shopware6ProductMediaClient
         Shopware6Channel $channel,
         Multimedia $multimedia,
         Shopware6MediaDefaultFolder $folder
-    ): Shopware6Media {
-        $media = null;
+    ): Shopware6Media
+    {
+        $media = $this->createMediaResource($channel, $folder);
         try {
-            $media = $this->createMediaResource($channel, $folder);
             $this->upload($channel, $media, $multimedia);
             $this->multimediaRepository->save($channel->getId(), $multimedia->getId(), $media->getId());
 
             return $media;
         } catch (\Exception $exception) {
-            if ($media) {
-                $this->delete($channel, $media->getId(), $multimedia->getId());
-            }
+            $this->delete($channel, $media->getId(), $multimedia->getId());
+
             throw $exception;
         }
     }
@@ -105,7 +104,7 @@ class Shopware6ProductMediaClient
                     $exception->getResponse()->getBody()->getContents(),
                     true,
                     512,
-                    JSON_THROW_ON_ERROR
+                    JSON_THROW_ON_ERROR,
                 );
 
                 if ($decode['errors'][0]['code'] !== 'CONTENT__MEDIA_DUPLICATED_FILE_NAME') {

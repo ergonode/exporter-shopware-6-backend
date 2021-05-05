@@ -17,7 +17,7 @@ class Shopware6DefaultFolderException extends Shopware6ExporterException
         parent::__construct(
             self::MESSAGE,
             [],
-            $previous
+            $previous,
         );
     }
 }

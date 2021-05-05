@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Connector;
 
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PostAccessToken;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6AuthenticationException;
 use GuzzleHttp\Client;
@@ -16,7 +17,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class Shopware6Connector
 {
@@ -142,7 +142,7 @@ class Shopware6Connector
                 'headers' => $action->getRequest()->getHeaders(),
                 'body' => $action->getRequest()->getBody()->getContents(),
                 'query' => $action->getRequest()->getUri()->getQuery(),
-            ]
+            ],
         );
     }
 
@@ -154,7 +154,7 @@ class Shopware6Connector
                 'action_id' => $uid,
                 'status' => $response->getStatusCode(),
                 'body' => $contents,
-            ]
+            ],
         );
     }
 
@@ -166,7 +166,7 @@ class Shopware6Connector
                 'action_id' => $actionUid,
                 'exception_message' => $exception->getMessage(),
                 'body' => json_decode($exception->getResponse()->getBody()->getContents(), true),
-            ]
+            ],
         );
     }
 }

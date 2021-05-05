@@ -73,7 +73,7 @@ class DbalCurrencyRepository implements CurrencyRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

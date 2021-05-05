@@ -20,7 +20,7 @@ class Shopware6ExporterMultimediaException extends Shopware6ExporterException
         parent::__construct(
             self::MESSAGE,
             ['{multimedia}' => $multimediaId->getValue()],
-            $previous
+            $previous,
         );
     }
 }

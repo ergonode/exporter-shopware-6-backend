@@ -7,7 +7,18 @@
 ## Community
 
 * Get Ergonode support on **Stack Overflow**, [Slack][slack] or email team@ergonode.com
-* Follow us on [GitHub][github], [Twitter][twitter] and [Facebook][facebook],  
+* Follow us on [GitHub][github], [Twitter][twitter] and [Facebook][facebook],
+
+### Testing
+```bash
+composer test
+```
+
+Static checks issues fix
+```bash
+composer fix
+```
+
 
 ## Contributing
 

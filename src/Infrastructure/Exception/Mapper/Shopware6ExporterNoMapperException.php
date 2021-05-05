@@ -19,7 +19,7 @@ class Shopware6ExporterNoMapperException extends Shopware6ExporterException
         parent::__construct(
             self::MESSAGE,
             ['{field}' => $field, '{value}' => $value],
-            $previous
+            $previous,
         );
     }
 }

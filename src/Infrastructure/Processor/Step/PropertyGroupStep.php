@@ -10,7 +10,6 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Step;
 
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
-use Ergonode\SharedKernel\Domain\Bus\CommandBusInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\PropertyGroupExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\ExportStepProcessInterface;
@@ -21,6 +20,7 @@ use Ergonode\Segment\Domain\Query\SegmentProductsQueryInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\ExportId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductId;
+use Ergonode\SharedKernel\Domain\Bus\CommandBusInterface;
 
 class PropertyGroupStep implements ExportStepProcessInterface
 {
@@ -75,8 +75,8 @@ class PropertyGroupStep implements ExportStepProcessInterface
                     sprintf(
                         'Expected an instance of %s. %s received.',
                         VariableProduct::class,
-                        get_debug_type($domainProduct)
-                    )
+                        get_debug_type($domainProduct),
+                    ),
                 );
             }
             $bindings = $domainProduct->getBindings();

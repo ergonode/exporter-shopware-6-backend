@@ -73,7 +73,7 @@ class DbalProductRepository implements ProductRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

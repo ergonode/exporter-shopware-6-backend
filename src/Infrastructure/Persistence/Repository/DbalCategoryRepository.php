@@ -72,7 +72,7 @@ class DbalCategoryRepository implements CategoryRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 
@@ -109,7 +109,7 @@ class DbalCategoryRepository implements CategoryRepositoryInterface
             [
                 'category_id' => $categoryId->getValue(),
                 'channel_id' => $channelId->getValue(),
-            ]
+            ],
         );
     }
 }

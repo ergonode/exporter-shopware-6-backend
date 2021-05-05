@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\GetPropertyGroup;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\GetPropertyGroupList;
@@ -18,7 +19,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6PropertyGroup;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class Shopware6PropertyGroupClient
 {
@@ -70,15 +70,15 @@ class Shopware6PropertyGroupClient
                 sprintf(
                     'Expected an instance of %s. %s received.',
                     Shopware6PropertyGroup::class,
-                    get_debug_type($shopwarePropertyGroup)
-                )
+                    get_debug_type($shopwarePropertyGroup),
+                ),
             );
         }
         $this->repository->save(
             $channel->getId(),
             $attribute->getId(),
             $shopwarePropertyGroup->getId(),
-            $attribute->getType()
+            $attribute->getType(),
         );
 
         return $shopwarePropertyGroup;

@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6ProductMediaClient;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
@@ -44,9 +44,6 @@ class ProductGalleryMapper implements ProductMapperInterface
         $this->mediaClient = $mediaClient;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function map(
         Shopware6Channel $channel,
         Export $export,

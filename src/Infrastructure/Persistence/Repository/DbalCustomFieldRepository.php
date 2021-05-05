@@ -73,7 +73,7 @@ class DbalCustomFieldRepository implements CustomFieldRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

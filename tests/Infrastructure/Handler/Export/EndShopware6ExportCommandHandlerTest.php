@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Handler\Export;
 
-use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\EndShopware6ExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
@@ -58,7 +58,7 @@ class EndShopware6ExportCommandHandlerTest extends TestCase
         $handler = new EndShopware6ExportCommandHandler(
             $this->exportRepository,
             $this->channelRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

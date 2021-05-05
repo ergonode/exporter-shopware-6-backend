@@ -30,7 +30,7 @@ class GetPropertyGroupList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -47,7 +47,7 @@ class GetPropertyGroupList extends AbstractAction
                 $row['id'],
                 $row['attributes']['name'],
                 $row['attributes']['displayType'],
-                $row['attributes']['sortingType']
+                $row['attributes']['sortingType'],
             );
         }
 

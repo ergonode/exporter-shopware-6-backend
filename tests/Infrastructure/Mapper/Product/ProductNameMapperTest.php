@@ -41,7 +41,7 @@ class ProductNameMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductNameMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();
@@ -61,7 +61,7 @@ class ProductNameMapperTest extends AbstractProductMapperCase
 
         $mapper = new ProductNameMapper(
             $this->attributeRepository,
-            $this->calculator
+            $this->calculator,
         );
 
         $shopware6Product = new Shopware6Product();

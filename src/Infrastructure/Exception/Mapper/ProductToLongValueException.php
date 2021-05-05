@@ -25,7 +25,7 @@ class ProductToLongValueException extends Shopware6ExporterException
                 '{sku}' => $sku->getValue(),
                 '{length}' => $length,
             ],
-            $previous
+            $previous,
         );
     }
 }

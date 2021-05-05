@@ -72,7 +72,7 @@ class DbalTaxRepository implements TaxRepositoryInterface
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 

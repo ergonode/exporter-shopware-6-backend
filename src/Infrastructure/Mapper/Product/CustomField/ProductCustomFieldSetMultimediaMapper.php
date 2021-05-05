@@ -36,9 +36,6 @@ class ProductCustomFieldSetMultimediaMapper extends AbstractProductCustomFieldSe
         $this->mediaClient = $mediaClient;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return AbstractImageAttribute::TYPE;

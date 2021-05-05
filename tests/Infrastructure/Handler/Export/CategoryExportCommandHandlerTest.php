@@ -10,8 +10,8 @@ namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Handler\Export;
 
 use Ergonode\Category\Domain\Entity\AbstractCategory;
 use Ergonode\Category\Domain\Repository\CategoryRepositoryInterface;
-use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CategoryExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
@@ -71,7 +71,7 @@ class CategoryExportCommandHandlerTest extends TestCase
             $this->exportRepository,
             $this->channelRepository,
             $this->categoryRepository,
-            $this->process
+            $this->process,
         );
         $handler->__invoke($command);
     }

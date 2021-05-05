@@ -8,9 +8,11 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Process;
 
+use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\LanguageRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Builder\ProductBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6ProductClient;
@@ -18,9 +20,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6ExporterExcepti
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Webmozart\Assert\Assert;
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 
 class ProductShopware6ExportProcess
 {

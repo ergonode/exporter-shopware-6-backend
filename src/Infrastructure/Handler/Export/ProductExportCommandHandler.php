@@ -8,15 +8,15 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Handler\Export;
 
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
-use Webmozart\Assert\Assert;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
+use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\ProductExportCommand;
-use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductShopware6ExportProcess;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\Product\Domain\Repository\ProductRepositoryInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductShopware6ExportProcess;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
+use Ergonode\Product\Domain\Repository\ProductRepositoryInterface;
+use Webmozart\Assert\Assert;
 
 class ProductExportCommandHandler
 {

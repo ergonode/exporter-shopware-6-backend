@@ -33,7 +33,7 @@ class PostCategoryAction extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -53,7 +53,7 @@ class PostCategoryAction extends AbstractAction
             $data['data']['attributes']['name'],
             $data['data']['attributes']['parentId'],
             $data['data']['attributes']['active'],
-            $data['data']['attributes']['visible']
+            $data['data']['attributes']['visible'],
         );
     }
 

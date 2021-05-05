@@ -63,7 +63,7 @@ abstract class AbstractVariantOptionMapper implements ProductMapperInterface
         return $this->propertyGroupOptionsRepository->load(
             $channel->getId(),
             $bindingId,
-            $optionId
+            $optionId,
         );
     }
 }

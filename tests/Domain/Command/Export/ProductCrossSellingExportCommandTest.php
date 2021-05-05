@@ -44,7 +44,7 @@ class ProductCrossSellingExportCommandTest extends TestCase
         $command = new ProductCrossSellingExportCommand(
             $this->lineId,
             $this->exportId,
-            $this->productCollectionId
+            $this->productCollectionId,
         );
 
         self::assertEquals($this->lineId, $command->getLineId());

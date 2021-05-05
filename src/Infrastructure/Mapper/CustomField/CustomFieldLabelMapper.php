@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\LanguageRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomFieldMapperInterface;
@@ -49,7 +49,7 @@ class CustomFieldLabelMapper implements CustomFieldMapperInterface
             $label[str_replace('_', '-', $channel->getDefaultLanguage()->getCode())] = $attribute
                 ->getLabel()
                 ->get(
-                    $channel->getDefaultLanguage()
+                    $channel->getDefaultLanguage(),
                 );
         }
 

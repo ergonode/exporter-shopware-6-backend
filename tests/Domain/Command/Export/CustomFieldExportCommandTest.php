@@ -44,7 +44,7 @@ class CustomFieldExportCommandTest extends TestCase
         $command = new CustomFieldExportCommand(
             $this->lineId,
             $this->exportId,
-            $this->attributeId
+            $this->attributeId,
         );
 
         self::assertEquals($this->lineId, $command->getLineId());

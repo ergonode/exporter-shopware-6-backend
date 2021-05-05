@@ -20,7 +20,7 @@ class Shopware6ExporterOptionValueException extends Shopware6ExporterException
         parent::__construct(
             self::MESSAGE,
             ['{code}' => $code->getValue()],
-            $previous
+            $previous,
         );
     }
 }

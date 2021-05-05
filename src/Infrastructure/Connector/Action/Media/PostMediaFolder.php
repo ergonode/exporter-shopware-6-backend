@@ -34,7 +34,7 @@ class PostMediaFolder extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -56,7 +56,7 @@ class PostMediaFolder extends AbstractAction
                 'useParentConfiguration' => false,
                 'name' => $this->mediaFolder,
             ],
-            JSON_THROW_ON_ERROR
+            JSON_THROW_ON_ERROR,
         );
     }
 

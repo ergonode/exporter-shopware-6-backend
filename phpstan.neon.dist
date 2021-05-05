@@ -1,0 +1,8 @@
+parameters:
+    level: 4
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        - '#Call to an undefined method ([a-zA-Z\\_]+)|PHPUnit\\Framework\\MockObject\\MockObject::expects\(\).#'
+        - '#PHPDoc tag @var for property ([a-zA-Z\\_]+)\\Tests\\([a-zA-Z\\_]+)::\$([a-zA-Z\\_]+) with type ([a-zA-Z\\_]+)|PHPUnit\\Framework\\MockObject\\MockObject is not subtype of native type ([a-zA-Z\\_]+).#'

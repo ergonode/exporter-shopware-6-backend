@@ -25,7 +25,7 @@ class Shopware6ExporterNumericAttributeException extends Shopware6ExporterExcept
                 '{sku}' => $sku->getValue(),
                 '{value}' => $value,
             ],
-            $previous
+            $previous,
         );
     }
 }

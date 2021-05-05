@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Builder;
 
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductCrossSellingMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractProductCrossSelling;
@@ -43,7 +43,7 @@ class ProductCrossSellingBuilder
                 $shopware6ProductCrossSelling,
                 $productCollection,
                 $collectionElement,
-                $language
+                $language,
             );
         }
 

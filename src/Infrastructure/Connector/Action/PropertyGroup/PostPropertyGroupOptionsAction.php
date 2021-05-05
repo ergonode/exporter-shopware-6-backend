@@ -40,7 +40,7 @@ class PostPropertyGroupOptionsAction extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -59,7 +59,7 @@ class PostPropertyGroupOptionsAction extends AbstractAction
             $data['data']['id'],
             $data['data']['attributes']['name'],
             $data['data']['attributes']['mediaId'],
-            $data['data']['attributes']['position']
+            $data['data']['attributes']['position'],
         );
     }
 

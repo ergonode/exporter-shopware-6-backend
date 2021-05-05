@@ -9,8 +9,9 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Model;
 
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductCategory;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPrice;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class Shopware6ProductTest extends TestCase
@@ -24,7 +25,7 @@ class Shopware6ProductTest extends TestCase
     private string $description;
 
     /**
-     * @var array
+     * @var Shopware6ProductCategory[]|MockObject[]
      */
     private array $categories;
 
@@ -45,7 +46,7 @@ class Shopware6ProductTest extends TestCase
     private string $taxId;
 
     /**
-     * @var Shopware6ProductPrice[]
+     * @var Shopware6ProductPrice[]|MockObject[]
      */
     private array $price;
 
@@ -99,7 +100,7 @@ class Shopware6ProductTest extends TestCase
                 'net' => 1.0,
                 'gross' => 1.23,
                 'linked' => false,
-            ]
+            ],
         );
         $this->price = [$price];
         $this->parentId = 'any_parent_id';
@@ -147,7 +148,7 @@ class Shopware6ProductTest extends TestCase
             $this->coverId,
             $this->metaTitle,
             $this->metaDescription,
-            $this->keywords
+            $this->keywords,
         );
 
         self::assertEquals($this->id, $model->getId());
@@ -240,7 +241,7 @@ class Shopware6ProductTest extends TestCase
             $this->coverId,
             $this->metaTitle,
             $this->metaDescription,
-            $this->keywords
+            $this->keywords,
         );
 
         self::assertEquals($this->json, json_encode($model->jsonSerialize(), JSON_THROW_ON_ERROR));

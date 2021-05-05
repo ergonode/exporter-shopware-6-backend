@@ -29,7 +29,7 @@ class GetPropertyGroup extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -44,7 +44,7 @@ class GetPropertyGroup extends AbstractAction
             $data['data']['id'],
             $data['data']['attributes']['name'],
             $data['data']['attributes']['displayType'],
-            $data['data']['attributes']['sortingType']
+            $data['data']['attributes']['sortingType'],
         );
     }
 

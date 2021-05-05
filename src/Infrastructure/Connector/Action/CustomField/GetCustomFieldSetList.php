@@ -32,7 +32,7 @@ class GetCustomFieldSetList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -49,12 +49,12 @@ class GetCustomFieldSetList extends AbstractAction
         foreach ($data['data'] as $row) {
             $config = new Shopware6CustomFieldSetConfig(
                 $row['attributes']['config']['translated'],
-                $row['attributes']['config']['label'] ?: null
+                $row['attributes']['config']['label'] ?: null,
             );
             $result[] = new Shopware6CustomFieldSet(
                 $row['id'],
                 $row['attributes']['name'],
-                $config
+                $config,
             );
         }
 

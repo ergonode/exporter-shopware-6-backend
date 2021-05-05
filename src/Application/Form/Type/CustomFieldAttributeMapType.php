@@ -37,7 +37,7 @@ class CustomFieldAttributeMapType extends AbstractType
                 [
                     'label' => 'Attribute',
                     'choices' => array_flip($dictionary),
-                ]
+                ],
             );
     }
 

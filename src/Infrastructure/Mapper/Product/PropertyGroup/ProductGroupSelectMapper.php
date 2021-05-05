@@ -13,9 +13,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\AbstractShopware6Pr
 
 class ProductGroupSelectMapper extends AbstractShopware6ProductPropertyGroupOptionMapper
 {
-    /**
-     * {@inheritDoc}
-     */
     public function getType(): string
     {
         return SelectAttribute::TYPE;

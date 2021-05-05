@@ -81,7 +81,7 @@ class DbalProductCrossSellingRepository implements ProductCrossSellingRepository
             ],
             [
                 'updatedAt' => Types::DATETIMETZ_MUTABLE,
-            ]
+            ],
         );
     }
 
@@ -116,7 +116,7 @@ class DbalProductCrossSellingRepository implements ProductCrossSellingRepository
             [
                 'shopware6_id' => $shopwareId,
                 'channel_id' => $channelId->getValue(),
-            ]
+            ],
         );
     }
 }
