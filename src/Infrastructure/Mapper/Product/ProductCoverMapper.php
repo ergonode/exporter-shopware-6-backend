@@ -26,6 +26,12 @@ class ProductCoverMapper implements ProductMapperInterface
     ): Shopware6Product {
         $media = $shopware6Product->getMedia();
         if (!empty($media)) {
+            usort(
+                $media,
+                function (Shopware6ProductMedia $firstMediaElement, Shopware6ProductMedia $secondMediaElement) {
+                    return $firstMediaElement->getPosition() > $secondMediaElement->getPosition();
+                }
+            );
             $coverMedia = reset($media);
             $shopware6Product->setCoverId($coverMedia->getId());
         }
