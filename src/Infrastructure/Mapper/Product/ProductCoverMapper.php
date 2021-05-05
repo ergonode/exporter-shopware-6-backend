@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -12,6 +13,7 @@ use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 
@@ -26,6 +28,12 @@ class ProductCoverMapper implements ProductMapperInterface
     ): Shopware6Product {
         $media = $shopware6Product->getMedia();
         if (!empty($media)) {
+            usort(
+                $media,
+                function (Shopware6ProductMedia $firstMediaElement, Shopware6ProductMedia $secondMediaElement) {
+                    return $firstMediaElement->getPosition() > $secondMediaElement->getPosition();
+                },
+            );
             $coverMedia = reset($media);
             $shopware6Product->setCoverId($coverMedia->getId());
         }
