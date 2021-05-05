@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -31,7 +32,7 @@ class ProductCoverMapper implements ProductMapperInterface
                 $media,
                 function (Shopware6ProductMedia $firstMediaElement, Shopware6ProductMedia $secondMediaElement) {
                     return $firstMediaElement->getPosition() > $secondMediaElement->getPosition();
-                }
+                },
             );
             $coverMedia = reset($media);
             $shopware6Product->setCoverId($coverMedia->getId());
