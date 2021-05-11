@@ -56,6 +56,17 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
                     $shopware6Product->addProperty($propertyId);
                 }
             }
+        } else if (AggregateId::isValid($calculateValue)) {
+            $optionId = new AggregateId($calculateValue);
+
+            $propertyId = $this->propertyGroupOptionsRepository->load(
+                $channel->getId(),
+                $attribute->getId(),
+                $optionId,
+            );
+            if ($propertyId) {
+                $shopware6Product->addProperty($propertyId);
+            }
         }
 
         return $shopware6Product;
