@@ -62,7 +62,7 @@ class DbalProductRelationAttributeRepository implements ProductRelationAttribute
     ): void {
         $sql = 'INSERT INTO '.self::TABLE.' (channel_id, product_id, attribute_id, shopware6_id, updated_at) 
         VALUES (:channelId, :productId, :attributeId, :shopware6Id, :updatedAt)
-            ON CONFLICT ON CONSTRAINT shopware6_product_collection_pkey
+            ON CONFLICT ON CONSTRAINT shopware6_product_relation_attribute_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, updated_at = :updatedAt
         ';
 
