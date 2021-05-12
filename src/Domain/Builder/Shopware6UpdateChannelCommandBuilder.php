@@ -53,7 +53,7 @@ class Shopware6UpdateChannelCommandBuilder implements UpdateChannelCommandBuilde
         $attributeProductKeywords = $data->attributeProductKeywords;
         $categoryTree = $data->categoryTree;
         $crossSelling = $data->relations->crossSelling;
-        $productRelationAttributes = []; //todo change from form
+        $productRelationAttributes = $data->relations->relationAttributes;
 
         $propertyGroup = [];
         foreach ($data->propertyGroup as $attribute) {
@@ -75,7 +75,6 @@ class Shopware6UpdateChannelCommandBuilder implements UpdateChannelCommandBuilde
         }
 
         $productRelationAttributesObjects = [];
-        /** @phpstan-ignore-next-line */
         foreach ($productRelationAttributes as $productRelationAttribute) {
             $productRelationAttributesObjects[] = new AttributeId($productRelationAttribute);
         }

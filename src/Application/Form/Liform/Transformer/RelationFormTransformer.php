@@ -40,11 +40,16 @@ class RelationFormTransformer extends AbstractTransformer
         $order = 1;
         $required = [];
 
-        foreach ($form->all() as $field) {
+        foreach ($form->all() as $key => $field) {
             $transformerData = $this->resolver->resolve($field);
             $transformedChild = $transformerData['transformer']->transform($field, $extensions, $transformerData['widget']);
             $transformedChild['propertyOrder'] = $order;
-            $data[] = $transformedChild;
+
+            $object = [];
+            $object['title'] = $field->getConfig()->getOption('label');
+            $object['properties'][$key] = $transformedChild;
+
+            $data[] = $object;
             $order ++;
 
             if ($transformerData['transformer']->isRequired($field)) {
@@ -53,7 +58,6 @@ class RelationFormTransformer extends AbstractTransformer
         }
 
         $schema = [
-            'title' => $form->getConfig()->getOption('label'),
             'type' => 'object',
             'oneOf' => $data,
         ];

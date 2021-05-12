@@ -125,7 +125,6 @@ class Shopware6ChannelFormModel
 
     public function __construct(Shopware6Channel $channel = null)
     {
-        $crossSelling = [];
         if ($channel) {
             $this->name = $channel->getName();
             $this->host = $channel->getHost();
@@ -151,7 +150,6 @@ class Shopware6ChannelFormModel
             $this->attributeProductKeywords = $channel->getAttributeProductKeywords()
                 ? $channel->getAttributeProductKeywords()->getValue() : null;
             $this->categoryTree = $channel->getCategoryTree() ? $channel->getCategoryTree()->getValue() : null;
-            $crossSelling = $channel->getCrossSelling();
 
             foreach ($channel->getPropertyGroup() as $string) {
                 $this->propertyGroup[] = new PropertyGroupAttributeModel($string->getValue());
@@ -162,6 +160,8 @@ class Shopware6ChannelFormModel
             }
         }
 
-        $this->relations = new ProductRelationModel($crossSelling);
+        $crossSelling = $channel ? $channel->getCrossSelling() : [];
+        $relationAttributes = $channel ? $channel->getProductRelationAttributes() : [];
+        $this->relations = new ProductRelationModel($crossSelling, $relationAttributes);
     }
 }

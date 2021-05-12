@@ -47,13 +47,13 @@ class ProductRelationForm extends AbstractType
                     'required' => false,
                 ],
             ) ->add(
-                'relations',
+                'relation_attributes',
                 ChoiceType::class,
                 [
                     'label' => 'List of Product Relation Attributes',
                     'choices' => array_flip($relationAttributeDictionary),
                     'multiple' => true,
-                    'property_path' => 'relations',
+                    'property_path' => 'relationAttributes',
                     'required' => false,
                 ],
             );
@@ -67,6 +67,16 @@ class ProductRelationForm extends AbstractType
                 'data_class' => ProductRelationModel::class,
                 'allow_extra_fields' => true,
                 'label' => 'Export settings',
+//                'validation_groups' =>  function (FormInterface $form) {
+//                    /** @var ProductRelationModel $data */
+//                    $data = $form->getData();
+//
+//                    if(!empty($data->relationAttributes)) {
+//                        return ['Default', 'Relation'];
+//                    }
+//
+//                    return ['Default', 'Collection'];
+//                },
             ],
         );
     }
