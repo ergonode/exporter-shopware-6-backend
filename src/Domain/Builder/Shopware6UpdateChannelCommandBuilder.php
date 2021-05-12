@@ -52,7 +52,7 @@ class Shopware6UpdateChannelCommandBuilder implements UpdateChannelCommandBuilde
         $attributeProductMetaDescription = $data->attributeProductMetaDescription;
         $attributeProductKeywords = $data->attributeProductKeywords;
         $categoryTree = $data->categoryTree;
-        $crossSelling = $data->crossSelling;
+        $crossSelling = $data->relations->crossSelling;
 
         $propertyGroup = [];
         foreach ($data->propertyGroup as $attribute) {

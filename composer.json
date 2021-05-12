@@ -10,8 +10,10 @@
     "require": {
         "php": "^7.4",
         "ergonode/channel": "^1.0.0",
+        "ergonode/product": "^1.0",
         "ergonode/product-collection": "^1.0.0",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "limenius/liform-bundle": "^0.17.0"
     },
     "require-dev": {
         "malukenho/docheader": "^0.1.8",

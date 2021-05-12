@@ -7,6 +7,12 @@ services:
     Ergonode\ExporterShopware6\Application\:
         resource: '../../Application/*'
 
+    Ergonode\ExporterShopware6\Application\Form\Liform\Transformer\RelationFormTransformer:
+        arguments:
+            $resolver: '@liform.resolver'
+        tags:
+            - { name: 'liform.transformer', form_type: 'shopware-relation'}
+
     Ergonode\ExporterShopware6\Domain\:
         resource: '../../Domain/*'
 
