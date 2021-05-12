@@ -22,6 +22,36 @@ Feature: Export Profile Shopware 6 API
     Then the response status code should be 201
     And store response param "id" as "attribute_numeric_id"
 
+  Scenario: Get product up-sell collection type
+    When I send a GET request to "/api/v1/en_GB/collections/type?field=code&filter=code=up-sell"
+    Then the response status code should be 200
+    And store response param "collection[0].id" as "product_collection_type_id"
+
+  Scenario: Create first product collection
+    When I send a POST request to "/api/v1/en_GB/collections" with body:
+      """
+      {
+          "code": "TEXT_@@random_code@@",
+          "typeId": "@product_collection_type_id@"
+      }
+      """
+    Then the response status code should be 201
+    And store response param "id" as "collection_id"
+
+
+  Scenario: Create relation attribute
+    And I send a "POST" request to "/api/v1/en_GB/attributes" with body:
+      """
+      {
+          "code": "shopware_6_RELATION_@@random_code@@",
+          "type": "PRODUCT_RELATION",
+          "scope": "local",
+          "groups": []
+      }
+      """
+    Then the response status code should be 201
+    And store response param "id" as "attribute_relation_id"
+
   Scenario: Create gross price attribute
     And I send a "POST" request to "/api/v1/en_GB/attributes" with body:
       """
@@ -253,6 +283,59 @@ Feature: Export Profile Shopware 6 API
     And the JSON nodes should contain:
       | errors.default_language[0] | This value is not valid |
 
+  Scenario: Post Create Channel to Shopware 6 API (invalid relation-attribute)
+    When I send a POST request to "/api/v1/en_GB/channels" with body:
+      """
+        {
+          "type": "shopware-6-api",
+          "name": "Shopware 6 api",
+          "host": "http://192.168.1.100:8000",
+          "client_id": "SWIAMURTYTK0R2RQEFBVUNPDTQ",
+          "client_key": "Mml6ZkJoRVdGSlZhbDNwMjZEcDFRMUQ0a1JRNUJKWDFKMWNnV08",
+          "default_language": "pl_PL",
+          "languages": ["pl_PL"],
+          "attribute_product_name" : "@attribute_text_id@",
+          "attribute_product_active" : "@attribute_numeric_id@",
+          "attribute_product_stock" : "@attribute_numeric_id@",
+          "attribute_product_price_gross" : "@attribute_price_gross_id@",
+          "attribute_product_price_net" : "@attribute_price_net_id@",
+          "attribute_product_tax" : "@attribute_numeric_id@",
+          "category_tree" : "@category_tree@",
+          "relations":
+          {
+            "relation_attributes": ["@@random_uuid@@"]
+          }
+        }
+      """
+    Then the response status code should be 400
+
+  Scenario: Post Create Channel to Shopware 6 API (both relation and collection)
+    When I send a POST request to "/api/v1/en_GB/channels" with body:
+      """
+        {
+          "type": "shopware-6-api",
+          "name": "Shopware 6 api",
+          "host": "http://192.168.1.100:8000",
+          "client_id": "SWIAMURTYTK0R2RQEFBVUNPDTQ",
+          "client_key": "Mml6ZkJoRVdGSlZhbDNwMjZEcDFRMUQ0a1JRNUJKWDFKMWNnV08",
+          "default_language": "pl_PL",
+          "languages": ["pl_PL"],
+          "attribute_product_name" : "@attribute_text_id@",
+          "attribute_product_active" : "@attribute_numeric_id@",
+          "attribute_product_stock" : "@attribute_numeric_id@",
+          "attribute_product_price_gross" : "@attribute_price_gross_id@",
+          "attribute_product_price_net" : "@attribute_price_net_id@",
+          "attribute_product_tax" : "@attribute_numeric_id@",
+          "category_tree" : "@category_tree@",
+          "relations":
+          {
+            "relation_attributes": ["@attribute_relation_id@"],
+            "cross_selling": ["@collection_id@"]
+          }
+        }
+      """
+    Then the response status code should be 400
+
   Scenario: Update shopware 6 channel
     When I send a PUT request to "/api/v1/en_GB/channels/@channel_id@" with body:
       """
@@ -281,8 +364,11 @@ Feature: Export Profile Shopware 6 API
             {
               "id": "@attribute_text_id@"
             }
-          ]
-
+          ],
+          "relations":
+          {
+            "relation_attributes": ["@attribute_relation_id@"]
+          }
         }
       """
     Then the response status code should be 204
