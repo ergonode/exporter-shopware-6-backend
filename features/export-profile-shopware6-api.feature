@@ -283,32 +283,32 @@ Feature: Export Profile Shopware 6 API
     And the JSON nodes should contain:
       | errors.default_language[0] | This value is not valid |
 
-#  Scenario: Post Create Channel to Shopware 6 API (invalid relation-attribute)
-#    When I send a POST request to "/api/v1/en_GB/channels" with body:
-#      """
-#        {
-#          "type": "shopware-6-api",
-#          "name": "Shopware 6 api",
-#          "host": "http://192.168.1.100:8000",
-#          "client_id": "SWIAMURTYTK0R2RQEFBVUNPDTQ",
-#          "client_key": "Mml6ZkJoRVdGSlZhbDNwMjZEcDFRMUQ0a1JRNUJKWDFKMWNnV08",
-#          "default_language": "pl_PL",
-#          "languages": ["pl_PL"],
-#          "attribute_product_name" : "@attribute_text_id@",
-#          "attribute_product_active" : "@attribute_numeric_id@",
-#          "attribute_product_stock" : "@attribute_numeric_id@",
-#          "attribute_product_price_gross" : "@attribute_price_gross_id@",
-#          "attribute_product_price_net" : "@attribute_price_net_id@",
-#          "attribute_product_tax" : "@attribute_numeric_id@",
-#          "category_tree" : "@category_tree@",
-#          "relations":
-#          {
-#            "relation_attributes": ["@@random_uuid@@"]
-#          }
-#        }
-#      """
-#    Then the response status code should be 400
-#
+  Scenario: Post Create Channel to Shopware 6 API (invalid relation-attribute)
+    When I send a POST request to "/api/v1/en_GB/channels" with body:
+      """
+        {
+          "type": "shopware-6-api",
+          "name": "Shopware 6 api",
+          "host": "http://192.168.1.100:8000",
+          "client_id": "SWIAMURTYTK0R2RQEFBVUNPDTQ",
+          "client_key": "Mml6ZkJoRVdGSlZhbDNwMjZEcDFRMUQ0a1JRNUJKWDFKMWNnV08",
+          "default_language": "pl_PL",
+          "languages": ["pl_PL"],
+          "attribute_product_name" : "@attribute_text_id@",
+          "attribute_product_active" : "@attribute_numeric_id@",
+          "attribute_product_stock" : "@attribute_numeric_id@",
+          "attribute_product_price_gross" : "@attribute_price_gross_id@",
+          "attribute_product_price_net" : "@attribute_price_net_id@",
+          "attribute_product_tax" : "@attribute_numeric_id@",
+          "category_tree" : "@category_tree@",
+          "relations":
+          {
+            "relation_attributes": ["@@random_uuid@@"]
+          }
+        }
+      """
+    Then the response status code should be 400
+
   Scenario: Post Create Channel to Shopware 6 API (both relation and collection)
     When I send a POST request to "/api/v1/en_GB/channels" with body:
       """
