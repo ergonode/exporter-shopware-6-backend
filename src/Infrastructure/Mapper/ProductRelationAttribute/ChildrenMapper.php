@@ -61,7 +61,7 @@ class ChildrenMapper implements ProductRelationAttributeMapperInterface
                 $assignedProduct = $this->mapElement(
                     $channel,
                     $relationProductId,
-                    $position + 1,
+                    ++$position,
                 );
 
                 if ($assignedProduct) {
