@@ -128,3 +128,9 @@ services:
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductCrossSelling\ProductCrossSellingRootProductIdMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductCrossSelling\ProductCrossSellingNameMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductCrossSelling\ProductCrossSellingChildrenMapper'
+
+    Ergonode\ExporterShopware6\Infrastructure\Builder\ProductRelationAttributeBuilder:
+        arguments:
+            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\NameMapper'
+            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\RootProductIdMapper'
+            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\ChildrenMapper'
