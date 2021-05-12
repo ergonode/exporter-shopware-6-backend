@@ -113,6 +113,11 @@ class Shopware6ChannelTest extends TestCase
      */
     private ProductCollectionId $crossSelling;
 
+    /**
+     * @var AttributeId|MockObject
+     */
+    private AttributeId $productRelationAttribute;
+
     protected function setUp(): void
     {
         $this->id = $this->createMock(ChannelId::class);
@@ -136,6 +141,7 @@ class Shopware6ChannelTest extends TestCase
         $this->attributeProductKeywords = $this->createMock(AttributeId::class);
         $this->categoryTreeId = $this->createMock(CategoryTreeId::class);
         $this->crossSelling = $this->createMock(ProductCollectionId::class);
+        $this->productRelationAttribute = $this->createMock(AttributeId::class);
     }
 
     public function testCreateEntity(): void
@@ -164,6 +170,7 @@ class Shopware6ChannelTest extends TestCase
             [],
             [],
             [$this->crossSelling],
+            [$this->productRelationAttribute],
         );
 
         self::assertEquals($this->id, $entity->getId());
@@ -191,6 +198,8 @@ class Shopware6ChannelTest extends TestCase
         self::assertIsArray($entity->getCustomField());
         self::assertIsArray($entity->getCrossSelling());
         self::assertContains($this->crossSelling, $entity->getCrossSelling());
+        self::assertIsArray($entity->getProductRelationAttributes());
+        self::assertContains($this->productRelationAttribute, $entity->getProductRelationAttributes());
     }
 
     /**
@@ -222,6 +231,7 @@ class Shopware6ChannelTest extends TestCase
             [],
             [],
             [$this->crossSelling],
+            [$this->productRelationAttribute],
         );
 
         $id = $this->createMock(ChannelId::class);
@@ -268,6 +278,7 @@ class Shopware6ChannelTest extends TestCase
         $entity->setPropertyGroup([]);
         $entity->setCustomField([]);
         $entity->setCrossSelling([]);
+        $entity->setProductRelationAttributes([]);
 
 
         self::assertEquals($id, $entity->getId());
@@ -293,5 +304,6 @@ class Shopware6ChannelTest extends TestCase
         self::assertIsArray($entity->getPropertyGroup());
         self::assertIsArray($entity->getCustomField());
         self::assertIsArray($entity->getCrossSelling());
+        self::assertIsArray($entity->getProductRelationAttributes());
     }
 }

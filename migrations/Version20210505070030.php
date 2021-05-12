@@ -33,5 +33,11 @@ final class Version20210505070030 extends AbstractErgonodeMigration
                     ADD CONSTRAINT shopware6_product_relation_attribute_fk FOREIGN KEY (channel_id) 
                     REFERENCES exporter.channel(id) ON DELETE CASCADE'
         );
+
+        $this->addSql(
+            'UPDATE exporter.channel
+                    SET "configuration" = jsonb_set("configuration",\'{product_relation_attributes}\',\'[]\',true)
+                    WHERE type = \'shopware-6-api\''
+        );
     }
 }
