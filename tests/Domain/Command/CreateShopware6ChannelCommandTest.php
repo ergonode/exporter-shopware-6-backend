@@ -112,6 +112,11 @@ class CreateShopware6ChannelCommandTest extends TestCase
      */
     private ProductCollectionId $crossSelling;
 
+    /**
+     * @var AttributeId|MockObject
+     */
+    private AttributeId $productRelationAttribute;
+
     protected function setUp(): void
     {
         $this->id = $this->createMock(ChannelId::class);
@@ -135,6 +140,7 @@ class CreateShopware6ChannelCommandTest extends TestCase
         $this->productKeywords = $this->createMock(AttributeId::class);
         $this->categoryTreeId = $this->createMock(CategoryTreeId::class);
         $this->crossSelling = $this->createMock(ProductCollectionId::class);
+        $this->productRelationAttribute = $this->createMock(AttributeId::class);
     }
 
     public function testCreateCommand(): void
@@ -163,6 +169,7 @@ class CreateShopware6ChannelCommandTest extends TestCase
             [],
             [],
             [$this->crossSelling],
+            [$this->productRelationAttribute],
         );
 
         self::assertEquals($this->id, $command->getId());
@@ -189,5 +196,7 @@ class CreateShopware6ChannelCommandTest extends TestCase
         self::assertIsArray($command->getCustomField());
         self::assertIsArray($command->getCrossSelling());
         self::assertContains($this->crossSelling, $command->getCrossSelling());
+        self::assertIsArray($command->getProductRelationAttributes());
+        self::assertContains($this->productRelationAttribute, $command->getProductRelationAttributes());
     }
 }

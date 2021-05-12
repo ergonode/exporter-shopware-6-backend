@@ -77,10 +77,16 @@ class UpdateShopware6ChannelCommand implements ChannelCommandInterface
     private array $crossSelling;
 
     /**
+     * @var AttributeId[]
+     */
+    private array $productRelationAttributes;
+
+    /**
      * @param Language[]                  $languages
      * @param array|AttributeId[]         $propertyGroup
      * @param array|AttributeId[]         $customField
      * @param array|ProductCollectionId[] $crossSelling
+     * @param array|AttributeId[]         $productRelationAttributes
      */
     public function __construct(
         ChannelId $id,
@@ -105,7 +111,8 @@ class UpdateShopware6ChannelCommand implements ChannelCommandInterface
         ?CategoryTreeId $categoryTree,
         array $propertyGroup,
         array $customField,
-        array $crossSelling
+        array $crossSelling,
+        array $productRelationAttributes
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -130,6 +137,7 @@ class UpdateShopware6ChannelCommand implements ChannelCommandInterface
         $this->propertyGroup = $propertyGroup;
         $this->customField = $customField;
         $this->crossSelling = $crossSelling;
+        $this->productRelationAttributes = $productRelationAttributes;
     }
 
     public function getId(): ChannelId
@@ -257,5 +265,13 @@ class UpdateShopware6ChannelCommand implements ChannelCommandInterface
     public function getCrossSelling(): array
     {
         return $this->crossSelling;
+    }
+
+    /**
+     * @return AttributeId[]
+     */
+    public function getProductRelationAttributes(): array
+    {
+        return $this->productRelationAttributes;
     }
 }
