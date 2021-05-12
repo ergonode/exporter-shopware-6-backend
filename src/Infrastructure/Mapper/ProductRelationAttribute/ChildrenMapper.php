@@ -55,12 +55,13 @@ class ChildrenMapper implements ProductRelationAttributeMapperInterface
             $channel->getDefaultLanguage(),
         );
         if ($calculateValue) {
+            $position = $this->getCurrentPosition($shopware6ProductCrossSelling);
             foreach ($calculateValue as $relationValue) {
                 $relationProductId = new ProductId($relationValue);
                 $assignedProduct = $this->mapElement(
                     $channel,
                     $relationProductId,
-                    $this->getCurrentPosition($shopware6ProductCrossSelling) + 1,
+                    $position + 1,
                 );
 
                 if ($assignedProduct) {

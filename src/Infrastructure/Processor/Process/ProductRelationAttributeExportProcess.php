@@ -73,44 +73,37 @@ class ProductRelationAttributeExportProcess
                     $attribute,
                 );
             } else {
-                $productCrossSelling = new ProductCrossSelling();
-
-                $productCrossSelling = $this->builder->build(
-                    $channel,
-                    $export,
-                    $productCrossSelling,
-                    $product,
-                    $attribute,
-                );
-
-                $this->relationAttributeClient->insert(
-                    $channel,
-                    $productCrossSelling,
-                    $product->getId(),
-                    $attribute->getId(),
-                );
+                $this->createProductCrossSelling($channel, $export, $product, $attribute);
             }
 
             //update language
-            foreach ($channel->getLanguages() as $language) {
-                if ($this->languageRepository->exists($channel->getId(), $language->getCode())) {
-                    $this->updateProductCrossSellingWithLanguage(
-                        $channel,
-                        $export,
-                        $product,
-                        $attribute,
-                        $language,
-                    );
-                }
-            }
+            $this->updateWithLanguages($channel, $export, $product, $attribute);
         } catch (Shopware6ExporterException $exception) {
             $this->exportRepository->addError($export->getId(), $exception->getMessage(), $exception->getParameters());
         }
 
         $this->exportRepository->processLine($lineId);
     }
+    private function updateWithLanguages(
+        Shopware6Channel $channel,
+        Export $export,
+        AbstractProduct $product,
+        ProductRelationAttribute $attribute
+    ): void {
+        foreach ($channel->getLanguages() as $language) {
+            if ($this->languageRepository->exists($channel->getId(), $language->getCode())) {
+                $this->updateWithLanguage(
+                    $channel,
+                    $export,
+                    $product,
+                    $attribute,
+                    $language,
+                );
+            }
+        }
+    }
 
-    private function updateProductCrossSellingWithLanguage(
+    private function updateWithLanguage(
         Shopware6Channel $channel,
         Export $export,
         AbstractProduct $product,
@@ -136,6 +129,30 @@ class ProductRelationAttributeExportProcess
             $attribute,
             $language,
             $shopwareLanguage,
+        );
+    }
+
+    private function createProductCrossSelling(
+        Shopware6Channel $channel,
+        Export $export,
+        AbstractProduct $product,
+        ProductRelationAttribute $attribute
+    ): void {
+        $productCrossSelling = new ProductCrossSelling();
+
+        $productCrossSelling = $this->builder->build(
+            $channel,
+            $export,
+            $productCrossSelling,
+            $product,
+            $attribute,
+        );
+
+        $this->relationAttributeClient->insert(
+            $channel,
+            $productCrossSelling,
+            $product->getId(),
+            $attribute->getId(),
         );
     }
 
