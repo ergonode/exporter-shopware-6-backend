@@ -67,16 +67,6 @@ class ProductRelationForm extends AbstractType
                 'data_class' => ProductRelationModel::class,
                 'allow_extra_fields' => true,
                 'label' => 'Export settings',
-//                'validation_groups' =>  function (FormInterface $form) {
-//                    /** @var ProductRelationModel $data */
-//                    $data = $form->getData();
-//
-//                    if(!empty($data->relationAttributes)) {
-//                        return ['Default', 'Relation'];
-//                    }
-//
-//                    return ['Default', 'Collection'];
-//                },
             ],
         );
     }
