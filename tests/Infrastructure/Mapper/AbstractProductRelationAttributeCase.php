@@ -16,7 +16,7 @@ use Ergonode\Product\Domain\Entity\AbstractProduct;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class AbstractProductRelationAttributeCase extends TestCase
+abstract class AbstractProductRelationAttributeCase extends TestCase
 {
     /**
      * @var Shopware6Channel|MockObject
@@ -46,8 +46,7 @@ class AbstractProductRelationAttributeCase extends TestCase
 
     protected function getProductCrossSellingClass(): AbstractProductCrossSelling
     {
-        return new class(
-        ) extends AbstractProductCrossSelling {
+        return new class() extends AbstractProductCrossSelling {
         };
     }
 }
