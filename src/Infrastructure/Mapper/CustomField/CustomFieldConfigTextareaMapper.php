@@ -18,7 +18,8 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField
 
 class CustomFieldConfigTextareaMapper implements CustomFieldMapperInterface
 {
-    private const TYPE = 'text';
+    private const TYPE_TEXT = 'text';
+    private const TYPE_HTML = 'html';
     private const CUSTOM_FIELD_TYPE = 'textEditor';
     private const COMPONENT_NAME = 'sw-text-editor';
 
@@ -31,8 +32,12 @@ class CustomFieldConfigTextareaMapper implements CustomFieldMapperInterface
     ): AbstractShopware6CustomField {
 
         if ($attribute->getType() === AbstractTextareaAttribute::TYPE) {
-            $shopware6CustomField->setType(self::TYPE);
-            $shopware6CustomField->getConfig()->setType(self::TYPE);
+            $type = self::TYPE_TEXT;
+            if ($attribute instanceof AbstractTextareaAttribute && $attribute->isRichEdit()) {
+                $type = self::TYPE_HTML;
+            }
+            $shopware6CustomField->setType($type);
+            $shopware6CustomField->getConfig()->setType($type);
             $shopware6CustomField->getConfig()->setCustomFieldType(self::CUSTOM_FIELD_TYPE);
             $shopware6CustomField->getConfig()->setComponentName(self::COMPONENT_NAME);
         }
