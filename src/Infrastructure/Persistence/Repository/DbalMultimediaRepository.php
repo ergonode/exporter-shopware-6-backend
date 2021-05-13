@@ -57,7 +57,7 @@ class DbalMultimediaRepository implements MultimediaRepositoryInterface
      */
     public function save(ChannelId $channelId, MultimediaId $multimediaId, string $shopwareId): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, multimedia_id, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, multimedia_id, shopware6_id, update_at) 
         VALUES (:channelId, :multimediaId, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_multimedia_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt

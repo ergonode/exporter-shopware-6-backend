@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -69,7 +70,7 @@ class AbstractShopware6CustomFieldTest extends TestCase
 
     private function getClass(): AbstractShopware6CustomField
     {
-        return new class(
+        return new class (
             $this->id,
             $this->name,
             $this->type,

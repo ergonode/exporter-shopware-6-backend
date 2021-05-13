@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -49,6 +50,6 @@ class PatchProductAction extends AbstractAction
 
     private function getUri(): string
     {
-        return self::URI.$this->product->getId();
+        return self::URI . $this->product->getId();
     }
 }

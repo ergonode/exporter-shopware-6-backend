@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -22,7 +23,7 @@ class CustomFieldConfigOptionsMapper implements CustomFieldMapperInterface
 {
     private OptionQueryInterface $optionQuery;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     public function __construct(
         OptionQueryInterface $optionQuery,
@@ -85,8 +86,10 @@ class CustomFieldConfigOptionsMapper implements CustomFieldMapperInterface
         ];
 
         foreach ($channel->getLanguages() as $language) {
-            if (isset($option['label'][$language->getCode()])
-                && $this->languageRepository->exists($channel->getId(), $language->getCode())) {
+            if (
+                isset($option['label'][$language->getCode()])
+                && $this->languageRepository->exists($channel->getId(), $language->getCode())
+            ) {
                 $label[str_replace('_', '-', $language->getCode())] = $option['label'][$language->getCode()];
             }
         }
