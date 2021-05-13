@@ -10,6 +10,7 @@ namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\ProductRelation
 
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\ChildrenMapper;
+use Ergonode\ExporterShopware6\Infrastructure\Model\ProductCrossSelling\AbstractAssignedProduct;
 use Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\AbstractProductRelationAttributeCase;
 use Ergonode\Product\Domain\Entity\Attribute\ProductRelationAttribute;
 use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
@@ -103,5 +104,32 @@ class ChildrenMapperTest extends AbstractProductRelationAttributeCase
         self::assertNotEmpty($new->getAssignedProducts());
         self::assertEquals(self::SHOPWARE_ID, $new->getAssignedProducts()[0]->getProductId());
         self::assertEquals(1, $new->getAssignedProducts()[0]->getPosition());
+    }
+
+    public function testCorrectPositionMapper(): void
+    {
+        $this->product->expects(self::once())->method('hasAttribute')->willReturn(true);
+        $this->product->expects(self::once())->method('getAttribute')
+            ->willReturn($this->createMock(StringCollectionValue::class));
+
+        $this->calculator->expects(self::once())->method('calculate')->willReturn([ self::TEST_PRODUCT_ID]);
+
+        $relationAttribute = $this->createMock(ProductRelationAttribute::class);
+
+       $this->shopware6ProductRepository->method('load')->willReturn(self::SHOPWARE_ID);
+
+        $productCrossSelling = $this->getProductCrossSellingClass();
+        $assigned = $this->createMock(AbstractAssignedProduct::class);
+        $assigned->method('getPosition')->willReturn(10);
+        $productCrossSelling->setAssignedProducts([$assigned]);
+
+        $mapper = new ChildrenMapper(
+            $this->calculator,
+            $this->shopware6ProductRepository,
+        );
+
+        $new = $mapper->map($this->channel, $this->export, $productCrossSelling, $this->product, $relationAttribute);
+        self::assertEquals(self::SHOPWARE_ID, $new->getAssignedProducts()[1]->getProductId());
+        self::assertEquals(11, $new->getAssignedProducts()[1]->getPosition());
     }
 }
