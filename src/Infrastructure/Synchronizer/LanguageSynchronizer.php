@@ -17,7 +17,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6LanguageClient;
 
 class LanguageSynchronizer implements SynchronizerInterface
 {
-    private Shopware6LanguageClient  $languageClient;
+    private Shopware6LanguageClient $languageClient;
 
     private LanguageRepositoryInterface $languageShopwareRepository;
 

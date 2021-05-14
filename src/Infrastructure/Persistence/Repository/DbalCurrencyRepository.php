@@ -57,7 +57,7 @@ class DbalCurrencyRepository implements CurrencyRepositoryInterface
      */
     public function save(ChannelId $channelId, string $iso, string $shopwareId): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, iso, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, iso, shopware6_id, update_at) 
         VALUES (:channelId, :iso, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_currency_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt

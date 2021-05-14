@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -56,7 +57,7 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
                     $shopware6Product->addProperty($propertyId);
                 }
             }
-        } else if (AggregateId::isValid($calculateValue)) {
+        } elseif (AggregateId::isValid($calculateValue)) {
             $optionId = new AggregateId($calculateValue);
 
             $propertyId = $this->propertyGroupOptionsRepository->load(

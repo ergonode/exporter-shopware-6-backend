@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -25,7 +26,7 @@ class ErgonodeExporterShopware6Extension extends Extension implements PrependExt
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../../Resources/config'),
+            new FileLocator(__DIR__ . '/../../Resources/config'),
         );
 
         $loader->load('services.yml');
@@ -51,7 +52,7 @@ class ErgonodeExporterShopware6Extension extends Extension implements PrependExt
             $config['messenger']['transport_name'],
         );
 
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../Resources/config'));
 
         $loader->load('messenger.yaml');
     }

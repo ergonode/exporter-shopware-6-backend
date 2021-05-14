@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -53,7 +54,11 @@ class ProductDescriptionMapper implements ProductMapperInterface
 
         $value = $product->getAttribute($attribute->getCode());
 
-        $name = $this->calculator->calculate($attribute->getScope(), $value, $language ?: $channel->getDefaultLanguage());
+        $name = $this->calculator->calculate(
+            $attribute->getScope(),
+            $value,
+            $language ?: $channel->getDefaultLanguage(),
+        );
         $shopware6Product->setDescription($name);
 
         return $shopware6Product;

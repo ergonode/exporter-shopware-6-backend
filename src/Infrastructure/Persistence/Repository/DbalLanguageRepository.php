@@ -64,7 +64,8 @@ class DbalLanguageRepository implements LanguageRepositoryInterface
      */
     public function save(ChannelId $channelId, Shopware6Language $shopware6Language): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, iso, locale_id, translation_code_id, shopware6_id, update_at) 
+        // phpcs:ignore
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, iso, locale_id, translation_code_id, shopware6_id, update_at) 
         VALUES (:channelId, :iso, :localeId, :translationCodeId, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_language_pkey
                 DO UPDATE SET 

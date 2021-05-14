@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -27,7 +28,7 @@ use Ergonode\SharedKernel\Domain\AggregateId;
 class ProductVariantMapper extends AbstractVariantOptionMapper
 {
     private PropertyGroupRepositoryInterface $propertyGroupRepository;
-    private OptionQueryInterface  $optionQuery;
+    private OptionQueryInterface $optionQuery;
 
     public function __construct(
         PropertyGroupRepositoryInterface $propertyGroupRepository,

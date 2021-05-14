@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -63,7 +64,11 @@ class ProductGalleryMapper implements ProductMapperInterface
         }
 
         $value = $product->getAttribute($attribute->getCode());
-        $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $language ?: $channel->getDefaultLanguage());
+        $calculateValue = $this->calculator->calculate(
+            $attribute->getScope(),
+            $value,
+            $language ?: $channel->getDefaultLanguage(),
+        );
         if (is_array($calculateValue)) {
             $position = 0;
             foreach ($calculateValue as $galleryValue) {

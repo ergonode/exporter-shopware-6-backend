@@ -65,7 +65,7 @@ class DbalPropertyGroupOptionsRepository implements PropertyGroupOptionsReposito
         string $shopwareId
     ): void {
 
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, attribute_id, option_id, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, attribute_id, option_id, shopware6_id, update_at) 
         VALUES (:channelId, :attributeId, :optionId, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_property_group_options_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt

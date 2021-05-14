@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -32,7 +33,7 @@ class CategoryShopware6ExportProcess
 
     private CategoryBuilder $builder;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     private ExportRepositoryInterface $exportRepository;
 

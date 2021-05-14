@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -73,8 +74,7 @@ class Shopware6ProductMediaClient
         Shopware6Channel $channel,
         Multimedia $multimedia,
         Shopware6MediaDefaultFolder $folder
-    ): Shopware6Media
-    {
+    ): Shopware6Media {
         $media = $this->createMediaResource($channel, $folder);
         try {
             $this->upload($channel, $media, $multimedia);
@@ -110,7 +110,7 @@ class Shopware6ProductMediaClient
                 if ($decode['errors'][0]['code'] !== 'CONTENT__MEDIA_DUPLICATED_FILE_NAME') {
                     throw $exception;
                 }
-                $name = $multimedia->getHash()->getValue().'_'.$iteration++;
+                $name = $multimedia->getHash()->getValue() . '_' . $iteration++;
             }
         }
     }

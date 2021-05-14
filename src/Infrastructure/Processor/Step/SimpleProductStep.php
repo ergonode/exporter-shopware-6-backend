@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -24,7 +25,7 @@ class SimpleProductStep implements ExportStepProcessInterface
 {
     private ProductQueryInterface $productQuery;
 
-    private SegmentProductsQueryInterface  $segmentProductsQuery;
+    private SegmentProductsQueryInterface $segmentProductsQuery;
 
     private CommandBusInterface $commandBus;
 
