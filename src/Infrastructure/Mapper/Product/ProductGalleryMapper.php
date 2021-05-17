@@ -66,10 +66,11 @@ class ProductGalleryMapper implements ProductMapperInterface
         }
 
         $value = $product->getAttribute($attribute->getCode());
-        $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $language ?: $channel->getDefaultLanguage());
-        if (is_array($calculateValue)) {
+        $calculateValue = $this->calculator->calculate($attribute, $value, $language ?: $channel->getDefaultLanguage());
+        if ($calculateValue) {
+            $gallery = explode(',', $calculateValue);
             $position = 0;
-            foreach ($calculateValue as $galleryValue) {
+            foreach ($gallery as $galleryValue) {
                 $multimediaId = new MultimediaId($galleryValue);
                 $this->getShopware6MultimediaId($multimediaId, $shopware6Product, $channel, $position++);
             }
