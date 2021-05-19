@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -34,7 +35,7 @@ class ProductRelationModel
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {
-        if(!empty($this->crossSelling) && !empty($this->relationAttributes)) {
+        if (!empty($this->crossSelling) && !empty($this->relationAttributes)) {
             $context->buildViolation('Only one of relation types should be used')
                 ->atPath('crossSelling')
                 ->addViolation();

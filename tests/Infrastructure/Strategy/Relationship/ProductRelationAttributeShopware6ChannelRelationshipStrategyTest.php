@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -11,6 +12,7 @@ namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Strategy\Relationship;
 use Ergonode\Channel\Domain\Query\ChannelQueryInterface;
 use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+// phpcs:ignore
 use Ergonode\ExporterShopware6\Infrastructure\Strategy\Relationship\ProductRelationAttributeShopware6ChannelRelationshipStrategy;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\ChannelId;
@@ -64,5 +66,4 @@ class ProductRelationAttributeShopware6ChannelRelationshipStrategyTest extends T
 
         self::assertSame($relationId, $result->getRelations());
     }
-
 }

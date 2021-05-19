@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -46,7 +47,7 @@ abstract class AbstractProductRelationAttributeCase extends TestCase
 
     protected function getProductCrossSellingClass(): AbstractProductCrossSelling
     {
-        return new class() extends AbstractProductCrossSelling {
+        return new class () extends AbstractProductCrossSelling {
         };
     }
 }
