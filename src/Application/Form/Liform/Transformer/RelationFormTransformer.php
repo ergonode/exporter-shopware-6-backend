@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -23,7 +24,6 @@ class RelationFormTransformer extends AbstractTransformer
         TranslatorInterface $translator,
         ResolverInterface $resolver,
         FormTypeGuesserInterface $validatorGuesser = null
-
     ) {
         parent::__construct($translator, $validatorGuesser);
 
@@ -42,7 +42,11 @@ class RelationFormTransformer extends AbstractTransformer
 
         foreach ($form->all() as $key => $field) {
             $transformerData = $this->resolver->resolve($field);
-            $transformedChild = $transformerData['transformer']->transform($field, $extensions, $transformerData['widget']);
+            $transformedChild = $transformerData['transformer']->transform(
+                $field,
+                $extensions,
+                $transformerData['widget'],
+            );
             $transformedChild['propertyOrder'] = $order;
 
             $object = [];
@@ -50,7 +54,7 @@ class RelationFormTransformer extends AbstractTransformer
             $object['properties'][$key] = $transformedChild;
 
             $data[] = $object;
-            $order ++;
+            $order++;
 
             if ($transformerData['transformer']->isRequired($field)) {
                 $required[] = $field->getName();

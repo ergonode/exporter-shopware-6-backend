@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -90,7 +91,7 @@ class ChildrenMapperTest extends AbstractProductRelationAttributeCase
 
         $relationAttribute = $this->createMock(ProductRelationAttribute::class);
 
-       $this->shopware6ProductRepository->method('load')->willReturn(self::SHOPWARE_ID);
+        $this->shopware6ProductRepository->method('load')->willReturn(self::SHOPWARE_ID);
 
         $productCrossSelling = $this->getProductCrossSellingClass();
 
@@ -116,7 +117,7 @@ class ChildrenMapperTest extends AbstractProductRelationAttributeCase
 
         $relationAttribute = $this->createMock(ProductRelationAttribute::class);
 
-       $this->shopware6ProductRepository->method('load')->willReturn(self::SHOPWARE_ID);
+        $this->shopware6ProductRepository->method('load')->willReturn(self::SHOPWARE_ID);
 
         $productCrossSelling = $this->getProductCrossSellingClass();
         $assigned = $this->createMock(AbstractAssignedProduct::class);

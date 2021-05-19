@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -17,7 +18,7 @@ use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\AggregateId;
 use Webmozart\Assert\Assert;
 
-class ProductRelationAttributeShopware6ChannelRelationshipStrategy  implements RelationshipStrategyInterface
+class ProductRelationAttributeShopware6ChannelRelationshipStrategy implements RelationshipStrategyInterface
 {
     private const MESSAGE = 'Object has active relationships with channel %relations%';
 
