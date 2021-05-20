@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PatchPropertyGroupAction extends AbstractAction
 {
-    private const URI = '/api/v2/property-group/';
+    private const URI = '/api/property-group/';
 
     private Shopware6PropertyGroup $propertyGroup;
 
