@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -32,7 +33,7 @@ class PropertyGroupShopware6ExportProcess
 
     private PropertyGroupBuilder $builder;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     private PropertyGroupOptionsShopware6ExportProcess $propertyGroupOptionsProcess;
 

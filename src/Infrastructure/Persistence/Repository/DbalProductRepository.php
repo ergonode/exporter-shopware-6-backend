@@ -57,7 +57,7 @@ class DbalProductRepository implements ProductRepositoryInterface
      */
     public function save(ChannelId $channelId, ProductId $productId, string $shopwareId): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, product_id, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, product_id, shopware6_id, update_at) 
         VALUES (:channelId, :productId, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_product_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt

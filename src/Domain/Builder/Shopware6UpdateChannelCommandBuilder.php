@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -95,10 +96,10 @@ class Shopware6UpdateChannelCommandBuilder implements UpdateChannelCommandBuilde
             new AttributeId($attributeProductPriceNet),
             new AttributeId($attributeProductTax),
             $attributeProductDescription ? new AttributeId($attributeProductDescription) : null,
-            $attributeProductGallery? new AttributeId($attributeProductGallery) : null,
-            $attributeProductMetaTitle? new AttributeId($attributeProductMetaTitle) : null,
-            $attributeProductMetaDescription? new AttributeId($attributeProductMetaDescription) : null,
-            $attributeProductKeywords? new AttributeId($attributeProductKeywords) : null,
+            $attributeProductGallery ? new AttributeId($attributeProductGallery) : null,
+            $attributeProductMetaTitle ? new AttributeId($attributeProductMetaTitle) : null,
+            $attributeProductMetaDescription ? new AttributeId($attributeProductMetaDescription) : null,
+            $attributeProductKeywords ? new AttributeId($attributeProductKeywords) : null,
             $categoryTree ? new CategoryTreeId($categoryTree) : null,
             $propertyGroup,
             $customField,

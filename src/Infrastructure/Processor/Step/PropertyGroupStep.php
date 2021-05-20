@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -26,7 +27,7 @@ class PropertyGroupStep implements ExportStepProcessInterface
 {
     private ProductQueryInterface $productQuery;
 
-    private SegmentProductsQueryInterface  $segmentProductsQuery;
+    private SegmentProductsQueryInterface $segmentProductsQuery;
 
     private ProductRepositoryInterface $productRepository;
 

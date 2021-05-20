@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -25,7 +26,7 @@ use Ergonode\SharedKernel\Domain\Aggregate\ProductId;
 
 class ProductVariantChildMapper extends AbstractVariantOptionMapper
 {
-    private ProductChildrenQueryInterface  $childQuery;
+    private ProductChildrenQueryInterface $childQuery;
 
     private Shopware6ProductRepositoryInterface $shopware6ProductRepository;
 

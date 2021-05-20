@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -40,7 +41,7 @@ class CustomFiledShopware6ExportProcess
 
     private Shopware6CustomFieldSetClient $customFieldSetClient;
 
-    private ExportRepositoryInterface  $exportRepository;
+    private ExportRepositoryInterface $exportRepository;
 
     public function __construct(
         CustomFieldRepositoryInterface $customFieldRepository,

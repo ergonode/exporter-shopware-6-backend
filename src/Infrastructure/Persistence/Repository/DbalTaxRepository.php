@@ -56,7 +56,7 @@ class DbalTaxRepository implements TaxRepositoryInterface
      */
     public function save(ChannelId $channelId, float $tax, string $shopwareId): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, tax, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, tax, shopware6_id, update_at) 
         VALUES (:channelId, :tax, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_tax_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt
