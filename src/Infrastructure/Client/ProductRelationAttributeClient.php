@@ -11,6 +11,7 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRelationAttributeRepositoryInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\ProductCrossSelling\DeleteAssignedProductsAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\ProductCrossSelling\DeleteCrossSellingAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\ProductCrossSelling\GetAssignedProductsAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\ProductCrossSelling\GetCrossSellingAction;
@@ -24,6 +25,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\ProductCrossSelling\Abstract
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductId;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 
 class ProductRelationAttributeClient
@@ -107,6 +109,18 @@ class ProductRelationAttributeClient
             $this->connector->execute($channel, $action);
             $this->productRelationAttributeRepository->delete($channel->getId(), $shopwareId);
         } catch (ServerException $exception) {
+        }
+    }
+
+    public function deleteAssignedProduct(
+        Shopware6Channel $channel,
+        string $productCrossSellingId,
+        string $assignedProductId
+    ): void {
+        try {
+            $action = new DeleteAssignedProductsAction($productCrossSellingId, $assignedProductId);
+            $this->connector->execute($channel, $action);
+        } catch (ClientException $exception) {
         }
     }
 
