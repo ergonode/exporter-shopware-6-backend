@@ -266,6 +266,9 @@ class Shopware6ChannelForm extends AbstractType
             )->add(
                 'relations',
                 ProductRelationForm::class,
+                [
+                    'required' => false,
+                ],
             );
     }
 
