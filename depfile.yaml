@@ -1,0 +1,21 @@
+paths:
+  - ./src
+#layers:
+#  - name: Application
+#    collectors:
+#      - type: className
+#        regex: .*Ergonode\\ExporterShopware6\\Application\\.*
+#  - name: Domain
+#    collectors:
+#      - type: className
+#        regex: .*Ergonode\\ExporterShopware6\\Domain\\.*
+#  - name: Infrastructure
+#    collectors:
+#      - type: className
+#        regex: .*Ergonode\\ExporterShopware6\\Infrastructure\\.*
+#ruleset:
+#  Application:
+#    - Domain
+#    - Infrastructure
+#  Infrastructure:
+#    - Domain
