@@ -1,4 +1,5 @@
 /vendor/
+/var/
 .idea
 composer.lock
 
@@ -7,3 +8,5 @@ phpunit.xml
 
 phpcs.xml
 .phpcs-cache
+
+.deptrac.cache

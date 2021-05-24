@@ -14,11 +14,21 @@
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6.5",
+        "doctrine/doctrine-bundle": "^2.3",
+        "ergonode/authentication": "^1.0",
+        "ergonode/core": "^1.0.1",
+        "ergonode/fixture": "dev-main as 1.1.0-dev",
+        "limenius/liform-bundle": "^0.17.0",
         "malukenho/docheader": "^0.1.8",
         "phpstan/phpstan": "^0.12.85",
         "phpunit/phpunit": "^9.5",
+        "rregeer/phpunit-coverage-check": "^0.3.1",
+        "qossmic/deptrac-shim": "^0.13.0",
         "slevomat/coding-standard": "^7.0",
-        "squizlabs/php_codesniffer": "^3.6"
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/browser-kit": "^4.4",
+        "symfony/phpunit-bridge": "^4.4"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
@@ -37,7 +47,8 @@
             "vendor/bin/phpstan analyse",
             "vendor/bin/phpunit",
             "vendor/bin/phpcs",
-            "vendor/bin/docheader check src tests"
+            "vendor/bin/docheader check src tests",
+            "vendor/bin/deptrac"
         ],
         "fix": [
             "vendor/bin/phpcbf"
