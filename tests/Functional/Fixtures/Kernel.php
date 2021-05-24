@@ -62,17 +62,17 @@ final class Kernel extends BaseKernel
             if (!$bundle instanceof AbstractModule) {
                 continue;
             }
-            if (file_exists($bundle->getPath().'/Application/Resources/config/')) {
+            if (file_exists($bundle->getPath() . '/Application/Resources/config/')) {
                 $routes->import(
-                    $bundle->getPath().'/Application/Resources/config/{routes}'.self::CONFIG_EXTS,
+                    $bundle->getPath() . '/Application/Resources/config/{routes}' . self::CONFIG_EXTS,
                     '/',
                     'glob',
                 );
             }
-            if (!file_exists($bundle->getPath().'/Resources/config/')) {
+            if (!file_exists($bundle->getPath() . '/Resources/config/')) {
                 continue;
             }
-            $routes->import($bundle->getPath().'/Resources/config/{routes}'.self::CONFIG_EXTS, '/', 'glob');
+            $routes->import($bundle->getPath() . '/Resources/config/{routes}' . self::CONFIG_EXTS, '/', 'glob');
         }
 
         $routes->import(__DIR__ . '/Resources/config/routes.yaml');
