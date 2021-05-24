@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -28,7 +29,7 @@ class ProductShopware6ExportProcess
 
     private Shopware6ProductClient $productClient;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     private ExportRepositoryInterface $exportRepository;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -31,7 +32,7 @@ class PropertyGroupOptionsShopware6ExportProcess
 {
     protected PropertyGroupRepositoryInterface $propertyGroupRepository;
 
-    protected OptionQueryInterface  $optionQuery;
+    protected OptionQueryInterface $optionQuery;
 
     private PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository;
 
@@ -41,7 +42,7 @@ class PropertyGroupOptionsShopware6ExportProcess
 
     private OptionRepositoryInterface $optionRepository;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     public function __construct(
         PropertyGroupRepositoryInterface $propertyGroupRepository,

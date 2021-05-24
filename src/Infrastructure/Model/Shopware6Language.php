@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -14,7 +15,7 @@ class Shopware6Language
 
     private ?string $name;
 
-    private ?string  $localeId;
+    private ?string $localeId;
 
     private ?string $translationCodeId;
 

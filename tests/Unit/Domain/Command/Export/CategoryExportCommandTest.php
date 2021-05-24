@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -33,7 +34,7 @@ class CategoryExportCommandTest extends TestCase
     private CategoryId $categoryId;
 
     /**
-     * @var CategoryId|MockObject 
+     * @var CategoryId|MockObject
      */
     private CategoryId $parentCategoryId;
 

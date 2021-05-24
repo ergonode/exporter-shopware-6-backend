@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -18,7 +19,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField
 
 class CustomFieldLabelMapper implements CustomFieldMapperInterface
 {
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     public function __construct(LanguageRepositoryInterface $languageRepository)
     {
@@ -40,8 +41,10 @@ class CustomFieldLabelMapper implements CustomFieldMapperInterface
         ];
 
         foreach ($channel->getLanguages() as $lang) {
-            if ($attribute->getLabel()->has($lang)
-                && $this->languageRepository->exists($channel->getId(), $lang->getCode())) {
+            if (
+                $attribute->getLabel()->has($lang)
+                && $this->languageRepository->exists($channel->getId(), $lang->getCode())
+            ) {
                 $label[str_replace('_', '-', $lang->getCode())] = $attribute->getLabel()->get($lang);
             }
         }

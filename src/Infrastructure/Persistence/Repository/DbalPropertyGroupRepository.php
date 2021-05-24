@@ -57,7 +57,7 @@ class DbalPropertyGroupRepository implements PropertyGroupRepositoryInterface
      */
     public function save(ChannelId $channelId, AttributeId $attributeId, string $shopwareId, string $type): void
     {
-        $sql = 'INSERT INTO '.self::TABLE.' (channel_id, attribute_id, type, shopware6_id, update_at) 
+        $sql = 'INSERT INTO ' . self::TABLE . ' (channel_id, attribute_id, type, shopware6_id, update_at) 
         VALUES (:channelId, :attributeId, :type, :shopware6Id, :updatedAt)
             ON CONFLICT ON CONSTRAINT shopware6_property_group_pkey
                 DO UPDATE SET shopware6_id = :shopware6Id, update_at = :updatedAt

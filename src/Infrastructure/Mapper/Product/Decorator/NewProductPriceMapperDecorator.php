@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -21,7 +22,7 @@ use Ergonode\Product\Domain\Entity\AbstractProduct;
 
 class NewProductPriceMapperDecorator implements ProductMapperInterface
 {
-    private ProductPriceMapper  $productPriceMapper;
+    private ProductPriceMapper $productPriceMapper;
 
     public function __construct(ProductPriceMapper $productPriceMapper)
     {

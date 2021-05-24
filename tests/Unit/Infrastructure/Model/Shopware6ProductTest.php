@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -123,11 +124,11 @@ class Shopware6ProductTest extends TestCase
         $this->keywords = 'any_keywords';
 
         $this->json = '{"productNumber":"any_sku","name":"any_name","description":"any_description",'
-            .'"properties":[{"id":"property_1"},{"id":"property_2"}],"active":true,"stock":10,'
-            .'"taxId":"any_tax_id","price":[{"currency_id":"any_currency_id","net":1,"gross":1.23,"linked":false}],'
-            .'"parentId":"any_parent_id","options":[{"id":"property_1"},{"id":"property_2"}],'
-            .'"coverId":"any_product_media_id","metaTitle":"any_meta_title","metaDescription":"any_meta_description",'
-            .'"keywords":"any_keywords"}';
+            . '"properties":[{"id":"property_1"},{"id":"property_2"}],"active":true,"stock":10,'
+            . '"taxId":"any_tax_id","price":[{"currency_id":"any_currency_id","net":1,"gross":1.23,"linked":false}],'
+            . '"parentId":"any_parent_id","options":[{"id":"property_1"},{"id":"property_2"}],'
+            . '"coverId":"any_product_media_id","metaTitle":"any_meta_title","metaDescription":"any_meta_description",'
+            . '"keywords":"any_keywords"}';
     }
 
     public function testCreateModel(): void

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -80,7 +81,7 @@ class AbstractProductCrossSellingTest extends TestCase
 
     private function getClass(): AbstractProductCrossSelling
     {
-        return new class(
+        return new class (
             $this->id,
             $this->name,
             $this->productId,

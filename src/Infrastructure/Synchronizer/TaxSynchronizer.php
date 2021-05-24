@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -107,7 +108,7 @@ class TaxSynchronizer implements SynchronizerInterface
                 new Shopware6Tax(
                     null,
                     $tax,
-                    $tax.'%',
+                    $tax . '%',
                 ),
             );
             $this->connector->execute($channel, $action);
