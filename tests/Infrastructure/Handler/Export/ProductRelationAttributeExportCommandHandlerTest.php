@@ -17,6 +17,7 @@ use Ergonode\ExporterShopware6\Domain\Command\Export\ProductRelationAttributeExp
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\ProductRelationAttributeExportCommandHandler;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductRelationAttributeExportProcess;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductRelationAttributeRemoveElementExportProcess;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Domain\Entity\Attribute\ProductRelationAttribute;
 use Ergonode\Product\Domain\Repository\ProductRepositoryInterface;
@@ -46,6 +47,10 @@ class ProductRelationAttributeExportCommandHandlerTest extends TestCase
     private AttributeRepositoryInterface $attributeRepository;
 
     /**
+     * @var ProductRelationAttributeRemoveElementExportProcess|MockObject
+     */
+    private ProductRelationAttributeRemoveElementExportProcess $removeProcess;
+    /**
      * @var ProductRelationAttributeExportProcess|MockObject
      */
     private ProductRelationAttributeExportProcess $process;
@@ -72,6 +77,10 @@ class ProductRelationAttributeExportCommandHandlerTest extends TestCase
             ->willReturn($this->createMock(ProductRelationAttribute::class));
         $this->attributeRepository->expects(self::once())->method('load');
 
+        $this->removeProcess = $this->createMock(ProductRelationAttributeRemoveElementExportProcess::class);
+        $this->removeProcess->expects(self::once())->method('process');
+
+
         $this->process = $this->createMock(ProductRelationAttributeExportProcess::class);
         $this->process->expects(self::once())->method('process');
     }
@@ -85,6 +94,7 @@ class ProductRelationAttributeExportCommandHandlerTest extends TestCase
             $this->channelRepository,
             $this->productRepository,
             $this->attributeRepository,
+            $this->removeProcess,
             $this->process,
         );
         $handler->__invoke($command);

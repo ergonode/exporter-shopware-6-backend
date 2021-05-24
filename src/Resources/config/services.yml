@@ -49,6 +49,7 @@ services:
     Ergonode\ExporterShopware6\Domain\Repository\LanguageRepositoryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Repository\DbalLanguageRepository'
     Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Repository\DbalMultimediaRepository'
     Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupOptionsRepositoryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Repository\DbalPropertyGroupOptionsRepository'
+    Ergonode\ExporterShopware6\Domain\Repository\ProductRelationAttributeRepositoryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Repository\DbalProductRelationAttributeRepository'
 
 
     # Query
@@ -60,6 +61,7 @@ services:
     Ergonode\ExporterShopware6\Domain\Query\MultimediaQueryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Query\DbalMultimediaQuery'
     Ergonode\ExporterShopware6\Domain\Query\TaxQueryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Query\DbalTaxQuery'
     Ergonode\ExporterShopware6\Domain\Query\ProductCrossSellingQueryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Query\DbalProductCrossSellingQuery'
+    Ergonode\ExporterShopware6\Domain\Query\ProductRelationAttributeQueryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Persistence\Query\DbalProductRelationAttributeQuery'
 
     # Synchronizer
     Ergonode\ExporterShopware6\Infrastructure\Processor\Process\StartShopware6ExportProcess:

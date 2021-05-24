@@ -16,6 +16,7 @@ use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\ProductRelationAttributeExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductRelationAttributeExportProcess;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\ProductRelationAttributeRemoveElementExportProcess;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Domain\Entity\Attribute\ProductRelationAttribute;
 use Ergonode\Product\Domain\Repository\ProductRepositoryInterface;
@@ -31,6 +32,8 @@ class ProductRelationAttributeExportCommandHandler
 
     private AttributeRepositoryInterface $attributeRepository;
 
+    private ProductRelationAttributeRemoveElementExportProcess $removeProcess;
+
     private ProductRelationAttributeExportProcess $process;
 
     public function __construct(
@@ -38,12 +41,14 @@ class ProductRelationAttributeExportCommandHandler
         ChannelRepositoryInterface $channelRepository,
         ProductRepositoryInterface $productRepository,
         AttributeRepositoryInterface $attributeRepository,
+        ProductRelationAttributeRemoveElementExportProcess $removeProcess,
         ProductRelationAttributeExportProcess $process
     ) {
         $this->exportRepository = $exportRepository;
         $this->channelRepository = $channelRepository;
         $this->productRepository = $productRepository;
         $this->attributeRepository = $attributeRepository;
+        $this->removeProcess = $removeProcess;
         $this->process = $process;
     }
 
@@ -58,6 +63,7 @@ class ProductRelationAttributeExportCommandHandler
         $attribute = $this->attributeRepository->load($command->getAttributeId());
         Assert::isInstanceOf($attribute, ProductRelationAttribute::class);
 
+        $this->removeProcess->process($command->getLineId(), $export, $channel, $product, $attribute);
         $this->process->process($command->getLineId(), $export, $channel, $product, $attribute);
     }
 }
