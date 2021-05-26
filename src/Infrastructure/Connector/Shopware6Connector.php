@@ -66,18 +66,12 @@ class Shopware6Connector
     {
         $actionUid = uniqid('sh6_', true);
         try {
-//            $config = [
-//                'base_uri' => $channel->getHost(),
-//            ];
-
             $this->configurator->configure($action, $this->token);
             if ($action->isLoggable()) {
                 $this->logRequest($actionUid, $action);
             }
 
-//            $client = new Client($config);
             $client = $this->clientFactory->create($channel);
-
             $response = $client->send($action->getRequest());
             $contents = $this->resolveResponse($response);
             if ($action->isLoggable()) {
