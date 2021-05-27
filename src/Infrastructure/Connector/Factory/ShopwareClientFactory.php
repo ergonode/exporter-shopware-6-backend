@@ -14,7 +14,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\ClientFactoryInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 
-class ShopwareChannelClient implements ClientFactoryInterface
+class ShopwareClientFactory implements ClientFactoryInterface
 {
     public function create(Shopware6Channel $channel): ClientInterface
     {
