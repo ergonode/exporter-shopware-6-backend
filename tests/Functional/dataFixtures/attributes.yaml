@@ -1,0 +1,520 @@
+Ergonode\Core\Domain\ValueObject\TranslatableString:
+    attribute_hint:
+        __construct:
+            -   'en_GB': 'Fill Me In'
+                'pl_PL': 'Uzupełnij mnie'
+    attribute_placeholder:
+        __construct:
+            -   'en_GB': 'Enter text here'
+                'pl_PL': 'Wpisz tekst tutaj'
+    attribute_image_local_label:
+        __construct:
+            -   'en_GB': 'Image local'
+                'pl_PL': 'Lokalny Obrazek'
+    attribute_image_global_label:
+        __construct:
+            -   'en_GB': 'Image Global'
+                'pl_PL': 'Globalny Obrazek'
+    attribute_text_local_label:
+        __construct:
+            -   'en_GB': 'Text Local'
+                'pl_PL': 'Lokalny Tekst'
+    attribute_product_name_label:
+        __construct:
+            -   'en_GB': 'Product name'
+                'pl_PL': 'Nazwa Produktu'
+    attribute_text_global_label:
+        __construct:
+            -   'en_GB': 'Text Global'
+                'pl_PL': 'Globalny Tekst'
+    attribute_textarea_local_label:
+        __construct:
+            -   'en_GB': 'TextArea Local'
+                'pl_PL': 'Lokalny TextArea'
+    attribute_textarea_global_label:
+        __construct:
+            -   'en_GB': 'TextArea Global'
+                'pl_PL': 'Globalny TextArea'
+    attribute_textarea_local_html_label:
+        __construct:
+            -   'en_GB': 'TextArea HTML Local'
+                'pl_PL': 'Lokaln TextArea HTML'
+    attribute_textarea_global_html_label:
+        __construct:
+            -   'en_GB': 'TextArea HTML Global'
+                'pl_PL': 'Globalny TextArea HTML'
+    attribute_numeric_local_label:
+        __construct:
+            -   'en_GB': 'Numeric Local'
+                'pl_PL': 'Lokalny Numer'
+    attribute_numeric_global_label:
+        __construct:
+            -   'en_GB': 'Numeric Global'
+                'pl_PL': 'Globalny Numer'
+    attribute_product_active_label:
+        __construct:
+            -   'en_GB': 'Product Active'
+                'pl_PL': 'Aktywność'
+    attribute_product_stock_label:
+        __construct:
+            -   'en_GB': 'Product Stock'
+                'pl_PL': 'Ilość'
+    attribute_product_tax_label:
+        __construct:
+            -   'en_GB': 'Tax'
+                'pl_PL': 'Podatek'
+    attribute_date_local_label:
+        __construct:
+            -   'en_GB': 'Date Local'
+                'pl_PL': 'Lokalna Data'
+    attribute_date_global_label:
+        __construct:
+            -   'en_GB': 'Date Global'
+                'pl_PL': 'Globalna Data'
+    attribute_price_local_label:
+        __construct:
+            -   'en_GB': 'Price Local'
+                'pl_PL': 'Lokalna Cena'
+    attribute_price_global_label:
+        __construct:
+            -   'en_GB': 'Price Global'
+                'pl_PL': 'Globalna Cena'
+    attribute_price_gross_label:
+        __construct:
+            -   'en_GB': 'Price Gross'
+                'pl_PL': 'Cena Brutto'
+    attribute_price_net_label:
+        __construct:
+            -   'en_GB': 'Price Net'
+                'pl_PL': 'Cena Netto'
+    attribute_unit_local_label:
+        __construct:
+            -   'en_GB': 'Unit Local'
+                'pl_PL': 'lokalna Jednostka'
+    attribute_unit_global_label:
+        __construct:
+            -   'en_GB': 'Unit Global'
+                'pl_PL': 'Globalna Jednostka'
+    attribute_select_local_label:
+        __construct:
+            -   'en_GB': 'Select Local'
+                'pl_PL': 'Lokalny select'
+    attribute_select_global_label:
+        __construct:
+            -   'en_GB': 'Select Global'
+                'pl_PL': 'Globalny select'
+
+    attribute_multiselect_local_label:
+        __construct:
+            -   'en_GB': 'Multi select Local'
+                'pl_PL': 'Lokalny multi select'
+    attribute_multiselect_global_label:
+        __construct:
+            -   'en_GB': 'Multi Select Global'
+                'pl_PL': 'Globalny multi select'
+    attribute_gallery_local_label:
+        __construct:
+            -   'en_GB': 'Gallery Local'
+                'pl_PL': 'Lokalna galeria'
+    attribute_gallery_global_label:
+        __construct:
+            -   'en_GB': 'Gallery Global'
+                'pl_PL': 'Globalna galeria'
+    attribute_file_local_label:
+        __construct:
+            -   'en_GB': 'File Local'
+                'pl_PL': 'Lokalna file'
+    attribute_file_global_label:
+        __construct:
+            -   'en_GB': 'File Global'
+                'pl_PL': 'Globalna file'
+    label_esa_status:
+        __construct:
+            -   'pl_PL': 'Status'
+                'en_GB': 'Status'
+    label_esa_created_at:
+        __construct:
+            -   'pl_PL': 'Czas utworzenia'
+                'en_GB': 'Created at'
+    label_esa_edited_at:
+        __construct:
+            -   'pl_PL': 'Czas edycji'
+                'en_GB': 'Edited at'
+    label_esa_created_by:
+        __construct:
+            -   'pl_PL': 'Utworzone przez'
+                'en_GB': 'Created by'
+    label_esa_edited_by:
+        __construct:
+            -   'pl_PL': 'Edytowane przez'
+                'en_GB': 'Edited by'
+    label_esa_template:
+        __construct:
+            -   'pl_PL': 'Szablon'
+                'en_GB': 'Template'
+    label_esa_categories:
+        __construct:
+            -   'pl_PL': 'Kategorie'
+                'en_GB': 'Categories'
+    label_esa_product_collection:
+        __construct:
+            -   'pl_PL': 'Kolekcje produktów'
+                'en_GB': 'Product collections'
+    label_esa_default_image:
+        __construct:
+            -   'pl_PL': 'Domyślne zdjęcie'
+                'en_GB': 'Default image'
+    label_esa_default_label:
+        __construct:
+            -   'pl_PL': 'Domyślna etykieta'
+                'en_GB': 'Default label'
+    label_esa_product_type:
+        __construct:
+            -   'pl_PL': 'Typ produktu'
+                'en_GB': 'Product type'
+    empty:
+        __construct:
+            - []
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateImageAttributeCommand:
+    attribute_image_local:
+        __construct:
+            - '<AttributeCode(image_local)>'
+            - '@attribute_image_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_image_global:
+        __construct:
+            - '<AttributeCode(image_global)>'
+            - '@attribute_image_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateTextAttributeCommand:
+    attribute_text_local:
+        __construct:
+            - '<AttributeCode(text_local)>'
+            - '@attribute_text_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_text_global:
+        __construct:
+            - '<AttributeCode(text_global)>'
+            - '@attribute_text_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+    attribute_product_name:
+        __construct:
+            - '<AttributeCode(product_name)>'
+            - '@attribute_product_name_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateTextareaAttributeCommand:
+    attribute_textarea_local:
+        __construct:
+            - '<AttributeCode(textarea_local)>'
+            - '@attribute_textarea_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+            -  false
+    attribute_textarea_global:
+        __construct:
+            - '<AttributeCode(textarea_global)>'
+            - '@attribute_textarea_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            -  false
+    attribute_textarea_local_html:
+        __construct:
+            - '<AttributeCode(textarea_html_local)>'
+            - '@attribute_textarea_local_html_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+            -  true
+    attribute_textarea_global_html:
+        __construct:
+            - '<AttributeCode(textarea_html_global)>'
+            - '@attribute_textarea_global_html_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            -  true
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateNumericAttributeCommand:
+    attribute_numeric_local:
+        __construct:
+            - '<AttributeCode(numeric_local)>'
+            - '@attribute_numeric_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_numeric_global:
+        __construct:
+            - '<AttributeCode(numeric_global)>'
+            - '@attribute_numeric_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+    attribute_product_active:
+        __construct:
+            - '<AttributeCode(product_active)>'
+            - '@attribute_product_active_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+    attribute_product_stock:
+        __construct:
+            - '<AttributeCode(product_stock)>'
+            - '@attribute_product_stock_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+    attribute_product_tax:
+        __construct:
+            - '<AttributeCode(product_tax)>'
+            - '@attribute_product_tax_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateDateAttributeCommand:
+    attribute_date_local:
+        __construct:
+            - '<AttributeCode(date_local)>'
+            - '@attribute_date_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+            - '<DateFormat()>'
+    attribute_date_global:
+        __construct:
+            - '<AttributeCode(date_global)>'
+            - '@attribute_date_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            - '<DateFormat()>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreatePriceAttributeCommand:
+    attribute_price_local:
+        __construct:
+            - '<AttributeCode(price_local)>'
+            - '@attribute_price_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+            - '<Currency()>'
+    attribute_price_global:
+        __construct:
+            - '<AttributeCode(price_global)>'
+            - '@attribute_price_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            - '<Currency()>'
+    attribute_product_price_gross:
+        __construct:
+            - '<AttributeCode(price_gross)>'
+            - '@attribute_price_gross_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            - '<Currency(EUR)>'
+    attribute_product_price_net:
+        __construct:
+            - '<AttributeCode(price_net)>'
+            - '@attribute_price_net_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            - '<Currency(EUR)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateUnitAttributeCommand:
+    attribute_unit_local:
+        __construct:
+            - '<AttributeCode(unit_local)>'
+            - '@attribute_unit_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+            - '@unit_metre->id'
+    attribute_unit_global:
+        __construct:
+            - '<AttributeCode(unit_global)>'
+            - '@attribute_unit_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+            - '@unit_metre->id'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateSelectAttributeCommand:
+    attribute_select_local:
+        __construct:
+            - '<AttributeCode(select_local)>'
+            - '@attribute_select_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_select_global:
+        __construct:
+            - '<AttributeCode(select_global)>'
+            - '@attribute_select_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateMultiSelectAttributeCommand:
+    attribute_multiselect_local:
+        __construct:
+            - '<AttributeCode(multiselect_local)>'
+            - '@attribute_multiselect_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_multiselect_global:
+        __construct:
+            - '<AttributeCode(multiselect_global)>'
+            - '@attribute_multiselect_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateGalleryAttributeCommand:
+    attribute_gallery_local:
+        __construct:
+            - '<AttributeCode(gallery_local)>'
+            - '@attribute_gallery_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_gallery_global:
+        __construct:
+            - '<AttributeCode(gallery_global)>'
+            - '@attribute_gallery_global_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Attribute\Domain\Command\Attribute\Create\CreateFileAttributeCommand:
+    attribute_file_local:
+        __construct:
+            - '<AttributeCode(file_local)>'
+            - '@attribute_file_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(local)>'
+    attribute_file_global:
+        __construct:
+            - '<AttributeCode(file_global)>'
+            - '@attribute_file_local_label'
+            - '@attribute_hint'
+            - '@attribute_placeholder'
+            - '<AttributeScope(global)>'
+
+Ergonode\Workflow\Domain\Entity\Attribute\StatusSystemAttribute:
+    attribute_esa_status:
+        __construct:
+            - '@label_esa_status'
+            - '@empty'
+            - '@empty'
+            -
+Ergonode\Product\Domain\Entity\Attribute\CreatedAtSystemAttribute:
+    attribute_esa_created_at:
+        __construct:
+            - '@label_esa_created_at'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Product\Domain\Entity\Attribute\EditedAtSystemAttribute:
+    attribute_esa_edited_at:
+        __construct:
+            - '@label_esa_edited_at'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Product\Domain\Entity\Attribute\CreatedBySystemAttribute:
+    attribute_esa_created_by:
+        __construct:
+            - '@label_esa_created_by'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Product\Domain\Entity\Attribute\EditedBySystemAttribute:
+    attribute_esa_edited_by:
+        __construct:
+            - '@label_esa_edited_by'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Designer\Domain\Entity\Attribute\TemplateSystemAttribute:
+    attribute_esa_template:
+        __construct:
+            - '@label_esa_template'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Category\Domain\Entity\Attribute\CategorySystemAttribute:
+    attribute_esa_categories:
+        __construct:
+            - '@label_esa_categories'
+            - '@empty'
+            - '@empty'
+
+Ergonode\ProductCollection\Domain\Entity\Attribute\ProductCollectionSystemAttribute:
+    attribute_esa_product_collection:
+        __construct:
+            - '@label_esa_product_collection'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Product\Domain\Entity\Attribute\ProductTypeSystemAttribute:
+    attribute_esa_product_type:
+        __construct:
+            - '@label_esa_product_type'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Designer\Domain\Entity\Attribute\DefaultLabelSystemAttribute:
+    attribute_esa_default_label:
+        __construct:
+            - '@label_esa_default_label'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Designer\Domain\Entity\Attribute\DefaultImageSystemAttribute:
+    attribute_esa_default_image:
+        __construct:
+            - '@label_esa_default_image'
+            - '@empty'
+            - '@empty'
+
+Ergonode\Attribute\Domain\Command\Option\CreateOptionCommand:
+    option_select_local_{1..4}:
+        __construct:
+            - '@attribute_select_local->id'
+            - '<OptionKey(key_select_local_<current()>)>'
+            - '@empty'
+    option_select_global_{1..4}:
+        __construct:
+            - '@attribute_select_global->id'
+            - '<OptionKey(key_select_global_<current()>)>'
+            - '@empty'
+    option_multiselect_local_{1..4}:
+        __construct:
+            - '@attribute_multiselect_local->id'
+            - '<OptionKey(key_multiselect_local_<current()>)>'
+            - '@empty'
+    option_multiselect_global_{1..4}:
+        __construct:
+            - '@attribute_multiselect_global->id'
+            - '<OptionKey(key_multiselect_global_<current()>)>'
+            - '@empty'

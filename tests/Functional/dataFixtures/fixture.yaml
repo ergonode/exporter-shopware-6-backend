@@ -1,0 +1,6 @@
+include:
+    - 'units.yaml'
+    - 'attributes.yaml'
+    - 'channel_shopware6.yaml'
+    - 'roles.yaml'
+    - 'user.yaml'

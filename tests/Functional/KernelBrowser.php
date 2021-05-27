@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class KernelBrowser extends BaseKernelBrowser
 {
+    /**
+     * @var string[]
+     */
+    private array $headers = [];
+
     public function get(string $url, bool $catchExceptions = false): Response
     {
         $this->request(
@@ -23,7 +28,7 @@ class KernelBrowser extends BaseKernelBrowser
             $url,
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            array_merge($this->headers, ['CONTENT_TYPE' => 'application/json']),
             null,
             false,
             $catchExceptions,
@@ -32,6 +37,53 @@ class KernelBrowser extends BaseKernelBrowser
         return $this->response;
     }
 
+    public function post(string $uri, ?string $content = null, bool $catchExceptions = false): Response
+    {
+        $this->request(
+            'POST',
+            $uri,
+            [],
+            [],
+            array_merge($this->headers, ['CONTENT_TYPE' => 'application/json']),
+            $content,
+            true,
+            $catchExceptions,
+        );
+
+        return $this->response;
+    }
+
+    public function login(string $email): void
+    {
+        $response = $this->post(
+            '/api/v1/login',
+            json_encode(
+                [
+                    'username' => $email,
+                    'password' => 'abcd1234',
+                ],
+                JSON_THROW_ON_ERROR,
+            ),
+        );
+
+        if (Response::HTTP_OK !== $response->getStatusCode()) {
+            throw new \Exception("Failed to login. {$response->getContent()}");
+        }
+
+        $content = $this->getJsonResponseContent();
+
+        $this->headers['HTTP_AUTHORIZATION'] = "Bearer {$content['token']}";
+    }
+
+    /**
+     * @throws \JsonException
+     *
+     * @return mixed
+     */
+    public function getJsonResponseContent()
+    {
+        return json_decode($this->response->getContent(), true, 512, JSON_THROW_ON_ERROR);
+    }
     /**
      * @param mixed[] $parameters
      * @param mixed[] $files
@@ -43,7 +95,7 @@ class KernelBrowser extends BaseKernelBrowser
         array $parameters = [],
         array $files = [],
         array $server = [],
-        string $content = null,
+        ?string $content = null,
         bool $changeHistory = true,
         bool $catchExceptions = false
     ): Crawler {

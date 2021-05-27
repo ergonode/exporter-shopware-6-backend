@@ -33,10 +33,27 @@ jobs:
         run: vendor/bin/phpstan analyse
 
       - name: Run unit tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --testsuite=Unit --coverage-text --coverage-clover clover.xml
 
       - name: Run PHP Code sniffer
         run: vendor/bin/phpcs
 
       - name: Check doc header
-        run: vendor/bin/docheader check src tests
+        run: vendor/bin/docheader check migrations src tests
+
+      - name: Run Deptrac analysis
+        run: vendor/bin/deptrac
+
+      - name: Set up PostgreSQL
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: 10
+          postgresql user: ergonode
+          postgresql password: 123
+
+      - name: Run functional tests
+        run: |
+          composer test-build
+          vendor/bin/phpunit --testsuite=Functional
+        env:
+          DATABASE_URL_SHOPWARE: pgsql://ergonode:123@localhost:5432/ergonode_test?serverVersion=10&charset=utf8
