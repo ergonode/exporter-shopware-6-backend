@@ -18,6 +18,8 @@ services:
         resource: '../../Infrastructure/Handler/*'
         tags: ['messenger.message_handler']
 
+    Ergonode\ExporterShopware6\Infrastructure\Connector\ClientFactoryInterface: '@Ergonode\ExporterShopware6\Infrastructure\Connector\Factory\ShopwareClientFactory'
+
     Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector:
         $logger: '@monolog.logger.channel'
 

@@ -1,1 +1,2 @@
+- refactor #24 Create Shopware Client Factory(wfajczyk)
 - bugfix #1 Change TranslationInheritanceCalculator (wfajczyk)

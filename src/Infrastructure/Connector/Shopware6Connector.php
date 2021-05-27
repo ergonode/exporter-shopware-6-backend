@@ -12,7 +12,6 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Connector;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PostAccessToken;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6AuthenticationException;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
@@ -23,15 +22,21 @@ class Shopware6Connector
 {
     private Configurator $configurator;
 
+    private ClientFactoryInterface $clientFactory;
+
     private LoggerInterface $logger;
 
     private ?string $token;
 
     private \DateTimeInterface $expiresAt;
 
-    public function __construct(Configurator $configurator, LoggerInterface $logger)
-    {
+    public function __construct(
+        Configurator $configurator,
+        ClientFactoryInterface $clientFactory,
+        LoggerInterface $logger
+    ) {
         $this->configurator = $configurator;
+        $this->clientFactory = $clientFactory;
         $this->logger = $logger;
 
         $this->token = null;
@@ -61,17 +66,12 @@ class Shopware6Connector
     {
         $actionUid = uniqid('sh6_', true);
         try {
-            $config = [
-                'base_uri' => $channel->getHost(),
-            ];
-
             $this->configurator->configure($action, $this->token);
             if ($action->isLoggable()) {
                 $this->logRequest($actionUid, $action);
             }
 
-            $client = new Client($config);
-
+            $client = $this->clientFactory->create($channel);
             $response = $client->send($action->getRequest());
             $contents = $this->resolveResponse($response);
             if ($action->isLoggable()) {
