@@ -75,6 +75,10 @@ class Shopware6Connector
             if ($this->clientFactory) {
                 $client = $this->clientFactory->create($channel);
             } else {
+                @trigger_error(
+                    'Not passing clientFactory is deprecated and will throw Fatal error in 2.0.',
+                    E_USER_DEPRECATED,
+                );
                 $config = [
                     'base_uri' => $channel->getHost(),
                 ];
