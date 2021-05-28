@@ -33,7 +33,7 @@ jobs:
         run: vendor/bin/phpstan analyse
 
       - name: Run unit tests
-        run: vendor/bin/phpunit --testsuite=Unit --coverage-text --coverage-clover clover.xml
+        run: vendor/bin/phpunit --testsuite=Unit
 
       - name: Run PHP Code sniffer
         run: vendor/bin/phpcs
