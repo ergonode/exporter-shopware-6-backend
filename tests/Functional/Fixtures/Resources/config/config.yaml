@@ -76,6 +76,10 @@ ergonode_category:
 ergonode_designer:
   messenger: false
 
+sensio_framework_extra:
+  router:
+    annotations: false
+
 services:
   test.client:
     class: Ergonode\ExporterShopware6\Tests\Functional\KernelBrowser
