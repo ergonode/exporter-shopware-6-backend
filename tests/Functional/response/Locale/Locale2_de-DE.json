@@ -1,0 +1,48 @@
+{
+    "data": {
+        "id": "867e776a4bf94e6e90bd2ba1dbdd8a95",
+        "type": "locale",
+        "attributes": {
+            "code": "de-DE",
+            "name": "German",
+            "territory": "Germany",
+            "customFields": null,
+            "createdAt": "2021-05-11T05:42:00.813+00:00",
+            "updatedAt": null,
+            "translated": {
+                "name": "German",
+                "territory": "Germany",
+                "customFields": []
+            },
+            "apiAlias": null
+        },
+        "links": {
+            "self": "http://localhost:8080/api/v2/locale/867e776a4bf94e6e90bd2ba1dbdd8a95"
+        },
+        "relationships": {
+            "languages": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/867e776a4bf94e6e90bd2ba1dbdd8a95/languages"
+                }
+            },
+            "translations": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/867e776a4bf94e6e90bd2ba1dbdd8a95/translations"
+                }
+            },
+            "users": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/867e776a4bf94e6e90bd2ba1dbdd8a95/users"
+                }
+            }
+        },
+        "meta": null
+    },
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/locale/867e776a4bf94e6e90bd2ba1dbdd8a95?q=%2Fapi%2Fv2%2Flocale%2F867e776a4bf94e6e90bd2ba1dbdd8a95"
+    }
+}

@@ -36,7 +36,7 @@ Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand:
     property:
         __construct:
             - '@channel_property_id'
-            - 'basic_shopware_6'
+            - 'property_shopware_6'
             - 'http://localhost:8080'
             - 'access_key_ID'
             - 'secret_access_key'

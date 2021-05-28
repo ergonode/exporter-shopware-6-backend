@@ -1,0 +1,68 @@
+{
+    "data": {
+        "id": "f8d561a4e77045daa80aeb14c58f810f",
+        "type": "property_group_option",
+        "attributes": {
+            "groupId": "33ded6f097444dcd92ee65b2f4e8a895",
+            "name": "key_select_local_4",
+            "position": 1,
+            "colorHexCode": null,
+            "mediaId": null,
+            "customFields": null,
+            "createdAt": "2021-05-27T10:34:59.451+00:00",
+            "updatedAt": null,
+            "translated": {
+                "name": "key_select_local_4",
+                "position": 1,
+                "customFields": []
+            },
+            "apiAlias": null
+        },
+        "links": {
+            "self": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f"
+        },
+        "relationships": {
+            "media": {
+                "data": null,
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/media"
+                }
+            },
+            "group": {
+                "data": null,
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/group"
+                }
+            },
+            "translations": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/translations"
+                }
+            },
+            "productConfiguratorSettings": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/product-configurator-settings"
+                }
+            },
+            "productProperties": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/product-properties"
+                }
+            },
+            "productOptions": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group-option/f8d561a4e77045daa80aeb14c58f810f/product-options"
+                }
+            }
+        },
+        "meta": null
+    },
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/property-group/33ded6f097444dcd92ee65b2f4e8a895/options?_response=true&q=%2Fapi%2Fv2%2Fproperty-group%2F33ded6f097444dcd92ee65b2f4e8a895%2Foptions"
+    }
+}

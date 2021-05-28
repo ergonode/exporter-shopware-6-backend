@@ -1,0 +1,652 @@
+{
+    "data": [
+        {
+            "id": "b4a90b21696647769ed6190ccd5666ff",
+            "type": "currency",
+            "attributes": {
+                "factor": 1.1,
+                "symbol": "Fr",
+                "isoCode": "CHF",
+                "shortName": "CHF",
+                "name": "Swiss francs",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:05.873+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "CHF",
+                    "name": "Swiss francs",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b4a90b21696647769ed6190ccd5666ff/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "abeef70c440a4beb9e3b564d872163a3",
+            "type": "currency",
+            "attributes": {
+                "factor": 26.735,
+                "symbol": "Kč",
+                "isoCode": "CZK",
+                "shortName": "CZK",
+                "name": "Czech koruna",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:10.066+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "CZK",
+                    "name": "Czech koruna",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/abeef70c440a4beb9e3b564d872163a3/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "543b9446dcda47dbbcf5f7c5cda1b8a5",
+            "type": "currency",
+            "attributes": {
+                "factor": 7.47,
+                "symbol": "kr",
+                "isoCode": "DKK",
+                "shortName": "DKK",
+                "name": "Danish krone",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:05.886+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "DKK",
+                    "name": "Danish krone",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/543b9446dcda47dbbcf5f7c5cda1b8a5/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "b7d2554b0ce847cd82f3ac9bd1c0dfca",
+            "type": "currency",
+            "attributes": {
+                "factor": 1.0,
+                "symbol": "€",
+                "isoCode": "EUR",
+                "shortName": "EUR",
+                "name": "Euro",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": true,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:01.842+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "EUR",
+                    "name": "Euro",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/b7d2554b0ce847cd82f3ac9bd1c0dfca/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "3acc7d26e6754982a0d42dfcb7adacc0",
+            "type": "currency",
+            "attributes": {
+                "factor": 0.89157,
+                "symbol": "£",
+                "isoCode": "GBP",
+                "shortName": "GBP",
+                "name": "Pound",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:01.852+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "GBP",
+                    "name": "Pound",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3acc7d26e6754982a0d42dfcb7adacc0/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "3a789140f4634f868e8677b0cec96143",
+            "type": "currency",
+            "attributes": {
+                "factor": 0.099,
+                "symbol": "nkr",
+                "isoCode": "NOK",
+                "shortName": "NOK",
+                "name": "Norwegian krone",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:05.891+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "NOK",
+                    "name": "Norwegian krone",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/3a789140f4634f868e8677b0cec96143/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "fc6f4bdaef2b4cf08c6eaf3f4bc8daeb",
+            "type": "currency",
+            "attributes": {
+                "factor": 4.33,
+                "symbol": "zł",
+                "isoCode": "PLN",
+                "shortName": "PLN",
+                "name": "Złoty",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:05.867+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "PLN",
+                    "name": "Złoty",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/fc6f4bdaef2b4cf08c6eaf3f4bc8daeb/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "d6eb1c2ad94249f98713f52f1a12ef05",
+            "type": "currency",
+            "attributes": {
+                "factor": 10.51,
+                "symbol": "kr",
+                "isoCode": "SEK",
+                "shortName": "SEK",
+                "name": "Swedish krona",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:05.881+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "SEK",
+                    "name": "Swedish krona",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/d6eb1c2ad94249f98713f52f1a12ef05/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "61200609deaf4804823c7247b0eda7fd",
+            "type": "currency",
+            "attributes": {
+                "factor": 1.17085,
+                "symbol": "$",
+                "isoCode": "USD",
+                "shortName": "USD",
+                "name": "US-Dollar",
+                "decimalPrecision": 2,
+                "position": 1,
+                "isSystemDefault": false,
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:01.848+00:00",
+                "updatedAt": null,
+                "translated": {
+                    "shortName": "USD",
+                    "name": "US-Dollar",
+                    "customFields": []
+                },
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd"
+            },
+            "relationships": {
+                "translations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/translations"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/sales-channel-default-assignments"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/orders"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/sales-channels"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/sales-channel-domains"
+                    }
+                },
+                "promotionDiscountPrices": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/promotion-discount-prices"
+                    }
+                },
+                "productExports": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/currency/61200609deaf4804823c7247b0eda7fd/product-exports"
+                    }
+                }
+            },
+            "meta": null
+        }
+    ],
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/currency?q=%2Fapi%2Fv2%2Fcurrency"
+    },
+    "meta": {
+        "totalCountMode": 0,
+        "total": 9
+    },
+    "aggregations": []
+}

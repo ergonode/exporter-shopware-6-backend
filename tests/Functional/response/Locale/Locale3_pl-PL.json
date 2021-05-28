@@ -1,0 +1,48 @@
+{
+    "data": {
+        "id": "e3b3005b7b7d4b049b44c2e84370da5f",
+        "type": "locale",
+        "attributes": {
+            "code": "pl-PL",
+            "name": "Polish",
+            "territory": "Poland",
+            "customFields": null,
+            "createdAt": "2021-05-11T05:42:00.841+00:00",
+            "updatedAt": null,
+            "translated": {
+                "name": "Polish",
+                "territory": "Poland",
+                "customFields": []
+            },
+            "apiAlias": null
+        },
+        "links": {
+            "self": "http://localhost:8080/api/v2/locale/e3b3005b7b7d4b049b44c2e84370da5f"
+        },
+        "relationships": {
+            "languages": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/e3b3005b7b7d4b049b44c2e84370da5f/languages"
+                }
+            },
+            "translations": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/e3b3005b7b7d4b049b44c2e84370da5f/translations"
+                }
+            },
+            "users": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/e3b3005b7b7d4b049b44c2e84370da5f/users"
+                }
+            }
+        },
+        "meta": null
+    },
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/locale/e3b3005b7b7d4b049b44c2e84370da5f?q=%2Fapi%2Fv2%2Flocale%2Fe3b3005b7b7d4b049b44c2e84370da5f"
+    }
+}
