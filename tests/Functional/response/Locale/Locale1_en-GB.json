@@ -1,0 +1,48 @@
+{
+    "data": {
+        "id": "06ccc7278fca4aa095d676737ee8b3e1",
+        "type": "locale",
+        "attributes": {
+            "code": "en-GB",
+            "name": "English",
+            "territory": "United Kingdom",
+            "customFields": null,
+            "createdAt": "2021-05-11T05:42:00.811+00:00",
+            "updatedAt": null,
+            "translated": {
+                "name": "English",
+                "territory": "United Kingdom",
+                "customFields": []
+            },
+            "apiAlias": null
+        },
+        "links": {
+            "self": "http://localhost:8080/api/v2/locale/06ccc7278fca4aa095d676737ee8b3e1"
+        },
+        "relationships": {
+            "languages": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/06ccc7278fca4aa095d676737ee8b3e1/languages"
+                }
+            },
+            "translations": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/06ccc7278fca4aa095d676737ee8b3e1/translations"
+                }
+            },
+            "users": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/locale/06ccc7278fca4aa095d676737ee8b3e1/users"
+                }
+            }
+        },
+        "meta": null
+    },
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/locale/06ccc7278fca4aa095d676737ee8b3e1?q=%2Fapi%2Fv2%2Flocale%2F06ccc7278fca4aa095d676737ee8b3e1"
+    }
+}

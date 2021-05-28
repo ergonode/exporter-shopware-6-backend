@@ -1,0 +1,46 @@
+{
+    "data": {
+        "id": "33ded6f097444dcd92ee65b2f4e8a895",
+        "type": "property_group",
+        "attributes": {
+            "name": "Select Local",
+            "description": null,
+            "displayType": "text",
+            "sortingType": "alphanumeric",
+            "filterable": true,
+            "position": 1,
+            "customFields": null,
+            "createdAt": "2021-05-27T09:20:52.943+00:00",
+            "updatedAt": null,
+            "translated": {
+                "name": "Select Local",
+                "description": null,
+                "position": 1,
+                "customFields": []
+            },
+            "apiAlias": null
+        },
+        "links": {
+            "self": "http://localhost:8080/api/v2/property-group/33ded6f097444dcd92ee65b2f4e8a895"
+        },
+        "relationships": {
+            "options": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group/33ded6f097444dcd92ee65b2f4e8a895/options"
+                }
+            },
+            "translations": {
+                "data": [],
+                "links": {
+                    "related": "http://localhost:8080/api/v2/property-group/33ded6f097444dcd92ee65b2f4e8a895/translations"
+                }
+            }
+        },
+        "meta": null
+    },
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/property-group?_response=true&q=%2Fapi%2Fv2%2Fproperty-group"
+    }
+}

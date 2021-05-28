@@ -89,3 +89,17 @@ services:
       $history: '@test.client.history'
       $cookieJar: '@test.client.cookiejar'
     public: true
+
+  shopware_mock_handler:
+    class: GuzzleHttp\Handler\MockHandler
+
+  shopware_mock_client:
+    class: GuzzleHttp\Client
+    arguments:
+      $config:
+        handler: '@shopware_mock_handler'
+
+  Ergonode\ExporterShopware6\Tests\Functional\ShopwareTestClientFactory:
+      $client: '@shopware_mock_client'
+
+  Ergonode\ExporterShopware6\Infrastructure\Connector\ClientFactoryInterface: '@Ergonode\ExporterShopware6\Tests\Functional\ShopwareTestClientFactory'
