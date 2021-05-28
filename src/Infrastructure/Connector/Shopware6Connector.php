@@ -12,6 +12,7 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Connector;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PostAccessToken;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6AuthenticationException;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
@@ -22,9 +23,9 @@ class Shopware6Connector
 {
     private Configurator $configurator;
 
-    private ClientFactoryInterface $clientFactory;
-
     private LoggerInterface $logger;
+
+    private ?ClientFactoryInterface $clientFactory;
 
     private ?string $token;
 
@@ -32,12 +33,12 @@ class Shopware6Connector
 
     public function __construct(
         Configurator $configurator,
-        ClientFactoryInterface $clientFactory,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ?ClientFactoryInterface $clientFactory = null
     ) {
         $this->configurator = $configurator;
-        $this->clientFactory = $clientFactory;
         $this->logger = $logger;
+        $this->clientFactory = $clientFactory;
 
         $this->token = null;
         $this->expiresAt = new \DateTimeImmutable();
@@ -71,7 +72,19 @@ class Shopware6Connector
                 $this->logRequest($actionUid, $action);
             }
 
-            $client = $this->clientFactory->create($channel);
+            if ($this->clientFactory) {
+                $client = $this->clientFactory->create($channel);
+            } else {
+                @trigger_error(
+                    'Not passing clientFactory is deprecated and will throw Fatal error in 2.0.',
+                    E_USER_DEPRECATED,
+                );
+                $config = [
+                    'base_uri' => $channel->getHost(),
+                ];
+                $client = new Client($config);
+            }
+
             $response = $client->send($action->getRequest());
             $contents = $this->resolveResponse($response);
             if ($action->isLoggable()) {
