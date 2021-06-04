@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetPropertyGroupList extends AbstractAction
 {
-    private const URI = '/api/v2/property-group?%s';
+    private const URI = '/api/property-group?%s';
 
     private Shopware6QueryBuilder $query;
 

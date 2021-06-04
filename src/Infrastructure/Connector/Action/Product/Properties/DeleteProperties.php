@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class DeleteProperties extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/properties/%s';
+    private const URI = '/api/product/%s/properties/%s';
 
     private string $productId;
 

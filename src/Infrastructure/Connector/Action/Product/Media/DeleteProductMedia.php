@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class DeleteProductMedia extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/media/%s';
+    private const URI = '/api/product/%s/media/%s';
 
     private string $productId;
 

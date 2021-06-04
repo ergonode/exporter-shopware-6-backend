@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetTaxList extends AbstractAction
 {
-    private const URI = '/api/v2/tax?%s';
+    private const URI = '/api/tax?%s';
 
     private Shopware6QueryBuilder $query;
 

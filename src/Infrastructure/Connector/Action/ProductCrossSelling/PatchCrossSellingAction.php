@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PatchCrossSellingAction extends AbstractAction
 {
-    private const URI = '/api/v2/product-cross-selling/%s';
+    private const URI = '/api/product-cross-selling/%s';
 
     private AbstractProductCrossSelling $productCrossSelling;
 

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostUploadFile extends AbstractAction
 {
-    private const URI = '/api/v2/_action/media/%s/upload?%s';
+    private const URI = '/api/_action/media/%s/upload?%s';
 
     private string $multimediaId;
 
