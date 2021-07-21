@@ -12,8 +12,8 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\DeleteMedia;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMediaDefaultFolderList;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\HasMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostCreateMediaAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostUploadFile;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
@@ -153,32 +153,32 @@ class Shopware6ProductMediaClient
             return null;
         }
         $shopwareId = $this->multimediaRepository->load($channel->getId(), $multimedia->getId());
-        $media = $this->getMedia($channel, $shopwareId);
-        if ($media && $media->getId() === $shopwareId) {
-            return $media->getId();
+        $media = $this->hasMedia($channel, $shopwareId);
+        if (!$media) {
+            return null;
         }
 
-        return null;
+        return $shopwareId;
     }
 
     /**
      * @throws Shopware6InstanceOfException
      */
-    private function getMedia(Shopware6Channel $channel, string $shopwareId): ?Shopware6Media
+    private function hasMedia(Shopware6Channel $channel, string $shopwareId): bool
     {
-        $action = new GetMedia($shopwareId);
+        $action = new HasMedia($shopwareId);
 
         try {
             $shopware6Media = $this->connector->execute($channel, $action);
-            if (!$shopware6Media instanceof Shopware6Media) {
+            if (!$shopware6Media) {
                 throw new Shopware6InstanceOfException(Shopware6Media::class);
             }
 
-            return $shopware6Media;
+            return true;
         } catch (ClientException $exception) {
         }
 
-        return null;
+        return false;
     }
 
     private function delete(Shopware6Channel $channel, string $shopwareId, MultimediaId $multimediaId): void
