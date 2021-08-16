@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class DeleteAssignedProductsAction extends AbstractAction
 {
-    private const URI = '/api/v2/product-cross-selling/%s/assigned-products/%s';
+    private const URI = '/api/product-cross-selling/%s/assigned-products/%s';
 
     private string $productCrossSelling;
 

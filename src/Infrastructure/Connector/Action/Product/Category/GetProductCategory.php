@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetProductCategory extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/categories';
+    private const URI = '/api/product/%s/categories';
 
     private string $productId;
 

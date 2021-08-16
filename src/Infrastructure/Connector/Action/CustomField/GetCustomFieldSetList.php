@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetCustomFieldSetList extends AbstractAction
 {
-    private const URI = '/api/v2/custom-field-set?%s';
+    private const URI = '/api/custom-field-set?%s';
 
     private Shopware6QueryBuilder $query;
 
@@ -48,7 +48,7 @@ class GetCustomFieldSetList extends AbstractAction
 
         foreach ($data['data'] as $row) {
             $config = new Shopware6CustomFieldSetConfig(
-                $row['attributes']['config']['translated'],
+                $row['attributes']['config']['translated'] ?? false,
                 $row['attributes']['config']['label'] ?: null
             );
             $result[] = new Shopware6CustomFieldSet(

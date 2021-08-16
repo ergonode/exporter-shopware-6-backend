@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetConfiguratorSettings extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/configurator-settings';
+    private const URI = '/api/product/%s/configurator-settings';
 
     private string $productId;
 

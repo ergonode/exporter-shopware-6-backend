@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class DeleteProductCategory extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/categories/%s';
+    private const URI = '/api/product/%s/categories/%s';
 
     private string $productId;
 

@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PatchCategoryAction extends AbstractAction
 {
-    private const URI = '/api/v2/category/';
+    private const URI = '/api/category/';
 
     private Shopware6Category $category;
 

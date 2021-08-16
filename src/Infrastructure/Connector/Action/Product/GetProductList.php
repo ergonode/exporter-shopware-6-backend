@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetProductList extends AbstractAction
 {
-    private const URI = '/api/v2/product?%s';
+    private const URI = '/api/product?%s';
 
     private Shopware6QueryBuilder $query;
 

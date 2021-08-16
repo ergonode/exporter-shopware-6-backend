@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetMediaDefaultFolderList extends AbstractAction
 {
-    private const URI = '/api/v2/media-default-folder?%s';
+    private const URI = '/api/media-default-folder?%s';
 
     private Shopware6QueryBuilder $query;
 
