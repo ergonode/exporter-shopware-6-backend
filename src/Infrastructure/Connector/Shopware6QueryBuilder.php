@@ -41,11 +41,9 @@ class Shopware6QueryBuilder
     public function add(string $type, string $field, string $value): Shopware6QueryBuilder
     {
         $this->parts[] = [
-            'query' => [
-                'type' => $type,
-                'field' => $field,
-                'value' => $value,
-            ],
+            'type'  => $type,
+            'field' => $field,
+            'value' => $value,
         ];
 
         return $this;
@@ -72,9 +70,9 @@ class Shopware6QueryBuilder
 
     public function getQuery(): string
     {
-        $param['query'] = [];
+        $param['filter'] = [];
         if (count($this->parts) > 0) {
-            $param['query'] = $this->parts;
+            $param['filter'] = $this->parts;
         }
 
         if ($this->isLimit()) {
