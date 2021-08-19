@@ -57,8 +57,7 @@ class Shopware6ProductClient
         $query = new Shopware6QueryBuilder();
         $query
             ->equals('productNumber', $product->getSku()->getValue())
-            /** @see https://github.com/shopware/platform/issues/2022 */
-            ->limit(2);
+            ->limit(1);
 
         $action = new GetProductList($query);
 
