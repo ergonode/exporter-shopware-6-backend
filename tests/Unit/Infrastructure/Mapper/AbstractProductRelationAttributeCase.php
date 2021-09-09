@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Mapper;
 
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\Core\Domain\ValueObject\Language;

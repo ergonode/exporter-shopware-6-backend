@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\ProductRelationAttribute;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Mapper\ProductRelationAttribute;
 
 use Ergonode\Attribute\Domain\ValueObject\AttributeCode;
 use Ergonode\Core\Domain\ValueObject\TranslatableString;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\NameMapper;
-use Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\AbstractProductRelationAttributeCase;
+use Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Mapper\AbstractProductRelationAttributeCase;
 use Ergonode\Product\Domain\Entity\Attribute\ProductRelationAttribute;
 
 class NameMapperTest extends AbstractProductRelationAttributeCase

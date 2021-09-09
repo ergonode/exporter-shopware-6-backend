@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Domain\Command\Export;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Domain\Command\Export;
 
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\ExporterShopware6\Domain\Command\Export\ProductRelationAttributeExportCommand;

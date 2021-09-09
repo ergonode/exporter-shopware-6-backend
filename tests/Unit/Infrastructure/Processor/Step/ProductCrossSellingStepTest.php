@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Processor\Step;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Processor\Step;
 
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;

@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Strategy\Relationship;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Strategy\Relationship;
 
 use Ergonode\Channel\Domain\Query\ChannelQueryInterface;
 use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;

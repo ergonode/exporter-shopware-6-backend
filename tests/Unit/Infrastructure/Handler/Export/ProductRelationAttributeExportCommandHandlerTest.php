@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Handler\Export;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Handler\Export;
 
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;

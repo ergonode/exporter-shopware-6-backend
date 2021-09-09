@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\ProductRelationAttribute;
+namespace Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Mapper\ProductRelationAttribute;
 
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterProductNoFoundException;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductRelationAttribute\RootProductIdMapper;
-use Ergonode\ExporterShopware6\Tests\Infrastructure\Mapper\AbstractProductRelationAttributeCase;
+use Ergonode\ExporterShopware6\Tests\Unit\Infrastructure\Mapper\AbstractProductRelationAttributeCase;
 use Ergonode\Product\Domain\Entity\Attribute\ProductRelationAttribute;
 use Ergonode\Product\Domain\Query\ProductQueryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
