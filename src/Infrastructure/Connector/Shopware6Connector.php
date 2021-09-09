@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © Ergonode Sp. z o.o. All rights reserved.
+ * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
  */
 
@@ -25,14 +25,20 @@ class Shopware6Connector
 
     private LoggerInterface $logger;
 
+    private ?ClientFactoryInterface $clientFactory;
+
     private ?string $token;
 
     private \DateTimeInterface $expiresAt;
 
-    public function __construct(Configurator $configurator, LoggerInterface $logger)
-    {
+    public function __construct(
+        Configurator $configurator,
+        LoggerInterface $logger,
+        ?ClientFactoryInterface $clientFactory = null
+    ) {
         $this->configurator = $configurator;
         $this->logger = $logger;
+        $this->clientFactory = $clientFactory;
 
         $this->token = null;
         $this->expiresAt = new \DateTimeImmutable();
@@ -61,16 +67,23 @@ class Shopware6Connector
     {
         $actionUid = uniqid('sh6_', true);
         try {
-            $config = [
-                'base_uri' => $channel->getHost(),
-            ];
-
             $this->configurator->configure($action, $this->token);
             if ($action->isLoggable()) {
                 $this->logRequest($actionUid, $action);
             }
 
-            $client = new Client($config);
+            if ($this->clientFactory) {
+                $client = $this->clientFactory->create($channel);
+            } else {
+                @trigger_error(
+                    'Not passing clientFactory is deprecated and will throw Fatal error in 2.0.',
+                    E_USER_DEPRECATED,
+                );
+                $config = [
+                    'base_uri' => $channel->getHost(),
+                ];
+                $client = new Client($config);
+            }
 
             $response = $client->send($action->getRequest());
             $contents = $this->resolveResponse($response);

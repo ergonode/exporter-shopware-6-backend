@@ -1,0 +1,157 @@
+{
+    "data": [
+        {
+            "id": "438165beaf554b93a38b4e556546dc95",
+            "type": "tax",
+            "attributes": {
+                "taxRate": 0.0,
+                "name": "Reduced rate 2",
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:09.430+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/tax/438165beaf554b93a38b4e556546dc95"
+            },
+            "relationships": {
+                "products": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/438165beaf554b93a38b4e556546dc95/products"
+                    }
+                },
+                "rules": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/438165beaf554b93a38b4e556546dc95/rules"
+                    }
+                },
+                "shippingMethods": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/438165beaf554b93a38b4e556546dc95/shipping-methods"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "a4d1e559e3ad4e3c88f0b1bfb1dd1c37",
+            "type": "tax",
+            "attributes": {
+                "taxRate": 7.0,
+                "name": "Reduced rate",
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:01.928+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/tax/a4d1e559e3ad4e3c88f0b1bfb1dd1c37"
+            },
+            "relationships": {
+                "products": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/a4d1e559e3ad4e3c88f0b1bfb1dd1c37/products"
+                    }
+                },
+                "rules": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/a4d1e559e3ad4e3c88f0b1bfb1dd1c37/rules"
+                    }
+                },
+                "shippingMethods": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/a4d1e559e3ad4e3c88f0b1bfb1dd1c37/shipping-methods"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "3e3a8447c62943cf9643a2f4df4a48d9",
+            "type": "tax",
+            "attributes": {
+                "taxRate": 23.0,
+                "name": "23%",
+                "customFields": null,
+                "createdAt": "2021-05-11T06:49:08.918+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/tax/3e3a8447c62943cf9643a2f4df4a48d9"
+            },
+            "relationships": {
+                "products": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/3e3a8447c62943cf9643a2f4df4a48d9/products"
+                    }
+                },
+                "rules": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/3e3a8447c62943cf9643a2f4df4a48d9/rules"
+                    }
+                },
+                "shippingMethods": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/3e3a8447c62943cf9643a2f4df4a48d9/shipping-methods"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "50eb0e90ceab476499d879b6b0e677be",
+            "type": "tax",
+            "attributes": {
+                "taxRate": 19.0,
+                "name": "Standard rate",
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:01.925+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/tax/50eb0e90ceab476499d879b6b0e677be"
+            },
+            "relationships": {
+                "products": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/50eb0e90ceab476499d879b6b0e677be/products"
+                    }
+                },
+                "rules": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/50eb0e90ceab476499d879b6b0e677be/rules"
+                    }
+                },
+                "shippingMethods": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/tax/50eb0e90ceab476499d879b6b0e677be/shipping-methods"
+                    }
+                }
+            },
+            "meta": null
+        }
+    ],
+    "included": [],
+    "links": {
+        "self": "http://localhost:8080/api/v2/tax?q=%2Fapi%2Fv2%2Ftax"
+    },
+    "meta": {
+        "totalCountMode": 0,
+        "total": 4
+    },
+    "aggregations": []
+}
