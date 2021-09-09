@@ -1,0 +1,60 @@
+
+Ergonode\SharedKernel\Domain\Aggregate\ChannelId:
+    channel_basic_id:
+        __construct:
+            - 'd8ba90e2-e4fe-4833-939c-682af913545a'
+    channel_property_id:
+        __construct:
+            - '701b4281-87bd-4384-bb8c-c7e259da0f0f'
+
+Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand:
+    basic:
+        __construct:
+            - '@channel_basic_id'
+            - 'basic_shopware_6'
+            - 'http://localhost:8080'
+            - 'access_key_ID'
+            - 'secret_access_key'
+            - null
+            - '<language(en_GB)>'
+            - []
+            - '@attribute_product_name->id'
+            - '@attribute_product_active->id'
+            - '@attribute_product_stock->id'
+            - '@attribute_product_price_gross->id'
+            - '@attribute_product_price_net->id'
+            - '@attribute_product_tax->id'
+            - null
+            - null
+            - null
+            - null
+            - null
+            - null
+            - []
+            - []
+            - []
+    property:
+        __construct:
+            - '@channel_property_id'
+            - 'property_shopware_6'
+            - 'http://localhost:8080'
+            - 'access_key_ID'
+            - 'secret_access_key'
+            - null
+            - '<language(en_GB)>'
+            - []
+            - '@attribute_product_name->id'
+            - '@attribute_product_active->id'
+            - '@attribute_product_stock->id'
+            - '@attribute_product_price_gross->id'
+            - '@attribute_product_price_net->id'
+            - '@attribute_product_tax->id'
+            - null
+            - null
+            - null
+            - null
+            - null
+            - null
+            - ['@attribute_select_local->id']
+            - []
+            - []

@@ -1,1 +1,4 @@
+- test #27 PropertyGroup export test (wfajczyk)
+- test #26 Start of Functional Test(rprzedzik, wfajczyk)
+- refactor #24 Create Shopware Client Factory(wfajczyk)
 - bugfix #1 Change TranslationInheritanceCalculator (wfajczyk)

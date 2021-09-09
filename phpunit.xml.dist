@@ -17,11 +17,16 @@
 
   <php>
     <ini name="error_reporting" value="-1"/>
+    <server name="SHELL_VERBOSITY" value="-1" />
+    <server name="SYMFONY_DEPRECATIONS_HELPER" value="max[direct]=0&#038;max[indirect]=999999&#038;verbose=1" />
   </php>
 
   <testsuites>
-    <testsuite name="default">
-      <directory suffix="Test.php">tests</directory>
+    <testsuite name="Unit">
+      <directory suffix="Test.php">tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Functional">
+      <directory suffix="Test.php">tests/Functional</directory>
     </testsuite>
   </testsuites>
 </phpunit>

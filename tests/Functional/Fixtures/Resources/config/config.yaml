@@ -1,0 +1,105 @@
+parameters:
+  env(DATABASE_URL_SHOPWARE): ''
+
+framework:
+  test: true
+  messenger:
+    default_bus: messenger.bus.sync
+
+security:
+  providers:
+    email_user_provider:
+      id: 'Ergonode\Authentication\Application\Security\Provider\EmailUserProvider'
+    id_user_provider:
+      id: 'Ergonode\Authentication\Application\Security\Provider\IdUserProvider'
+  encoders:
+    Ergonode\Account\Domain\Entity\User:
+      algorithm: 'bcrypt'
+    Ergonode\Authentication\Application\Security\User\User:
+      algorithm: 'bcrypt'
+  firewalls:
+    login:
+      pattern: '^/api/v1/login$'
+      stateless: true
+      user_checker: 'Ergonode\Account\Application\Security\Checker\UserActivityChecker'
+      provider: 'email_user_provider'
+      json_login:
+        check_path: /api/v1/login
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+    api:
+      pattern: '^/api'
+      stateless: true
+      security: true
+      guard:
+        provider: 'id_user_provider'
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator
+  access_control:
+    - { path: '^/api/v1/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: '^/api', roles: IS_AUTHENTICATED_FULLY }
+
+lexik_jwt_authentication:
+  secret_key: test
+  encoder:
+    signature_algorithm: 'HS256'
+  user_identity_field: id
+
+doctrine:
+  dbal:
+    driver: 'pdo_pgsql'
+    charset: utf8
+    default_table_options:
+      charset: utf8
+      collate: utf8_unicode_ci
+    url: '%env(resolve:DATABASE_URL_SHOPWARE)%'
+    logging: false
+
+ergonode_account:
+  hosts: []
+
+ergonode_core:
+  use_async_bus: false
+
+ergonode_channel:
+  messenger: false
+
+ergonode_exporter_shopware6:
+  messenger: false
+
+ergonode_batch_action:
+  messenger: false
+
+ergonode_category:
+  messenger: false
+
+ergonode_designer:
+  messenger: false
+
+sensio_framework_extra:
+  router:
+    annotations: false
+
+services:
+  test.client:
+    class: Ergonode\ExporterShopware6\Tests\Functional\KernelBrowser
+    arguments:
+      $kernel: '@kernel'
+      $server: '%test.client.parameters%'
+      $history: '@test.client.history'
+      $cookieJar: '@test.client.cookiejar'
+    public: true
+
+  shopware_mock_handler:
+    class: GuzzleHttp\Handler\MockHandler
+
+  shopware_mock_client:
+    class: GuzzleHttp\Client
+    arguments:
+      $config:
+        handler: '@shopware_mock_handler'
+
+  Ergonode\ExporterShopware6\Tests\Functional\ShopwareTestClientFactory:
+      $client: '@shopware_mock_client'
+
+  Ergonode\ExporterShopware6\Infrastructure\Connector\ClientFactoryInterface: '@Ergonode\ExporterShopware6\Tests\Functional\ShopwareTestClientFactory'

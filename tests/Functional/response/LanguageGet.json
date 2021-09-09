@@ -1,0 +1,1073 @@
+{
+    "data": [
+        {
+            "id": "2fbb5fe2e29a4d70aa5854ce7ce3e20b",
+            "type": "language",
+            "attributes": {
+                "parentId": null,
+                "localeId": "06ccc7278fca4aa095d676737ee8b3e1",
+                "translationCodeId": "06ccc7278fca4aa095d676737ee8b3e1",
+                "name": "English",
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:00.814+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b"
+            },
+            "relationships": {
+                "parent": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/parent"
+                    }
+                },
+                "locale": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/locale"
+                    }
+                },
+                "translationCode": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/translation-code"
+                    }
+                },
+                "children": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/children"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/sales-channels"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/sales-channel-default-assignments"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/sales-channel-domains"
+                    }
+                },
+                "customers": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/customers"
+                    }
+                },
+                "newsletterRecipients": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/newsletter-recipients"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/orders"
+                    }
+                },
+                "categoryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/category-translations"
+                    }
+                },
+                "countryStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/country-state-translations"
+                    }
+                },
+                "countryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/country-translations"
+                    }
+                },
+                "currencyTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/currency-translations"
+                    }
+                },
+                "customerGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/customer-group-translations"
+                    }
+                },
+                "localeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/locale-translations"
+                    }
+                },
+                "mediaTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/media-translations"
+                    }
+                },
+                "paymentMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/payment-method-translations"
+                    }
+                },
+                "productManufacturerTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-manufacturer-translations"
+                    }
+                },
+                "productTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-translations"
+                    }
+                },
+                "shippingMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/shipping-method-translations"
+                    }
+                },
+                "unitTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/unit-translations"
+                    }
+                },
+                "propertyGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/property-group-translations"
+                    }
+                },
+                "propertyGroupOptionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/property-group-option-translations"
+                    }
+                },
+                "salesChannelTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/sales-channel-translations"
+                    }
+                },
+                "salesChannelTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/sales-channel-type-translations"
+                    }
+                },
+                "salutationTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/salutation-translations"
+                    }
+                },
+                "pluginTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/plugin-translations"
+                    }
+                },
+                "productStreamTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-stream-translations"
+                    }
+                },
+                "stateMachineTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/state-machine-translations"
+                    }
+                },
+                "stateMachineStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/state-machine-state-translations"
+                    }
+                },
+                "cmsPageTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/cms-page-translations"
+                    }
+                },
+                "cmsSlotTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/cms-slot-translations"
+                    }
+                },
+                "mailTemplateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/mail-template-translations"
+                    }
+                },
+                "mailHeaderFooterTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/mail-header-footer-translations"
+                    }
+                },
+                "documentTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/document-type-translations"
+                    }
+                },
+                "numberRangeTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/number-range-type-translations"
+                    }
+                },
+                "deliveryTimeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/delivery-time-translations"
+                    }
+                },
+                "productSearchKeywords": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-search-keywords"
+                    }
+                },
+                "productKeywordDictionaries": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-keyword-dictionaries"
+                    }
+                },
+                "mailTemplateTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/mail-template-type-translations"
+                    }
+                },
+                "promotionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/promotion-translations"
+                    }
+                },
+                "numberRangeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/number-range-translations"
+                    }
+                },
+                "productReviews": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-reviews"
+                    }
+                },
+                "seoUrlTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/seo-url-translations"
+                    }
+                },
+                "taxRuleTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/tax-rule-type-translations"
+                    }
+                },
+                "productCrossSellingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-cross-selling-translations"
+                    }
+                },
+                "importExportProfileTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/import-export-profile-translations"
+                    }
+                },
+                "productSortingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-sorting-translations"
+                    }
+                },
+                "productFeatureSetTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/product-feature-set-translations"
+                    }
+                },
+                "appTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/app-translations"
+                    }
+                },
+                "actionButtonTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/action-button-translations"
+                    }
+                },
+                "extensions": {
+                    "data": {
+                        "type": "extension",
+                        "id": "2fbb5fe2e29a4d70aa5854ce7ce3e20b"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "30213e20ef8444889df7d77ebb94d67e",
+            "type": "language",
+            "attributes": {
+                "parentId": null,
+                "localeId": "867e776a4bf94e6e90bd2ba1dbdd8a95",
+                "translationCodeId": "867e776a4bf94e6e90bd2ba1dbdd8a95",
+                "name": "Deutsch",
+                "customFields": null,
+                "createdAt": "2021-05-11T05:42:00.816+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e"
+            },
+            "relationships": {
+                "parent": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/parent"
+                    }
+                },
+                "locale": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/locale"
+                    }
+                },
+                "translationCode": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/translation-code"
+                    }
+                },
+                "children": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/children"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/sales-channels"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/sales-channel-default-assignments"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/sales-channel-domains"
+                    }
+                },
+                "customers": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/customers"
+                    }
+                },
+                "newsletterRecipients": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/newsletter-recipients"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/orders"
+                    }
+                },
+                "categoryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/category-translations"
+                    }
+                },
+                "countryStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/country-state-translations"
+                    }
+                },
+                "countryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/country-translations"
+                    }
+                },
+                "currencyTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/currency-translations"
+                    }
+                },
+                "customerGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/customer-group-translations"
+                    }
+                },
+                "localeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/locale-translations"
+                    }
+                },
+                "mediaTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/media-translations"
+                    }
+                },
+                "paymentMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/payment-method-translations"
+                    }
+                },
+                "productManufacturerTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-manufacturer-translations"
+                    }
+                },
+                "productTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-translations"
+                    }
+                },
+                "shippingMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/shipping-method-translations"
+                    }
+                },
+                "unitTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/unit-translations"
+                    }
+                },
+                "propertyGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/property-group-translations"
+                    }
+                },
+                "propertyGroupOptionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/property-group-option-translations"
+                    }
+                },
+                "salesChannelTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/sales-channel-translations"
+                    }
+                },
+                "salesChannelTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/sales-channel-type-translations"
+                    }
+                },
+                "salutationTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/salutation-translations"
+                    }
+                },
+                "pluginTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/plugin-translations"
+                    }
+                },
+                "productStreamTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-stream-translations"
+                    }
+                },
+                "stateMachineTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/state-machine-translations"
+                    }
+                },
+                "stateMachineStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/state-machine-state-translations"
+                    }
+                },
+                "cmsPageTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/cms-page-translations"
+                    }
+                },
+                "cmsSlotTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/cms-slot-translations"
+                    }
+                },
+                "mailTemplateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/mail-template-translations"
+                    }
+                },
+                "mailHeaderFooterTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/mail-header-footer-translations"
+                    }
+                },
+                "documentTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/document-type-translations"
+                    }
+                },
+                "numberRangeTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/number-range-type-translations"
+                    }
+                },
+                "deliveryTimeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/delivery-time-translations"
+                    }
+                },
+                "productSearchKeywords": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-search-keywords"
+                    }
+                },
+                "productKeywordDictionaries": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-keyword-dictionaries"
+                    }
+                },
+                "mailTemplateTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/mail-template-type-translations"
+                    }
+                },
+                "promotionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/promotion-translations"
+                    }
+                },
+                "numberRangeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/number-range-translations"
+                    }
+                },
+                "productReviews": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-reviews"
+                    }
+                },
+                "seoUrlTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/seo-url-translations"
+                    }
+                },
+                "taxRuleTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/tax-rule-type-translations"
+                    }
+                },
+                "productCrossSellingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-cross-selling-translations"
+                    }
+                },
+                "importExportProfileTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/import-export-profile-translations"
+                    }
+                },
+                "productSortingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-sorting-translations"
+                    }
+                },
+                "productFeatureSetTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/product-feature-set-translations"
+                    }
+                },
+                "appTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/app-translations"
+                    }
+                },
+                "actionButtonTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/action-button-translations"
+                    }
+                },
+                "extensions": {
+                    "data": {
+                        "type": "extension",
+                        "id": "30213e20ef8444889df7d77ebb94d67e"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "09dd8456fa69455dbfc123769c305477",
+            "type": "language",
+            "attributes": {
+                "parentId": null,
+                "localeId": "e3b3005b7b7d4b049b44c2e84370da5f",
+                "translationCodeId": "e3b3005b7b7d4b049b44c2e84370da5f",
+                "name": "Polski",
+                "customFields": null,
+                "createdAt": "2021-05-11T06:00:58.469+00:00",
+                "updatedAt": null,
+                "apiAlias": null
+            },
+            "links": {
+                "self": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477"
+            },
+            "relationships": {
+                "parent": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/parent"
+                    }
+                },
+                "locale": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/locale"
+                    }
+                },
+                "translationCode": {
+                    "data": null,
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/translation-code"
+                    }
+                },
+                "children": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/children"
+                    }
+                },
+                "salesChannels": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/sales-channels"
+                    }
+                },
+                "salesChannelDefaultAssignments": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/sales-channel-default-assignments"
+                    }
+                },
+                "salesChannelDomains": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/sales-channel-domains"
+                    }
+                },
+                "customers": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/customers"
+                    }
+                },
+                "newsletterRecipients": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/newsletter-recipients"
+                    }
+                },
+                "orders": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/orders"
+                    }
+                },
+                "categoryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/category-translations"
+                    }
+                },
+                "countryStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/country-state-translations"
+                    }
+                },
+                "countryTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/country-translations"
+                    }
+                },
+                "currencyTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/currency-translations"
+                    }
+                },
+                "customerGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/customer-group-translations"
+                    }
+                },
+                "localeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/locale-translations"
+                    }
+                },
+                "mediaTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/media-translations"
+                    }
+                },
+                "paymentMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/payment-method-translations"
+                    }
+                },
+                "productManufacturerTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-manufacturer-translations"
+                    }
+                },
+                "productTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-translations"
+                    }
+                },
+                "shippingMethodTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/shipping-method-translations"
+                    }
+                },
+                "unitTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/unit-translations"
+                    }
+                },
+                "propertyGroupTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/property-group-translations"
+                    }
+                },
+                "propertyGroupOptionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/property-group-option-translations"
+                    }
+                },
+                "salesChannelTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/sales-channel-translations"
+                    }
+                },
+                "salesChannelTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/sales-channel-type-translations"
+                    }
+                },
+                "salutationTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/salutation-translations"
+                    }
+                },
+                "pluginTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/plugin-translations"
+                    }
+                },
+                "productStreamTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-stream-translations"
+                    }
+                },
+                "stateMachineTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/state-machine-translations"
+                    }
+                },
+                "stateMachineStateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/state-machine-state-translations"
+                    }
+                },
+                "cmsPageTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/cms-page-translations"
+                    }
+                },
+                "cmsSlotTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/cms-slot-translations"
+                    }
+                },
+                "mailTemplateTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/mail-template-translations"
+                    }
+                },
+                "mailHeaderFooterTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/mail-header-footer-translations"
+                    }
+                },
+                "documentTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/document-type-translations"
+                    }
+                },
+                "numberRangeTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/number-range-type-translations"
+                    }
+                },
+                "deliveryTimeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/delivery-time-translations"
+                    }
+                },
+                "productSearchKeywords": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-search-keywords"
+                    }
+                },
+                "productKeywordDictionaries": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-keyword-dictionaries"
+                    }
+                },
+                "mailTemplateTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/mail-template-type-translations"
+                    }
+                },
+                "promotionTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/promotion-translations"
+                    }
+                },
+                "numberRangeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/number-range-translations"
+                    }
+                },
+                "productReviews": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-reviews"
+                    }
+                },
+                "seoUrlTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/seo-url-translations"
+                    }
+                },
+                "taxRuleTypeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/tax-rule-type-translations"
+                    }
+                },
+                "productCrossSellingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-cross-selling-translations"
+                    }
+                },
+                "importExportProfileTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/import-export-profile-translations"
+                    }
+                },
+                "productSortingTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-sorting-translations"
+                    }
+                },
+                "productFeatureSetTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/product-feature-set-translations"
+                    }
+                },
+                "appTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/app-translations"
+                    }
+                },
+                "actionButtonTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/action-button-translations"
+                    }
+                },
+                "extensions": {
+                    "data": {
+                        "type": "extension",
+                        "id": "09dd8456fa69455dbfc123769c305477"
+                    }
+                }
+            },
+            "meta": null
+        }
+    ],
+    "included": [
+        {
+            "id": "2fbb5fe2e29a4d70aa5854ce7ce3e20b",
+            "type": "extension",
+            "attributes": {},
+            "links": {},
+            "relationships": {
+                "themeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/2fbb5fe2e29a4d70aa5854ce7ce3e20b/extensions/themeTranslations"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "30213e20ef8444889df7d77ebb94d67e",
+            "type": "extension",
+            "attributes": {},
+            "links": {},
+            "relationships": {
+                "themeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/30213e20ef8444889df7d77ebb94d67e/extensions/themeTranslations"
+                    }
+                }
+            },
+            "meta": null
+        },
+        {
+            "id": "09dd8456fa69455dbfc123769c305477",
+            "type": "extension",
+            "attributes": {},
+            "links": {},
+            "relationships": {
+                "themeTranslations": {
+                    "data": [],
+                    "links": {
+                        "related": "http://localhost:8080/api/v2/language/09dd8456fa69455dbfc123769c305477/extensions/themeTranslations"
+                    }
+                }
+            },
+            "meta": null
+        }
+    ],
+    "links": {
+        "self": "http://localhost:8080/api/v2/language?q=%2Fapi%2Fv2%2Flanguage"
+    },
+    "meta": {
+        "totalCountMode": 0,
+        "total": 3
+    },
+    "aggregations": []
+}
