@@ -33,6 +33,7 @@ Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand:
             - []
             - []
             - []
+            - []
     property:
         __construct:
             - '@channel_property_id'
@@ -56,5 +57,6 @@ Ergonode\ExporterShopware6\Domain\Command\CreateShopware6ChannelCommand:
             - null
             - null
             - ['@attribute_select_local->id']
+            - []
             - []
             - []

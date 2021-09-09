@@ -21,7 +21,6 @@
         "ergonode/authentication": "^1.0",
         "ergonode/core": "^1.1.0",
         "ergonode/fixture": "^1.1.0",
-        "limenius/liform-bundle": "^0.17.0",
         "malukenho/docheader": "^0.1.8",
         "phpstan/phpstan": "^0.12.85",
         "phpunit/phpunit": "^9.5",
