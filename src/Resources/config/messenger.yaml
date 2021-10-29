@@ -9,3 +9,4 @@ framework:
             Ergonode\ExporterShopware6\Domain\Command\Export\CategoryRemoveExportCommand: '%ergonode.exporter_shopware_6.messenger_transport_name%'
             Ergonode\ExporterShopware6\Domain\Command\Export\ProductCrossSellingExportCommand: '%ergonode.exporter_shopware_6.messenger_transport_name%'
             Ergonode\ExporterShopware6\Domain\Command\Export\EndShopware6ExportCommand: '%ergonode.exporter_shopware_6.messenger_transport_name%'
+            Ergonode\ExporterShopware6\Domain\Command\Export\ProductVisibilityCommand: '%ergonode.exporter_shopware_6.messenger_transport_name%'
