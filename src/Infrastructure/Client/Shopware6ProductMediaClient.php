@@ -6,12 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Infrastructure\Client;
+namespace App\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\GetMediaByFilename;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\HasMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\DeleteMedia;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMediaDefaultFolderList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostCreateMediaAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostUploadFile;
@@ -61,6 +62,7 @@ class Shopware6ProductMediaClient
             throw new Shopware6DefaultFolderException();
         }
 
+        $this->checkAndDeleteByFilename($channel, $multimedia);
         $media = $this->createNew($channel, $multimedia, $folder);
 
         return $media->getId();
@@ -154,32 +156,32 @@ class Shopware6ProductMediaClient
             return null;
         }
         $shopwareId = $this->multimediaRepository->load($channel->getId(), $multimedia->getId());
-        $media = $this->getMedia($channel, $shopwareId);
-        if ($media && $media->getId() === $shopwareId) {
-            return $media->getId();
+        $mediaExist = $this->hasMedia($channel, $shopwareId);
+        if (!$mediaExist) {
+            return null;
         }
 
-        return null;
+        return $shopwareId;
     }
 
     /**
      * @throws Shopware6InstanceOfException
      */
-    private function getMedia(Shopware6Channel $channel, string $shopwareId): ?Shopware6Media
+    private function hasMedia(Shopware6Channel $channel, string $shopwareId): bool
     {
-        $action = new GetMedia($shopwareId);
+        $action = new HasMedia($shopwareId);
 
         try {
-            $shopware6Media = $this->connector->execute($channel, $action);
-            if (!$shopware6Media instanceof Shopware6Media) {
+            $shopware6MediaId = $this->connector->execute($channel, $action);
+            if (!is_string($shopware6MediaId)) {
                 throw new Shopware6InstanceOfException(Shopware6Media::class);
             }
 
-            return $shopware6Media;
+            return true;
         } catch (ClientException $exception) {
         }
 
-        return null;
+        return false;
     }
 
     private function delete(Shopware6Channel $channel, string $shopwareId, MultimediaId $multimediaId): void
@@ -190,5 +192,38 @@ class Shopware6ProductMediaClient
         } catch (ClientException $exception) {
         }
         $this->multimediaRepository->delete($channel->getId(), $multimediaId);
+    }
+
+    private function getMediaByFilename(Shopware6Channel $channel, string $filename): ?string
+    {
+        $query = new Shopware6QueryBuilder();
+        $query->equals('fileName', $filename)
+              ->limit(1);
+
+        $action = new GetMediaByFilename($query);
+
+        try {
+            $shopware6MediaId = $this->connector->execute($channel, $action);
+            if (is_string($shopware6MediaId)) {
+                return $shopware6MediaId;
+            }
+
+        } catch (ClientException $exception) {
+        }
+
+        return null;
+    }
+
+    private function checkAndDeleteByFilename(Shopware6Channel $channel, Multimedia $multimedia): void
+    {
+        $filename = rtrim($multimedia->getFileName(), sprintf('.%s', $multimedia->getExtension()));
+        $shopwareId = $this->getMediaByFilename($channel, $filename);
+        if ($shopwareId) {
+            try {
+                $action = new DeleteMedia($shopwareId);
+                $this->connector->execute($channel, $action);
+            } catch (ClientException $exception) {
+            }
+        }
     }
 }
