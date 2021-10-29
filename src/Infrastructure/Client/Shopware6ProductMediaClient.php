@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace App\ExporterShopware6\Infrastructure\Client;
+namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface;
