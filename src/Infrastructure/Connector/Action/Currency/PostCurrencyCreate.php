@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostCurrencyCreate extends AbstractAction
 {
-    private const URI = '/api/v2/currency';
+    private const URI = '/api/currency';
 
     private string $iso;
 
@@ -50,7 +50,16 @@ class PostCurrencyCreate extends AbstractAction
             'isoCode' => $this->iso,
             'shortName' => $this->iso,
             'name' => $this->iso,
-            'decimalPrecision' => 2,
+            'itemRounding' => [
+                'interval' => 0.01,
+                'decimals' => 2,
+                'roundForNet' => true
+            ],
+            'totalRounding' => [
+                'interval' => 0.01,
+                'decimals' => 2,
+                'roundForNet' => true
+            ],
         ];
 
         return json_encode($body);

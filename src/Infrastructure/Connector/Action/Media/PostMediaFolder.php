@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostMediaFolder extends AbstractAction
 {
-    private const URI = '/api/v2/media-folder?%s';
+    private const URI = '/api/media-folder?%s';
     private string $mediaFolder;
 
     private bool $response;

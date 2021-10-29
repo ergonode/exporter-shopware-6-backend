@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetLocate extends AbstractAction
 {
-    private const URI = '/api/v2/locale/%s';
+    private const URI = '/api/locale/%s';
 
     private string $locateId;
 

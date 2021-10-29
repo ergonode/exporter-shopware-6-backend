@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetProductMedia extends AbstractAction
 {
-    private const URI = '/api/v2/product/%s/media';
+    private const URI = '/api/product/%s/media';
 
     private string $productId;
 

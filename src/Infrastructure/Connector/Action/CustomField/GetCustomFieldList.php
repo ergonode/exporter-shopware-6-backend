@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetCustomFieldList extends AbstractAction
 {
-    private const URI = '/api/v2/custom-field?%s';
+    private const URI = '/api/custom-field?%s';
 
     private Shopware6QueryBuilder $query;
 

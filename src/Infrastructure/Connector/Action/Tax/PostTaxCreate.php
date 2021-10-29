@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostTaxCreate extends AbstractAction
 {
-    private const URI = '/api/v2/tax';
+    private const URI = '/api/tax';
 
     private Shopware6Tax $tax;
 

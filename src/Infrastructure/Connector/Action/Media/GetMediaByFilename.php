@@ -1,22 +1,16 @@
 <?php
-
-/**
- * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
- * See LICENSE.txt for license details.
- */
-
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Currency;
+namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action;
 
 use Ergonode\ExporterShopware6\Infrastructure\Connector\AbstractAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
-class GetCurrencyList extends AbstractAction
+class GetMediaByFilename extends AbstractAction
 {
-    private const URI = '/api/currency?%s';
+    private const URI = '/api/media?%s';
 
     private Shopware6QueryBuilder $query;
 
@@ -30,26 +24,18 @@ class GetCurrencyList extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders(),
+            $this->buildHeaders()
         );
     }
 
     /**
-     * @return array
+     * @throws \JsonException
      */
-    public function parseContent(?string $content): array
+    public function parseContent(?string $content): ?string
     {
-        $result = [];
-        $data = json_decode($content, true);
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-        foreach ($data['data'] as $row) {
-            $result[$row['id']] = [
-                'id' => $row['id'],
-                'iso' => $row['attributes']['isoCode'],
-            ];
-        }
-
-        return $result;
+        return $data['data'][0]['id'] ?? null;
     }
 
     private function getUri(): string

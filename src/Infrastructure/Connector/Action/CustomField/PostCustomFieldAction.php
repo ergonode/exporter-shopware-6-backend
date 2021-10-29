@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostCustomFieldAction extends AbstractAction
 {
-    private const URI = '/api/v2/custom-field?%s';
+    private const URI = '/api/custom-field?%s';
 
     private AbstractShopware6CustomField $customField;
 
