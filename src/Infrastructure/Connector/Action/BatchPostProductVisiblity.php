@@ -33,10 +33,11 @@ class BatchPostProductVisiblity extends AbstractAction
     /**
      * @param string|null $content
      *
-     * @return void
+     * @return null
      */
-    public function parseContent(?string $content): void
+    public function parseContent(?string $content)
     {
+        return null;
     }
 
     private function buildBody(): string
