@@ -80,9 +80,11 @@ class CurrencySynchronizer implements SynchronizerInterface
             return;
         }
 
-        $action = new PostCurrencyCreate($iso);
-        $this->connector->execute($channel, $action);
+        $action = new PostCurrencyCreate($iso, true);
+        $id = $this->connector->execute($channel, $action);
 
-        $this->synchronizeShopware($channel);
+        if ($id) {
+            $this->currencyRepository->save($channel->getId(), $iso, $id);
+        }
     }
 }
