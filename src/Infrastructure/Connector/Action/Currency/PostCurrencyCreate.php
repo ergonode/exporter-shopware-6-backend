@@ -15,13 +15,16 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class PostCurrencyCreate extends AbstractAction
 {
-    private const URI = '/api/currency';
+    private const URI = '/api/currency?%s';
+
+    protected bool $response;
 
     private string $iso;
 
-    public function __construct(string $iso)
+    public function __construct(string $iso, bool $response = false)
     {
         $this->iso = $iso;
+        $this->response = $response;
     }
 
     public function getRequest(): Request
@@ -30,16 +33,26 @@ class PostCurrencyCreate extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody(),
+            $this->buildBody()
         );
     }
 
     /**
-     * @return null
+     * @param string|null $content
+     *
+     * @return string|null
+     *
+     * @throws \JsonException
      */
     public function parseContent(?string $content)
     {
-        return null;
+        if (!$content) {
+            return null;
+        }
+
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        return $data['data']['id'] ?? null;
     }
 
     private function buildBody(): string
@@ -67,6 +80,11 @@ class PostCurrencyCreate extends AbstractAction
 
     private function getUri(): string
     {
-        return self::URI;
+        $query = [];
+        if ($this->response) {
+            $query['_response'] = 'true';
+        }
+
+        return rtrim(sprintf(self::URI, http_build_query($query)), '?');
     }
 }
