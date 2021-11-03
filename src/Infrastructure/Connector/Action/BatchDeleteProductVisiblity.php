@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action;
 
-use Ergonode\ExporterShopware6\Infrastructure\Model\BatchVisibilitiesProduct;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\AbstractAction;
+use Ergonode\ExporterShopware6\Infrastructure\Model\BatchVisibilitiesProduct;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
@@ -26,7 +26,7 @@ class BatchDeleteProductVisiblity extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 

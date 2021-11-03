@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action;
@@ -24,7 +25,7 @@ class GetMediaByFilename extends AbstractAction
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 

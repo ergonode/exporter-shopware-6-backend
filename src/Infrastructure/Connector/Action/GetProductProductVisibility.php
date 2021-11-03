@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -8,13 +9,12 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action;
 
-use Ergonode\ExporterShopware6\Infrastructure\Model\VisibilitiesProduct;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\AbstractAction;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\ActionInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Model\VisibilitiesProduct;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
-class GetProductProductVisibility extends AbstractAction implements ActionInterface
+class GetProductProductVisibility extends AbstractAction
 {
     private const URI = '/api/product/%s/visibilities';
 
@@ -30,7 +30,7 @@ class GetProductProductVisibility extends AbstractAction implements ActionInterf
         return new Request(
             HttpRequest::METHOD_GET,
             $this->getUri(),
-            $this->buildHeaders()
+            $this->buildHeaders(),
         );
     }
 
@@ -53,7 +53,7 @@ class GetProductProductVisibility extends AbstractAction implements ActionInterf
                 $row['id'] ?? null,
                 $row['attributes']['productId'] ?? null,
                 $row['attributes']['salesChannelId'] ?? null,
-                $row['attributes']['visibility'] ?? null
+                $row['attributes']['visibility'] ?? null,
             );
         }
 

@@ -1,12 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Process;
 
-use Ergonode\ExporterShopware6\Infrastructure\Client\ProductVisibilityClient;
-use Ergonode\ExporterShopware6\Infrastructure\Exception\ProductAttributeNoFoundException;
-use Ergonode\ExporterShopware6\Infrastructure\Model\BatchVisibilitiesProduct;
-use Ergonode\ExporterShopware6\Infrastructure\Model\VisibilitiesProduct;
 use Ergonode\Attribute\Domain\Repository\OptionRepositoryInterface;
 use Ergonode\Attribute\Domain\ValueObject\AttributeCode;
 use Ergonode\Attribute\Domain\ValueObject\OptionKey;
@@ -15,7 +12,11 @@ use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRepositoryInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Client\ProductVisibilityClient;
+use Ergonode\ExporterShopware6\Infrastructure\Exception\ProductAttributeNoFoundException;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6ExporterException;
+use Ergonode\ExporterShopware6\Infrastructure\Model\BatchVisibilitiesProduct;
+use Ergonode\ExporterShopware6\Infrastructure\Model\VisibilitiesProduct;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\SharedKernel\Domain\AggregateId;
 
@@ -145,7 +146,7 @@ class ProductVisibilityProcess
                     null,
                     $shopwareProductId,
                     $option->getValue(),
-                    self::DEFAULT_VISIBILITY
+                    self::DEFAULT_VISIBILITY,
                 );
             }
         }
@@ -153,7 +154,7 @@ class ProductVisibilityProcess
         if (!empty($visibilitiesToUpdate)) {
             $batchVisibilities = new BatchVisibilitiesProduct(
                 $visibilitiesToUpdate,
-                BatchVisibilitiesProduct::ACTION_UPSERT
+                BatchVisibilitiesProduct::ACTION_UPSERT,
             );
             $this->productVisibilityClient->delete($channel, $batchVisibilities);
         }
@@ -179,16 +180,14 @@ class ProductVisibilityProcess
                 }
             }
             if (!$exist) {
-                $visibilitiesToDelete[] = new VisibilitiesProduct(
-                    $visibilitiesProduct->getId(),
-                );
+                $visibilitiesToDelete[] = new VisibilitiesProduct($visibilitiesProduct->getId());
             }
         }
 
         if (!empty($visibilitiesToDelete)) {
             $batchVisibilities = new BatchVisibilitiesProduct(
                 $visibilitiesToDelete,
-                BatchVisibilitiesProduct::ACTION_DELETE
+                BatchVisibilitiesProduct::ACTION_DELETE,
             );
             $this->productVisibilityClient->delete($channel, $batchVisibilities);
         }

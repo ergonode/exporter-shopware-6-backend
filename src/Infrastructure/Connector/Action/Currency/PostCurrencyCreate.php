@@ -32,7 +32,7 @@ class PostCurrencyCreate extends AbstractAction
             HttpRequest::METHOD_POST,
             $this->getUri(),
             $this->buildHeaders(),
-            $this->buildBody()
+            $this->buildBody(),
         );
     }
 
@@ -65,12 +65,12 @@ class PostCurrencyCreate extends AbstractAction
             'itemRounding' => [
                 'interval' => 0.01,
                 'decimals' => 2,
-                'roundForNet' => true
+                'roundForNet' => true,
             ],
             'totalRounding' => [
                 'interval' => 0.01,
                 'decimals' => 2,
-                'roundForNet' => true
+                'roundForNet' => true,
             ],
         ];
 

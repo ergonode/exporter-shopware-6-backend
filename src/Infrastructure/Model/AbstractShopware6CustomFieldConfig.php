@@ -67,8 +67,10 @@ abstract class AbstractShopware6CustomFieldConfig implements \JsonSerializable
     {
         if ($this->label) {
             $newLabel = array_merge($this->label, $label);
-            if (!empty(array_diff_assoc($this->label, $newLabel))
-                || !empty(array_diff_assoc($newLabel, $this->label))) {
+            if (
+                !empty(array_diff_assoc($this->label, $newLabel))
+                || !empty(array_diff_assoc($newLabel, $this->label))
+            ) {
                 $this->label = $newLabel;
                 $this->modified = true;
             }
