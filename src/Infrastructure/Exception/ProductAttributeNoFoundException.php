@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
@@ -24,7 +25,7 @@ class ProductAttributeNoFoundException extends Shopware6ExporterException
                 '{product}' => $sku->getValue(),
                 '{attribute}' => $code->getValue(),
             ],
-            $previous
+            $previous,
         );
     }
 }

@@ -206,7 +206,6 @@ class Shopware6ProductMediaClient
             if (is_string($shopware6MediaId)) {
                 return $shopware6MediaId;
             }
-
         } catch (ClientException $exception) {
         }
 
