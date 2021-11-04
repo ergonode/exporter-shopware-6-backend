@@ -11,10 +11,10 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\GetMediaByFilename;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\HasMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\DeleteMedia;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMediaByFilename;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\GetMediaDefaultFolderList;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\HasMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostCreateMediaAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\PostUploadFile;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
