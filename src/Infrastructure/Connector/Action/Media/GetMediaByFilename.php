@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action;
+namespace Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media;
 
 use Ergonode\ExporterShopware6\Infrastructure\Connector\AbstractAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
