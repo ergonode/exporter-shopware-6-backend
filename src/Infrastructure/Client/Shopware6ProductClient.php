@@ -18,6 +18,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\Del
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\GetProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PatchProductAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PostProductAction;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Options\DeleteOptions;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Properties\DeleteProperties;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
@@ -101,6 +102,7 @@ class Shopware6ProductClient
             $this->removeProperty($channel, $product);
             $this->removeCategory($channel, $product);
             $this->removeMedia($channel, $product);
+            $this->removeOptions($channel, $product);
         }
     }
 
@@ -178,5 +180,13 @@ class Shopware6ProductClient
         $action = new GetProductCategory($shopwareId);
 
         return $this->connector->execute($channel, $action);
+    }
+
+    private function removeOptions(Shopware6Channel $channel, Shopware6Product $product)
+    {
+        foreach ($product->getOptionsToRemove() as $optionId) {
+            $action = new DeleteOptions($product->getId(), $optionId);
+            $this->connector->execute($channel, $action);
+        }
     }
 }

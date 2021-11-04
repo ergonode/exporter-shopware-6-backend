@@ -73,10 +73,18 @@ class ProductVariantChildMapper extends AbstractVariantOptionMapper
         if ($parentProduct instanceof VariableProduct) {
             $parent = $this->shopware6ProductRepository->load($channel->getId(), $parentProductId);
             $shopware6Product->setParentId($parent);
+            $mappedOptionIds = [];
             foreach ($parentProduct->getBindings() as $bindingId) {
                 $shopwareOption = $this->optionMapper($bindingId, $product, $channel);
                 if ($shopwareOption) {
+                    $mappedOptionIds[] = $shopwareOption;
                     $shopware6Product->addOptions($shopwareOption);
+                }
+            }
+
+            foreach ($shopware6Product->getOptions() as $option) {
+                if (!in_array($option['id'], $mappedOptionIds)) {
+                    $shopware6Product->addOptionToRemove($option['id']);
                 }
             }
         }

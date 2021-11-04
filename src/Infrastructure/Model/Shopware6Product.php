@@ -58,6 +58,11 @@ class Shopware6Product implements \JsonSerializable
     private ?array $options;
 
     /**
+     * @var array
+     */
+    private array $optionsToRemove = [];
+
+    /**
      * @var Shopware6ProductMedia[]|null
      */
     private ?array $media = null;
@@ -426,6 +431,21 @@ class Shopware6Product implements \JsonSerializable
         return false;
     }
 
+    public function addOptionToRemove(string $option): void
+    {
+        if ($this->hasOption($option)) {
+            $this->optionsToRemove[] = $option;
+        }
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getOptionsToRemove(): array
+    {
+        return $this->optionsToRemove;
+    }
+
     /**
      * @param Shopware6ProductMedia[]|null $media
      */
@@ -581,7 +601,8 @@ class Shopware6Product implements \JsonSerializable
     {
         return count($this->propertyToRemove) > 0
             || count($this->categoryToRemove) > 0
-            || count($this->mediaToRemove) > 0;
+            || count($this->mediaToRemove) > 0
+            || count($this->optionsToRemove) > 0;
     }
 
     public function jsonSerialize(): array
