@@ -71,7 +71,7 @@ class ProductGalleryMapper implements ProductMapperInterface
         );
         if (is_array($calculateValue)) {
             $position = 0;
-            foreach ($calculateValue as $galleryValue) {
+            foreach ($gallery as $galleryValue) {
                 $multimediaId = new MultimediaId($galleryValue);
                 $this->getShopware6MultimediaId($multimediaId, $shopware6Product, $channel, $position++);
             }

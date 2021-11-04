@@ -41,8 +41,9 @@ class ProductCustomFieldSetMultiSelectMapper extends AbstractProductCustomFieldS
      */
     protected function getValue(Shopware6Channel $channel, AbstractAttribute $attribute, $calculateValue): array
     {
+        $options = explode(',', $calculateValue);
         $result = [];
-        foreach ($calculateValue as $optionValue) {
+        foreach ($options as $optionValue) {
             $optionId = new AggregateId($optionValue);
             $option = $this->optionRepository->load($optionId);
             if ($option) {

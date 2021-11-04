@@ -44,8 +44,9 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
 
         $value = $product->getAttribute($attribute->getCode());
         $calculateValue = $this->calculator->calculate($attribute->getScope(), $value, $channel->getDefaultLanguage());
-        if (is_array($calculateValue)) {
-            foreach ($calculateValue as $optionValue) {
+        if ($calculateValue) {
+            $options = explode(',', $calculateValue);
+            foreach ($options as $optionValue) {
                 $optionId = new AggregateId($optionValue);
 
                 $propertyId = $this->propertyGroupOptionsRepository->load(
@@ -56,17 +57,6 @@ abstract class AbstractShopware6ProductPropertyGroupOptionMapper extends Abstrac
                 if ($propertyId) {
                     $shopware6Product->addProperty($propertyId);
                 }
-            }
-        } elseif (AggregateId::isValid($calculateValue)) {
-            $optionId = new AggregateId($calculateValue);
-
-            $propertyId = $this->propertyGroupOptionsRepository->load(
-                $channel->getId(),
-                $attribute->getId(),
-                $optionId,
-            );
-            if ($propertyId) {
-                $shopware6Product->addProperty($propertyId);
             }
         }
 
