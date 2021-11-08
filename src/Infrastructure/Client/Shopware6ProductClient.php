@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Query\CategoryQueryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Category\DeleteProductCategory;
@@ -16,23 +17,25 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Configura
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\GetProductList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\DeleteProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\GetProductMedia;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Options\DeleteOptions;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PatchProductAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PostProductAction;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Options\DeleteOptions;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Properties\DeleteProperties;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductCategory;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductConfiguratorSettings;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductId;
+use Psr\Log\LoggerInterface;
 
 class Shopware6ProductClient
 {
+    protected LoggerInterface $logger;
+
     private Shopware6Connector $connector;
 
     private ProductRepositoryInterface $repository;
@@ -42,11 +45,13 @@ class Shopware6ProductClient
     public function __construct(
         Shopware6Connector $connector,
         ProductRepositoryInterface $repository,
-        CategoryQueryInterface $categoryQuery
+        CategoryQueryInterface $categoryQuery,
+        LoggerInterface $logger
     ) {
         $this->connector = $connector;
         $this->repository = $repository;
         $this->categoryQuery = $categoryQuery;
+        $this->logger = $logger;
     }
 
     public function find(
@@ -185,8 +190,18 @@ class Shopware6ProductClient
     private function removeOptions(Shopware6Channel $channel, Shopware6Product $product)
     {
         foreach ($product->getOptionsToRemove() as $optionId) {
-            $action = new DeleteOptions($product->getId(), $optionId);
-            $this->connector->execute($channel, $action);
+            try {
+                $action = new DeleteOptions($product->getId(), $optionId);
+                $this->connector->execute($channel, $action);
+            } catch (\Throwable $e) {
+                $this->logger->error(
+                    sprintf(
+                        'Failed to remove option %s for product %s',
+                        $optionId,
+                        $product->getId()
+                    )
+                );
+            }
         }
     }
 }
