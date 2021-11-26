@@ -113,7 +113,6 @@ services:
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\CustomField\ProductCustomFieldSetMultimediaMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\CustomField\ProductCustomFieldSetUnitMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductVariantMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductVariantChildMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductCoverMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductSEOMetaTitleMapper'
             - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\ProductSEOMetaDescriptionMapper'

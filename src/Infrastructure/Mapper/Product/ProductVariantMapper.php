@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 
-use Ergonode\Attribute\Domain\Query\OptionQueryInterface;
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
 use Ergonode\Attribute\Domain\Repository\OptionRepositoryInterface;
 use Ergonode\Channel\Domain\Entity\Export;
@@ -21,27 +20,28 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductConf
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\Product\Domain\Entity\VariableProduct;
+use Ergonode\Product\Domain\Repository\ProductRepositoryInterface;
 use Ergonode\Product\Infrastructure\Calculator\TranslationInheritanceCalculator;
 use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
-use Ergonode\SharedKernel\Domain\AggregateId;
+use Webmozart\Assert\Assert;
 
 class ProductVariantMapper extends AbstractVariantOptionMapper
 {
     private PropertyGroupRepositoryInterface $propertyGroupRepository;
-    private OptionQueryInterface $optionQuery;
+    protected ProductRepositoryInterface $productRepository;
 
     public function __construct(
         PropertyGroupRepositoryInterface $propertyGroupRepository,
-        OptionQueryInterface $optionQuery,
         AttributeRepositoryInterface $attributeRepository,
         OptionRepositoryInterface $optionRepository,
         TranslationInheritanceCalculator $calculator,
-        PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository
+        PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository,
+        ProductRepositoryInterface $productRepository
     ) {
         parent::__construct($attributeRepository, $optionRepository, $calculator, $propertyGroupOptionsRepository);
 
         $this->propertyGroupRepository = $propertyGroupRepository;
-        $this->optionQuery = $optionQuery;
+        $this->productRepository = $productRepository;
     }
 
     public function map(
@@ -65,22 +65,25 @@ class ProductVariantMapper extends AbstractVariantOptionMapper
     ): Shopware6Product {
         foreach ($product->getBindings() as $bindingId) {
             if ($this->propertyGroupRepository->exists($channel->getId(), $bindingId)) {
-                $this->mapOptions($channel, $shopware6Product, $bindingId);
+                $this->mapOptions($channel, $shopware6Product, $bindingId, $product->getChildren());
             }
         }
 
         return $shopware6Product;
     }
 
+
     private function mapOptions(
         Shopware6Channel $channel,
         Shopware6Product $shopware6Product,
-        AttributeId $bindingId
+        AttributeId $bindingId,
+        array $childrenId
     ): Shopware6Product {
-        $options = $this->optionQuery->getOptions($bindingId);
-        foreach ($options as $option) {
-            $optionId = new AggregateId($option);
-            $shopwareId = $this->optionMap($channel, $bindingId, $optionId);
+        foreach ($childrenId as $childId) {
+            $child = $this->productRepository->load($childId);
+            Assert::isInstanceOf($child, AbstractProduct::class);
+
+            $shopwareId = $this->optionMapper($bindingId, $child, $channel);
             if ($shopwareId) {
                 $shopware6Product->addConfiguratorSettings(
                     new Shopware6ProductConfiguratorSettings(null, $shopwareId),
