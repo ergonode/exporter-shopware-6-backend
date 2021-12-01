@@ -67,9 +67,6 @@ ergonode_channel:
 ergonode_exporter_shopware6:
   messenger: false
 
-ergonode_batch_action:
-  messenger: false
-
 ergonode_category:
   messenger: false
 
