@@ -134,9 +134,13 @@ class PropertyGroupOptionsShopware6ExportProcess
         $shopwareLanguage = $this->languageRepository->load($channel->getId(), $language->getCode());
         Assert::notNull($shopwareLanguage);
 
+
+        $attributeId = $this->optionQuery->getAttributeIdByOptionId($option->getId());
+        Assert::notNull($attributeId);
+
         $shopwarePropertyGroupOption = $this->loadPropertyGroupOption(
             $channel,
-            $option->getAttributeId(),
+            $attributeId,
             $option->getId(),
             $propertyGroupId,
             $shopwareLanguage,
