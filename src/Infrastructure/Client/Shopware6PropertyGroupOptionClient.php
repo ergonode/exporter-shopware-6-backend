@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\Attribute\Domain\Entity\AbstractOption;
+use Ergonode\Attribute\Domain\Query\OptionQueryInterface;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupOptionsRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\GetPropertyGroupOptions;
@@ -25,12 +26,16 @@ class Shopware6PropertyGroupOptionClient
 
     private PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository;
 
+    private OptionQueryInterface $optionQuery;
+
     public function __construct(
         Shopware6Connector $connector,
-        PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository
+        PropertyGroupOptionsRepositoryInterface $propertyGroupOptionsRepository,
+        OptionQueryInterface $optionQuery
     ) {
         $this->connector = $connector;
         $this->propertyGroupOptionsRepository = $propertyGroupOptionsRepository;
+        $this->optionQuery = $optionQuery;
     }
 
     /**
@@ -68,9 +73,19 @@ class Shopware6PropertyGroupOptionClient
                 ),
             );
         }
+
+        $attributeId = $this->optionQuery->getAttributeIdByOptionId($option->getId());
+        if (null === $attributeId) {
+            throw new \LogicException(
+                sprintf(
+                    'Attribute for option %s no found.',
+                    $option->getCode(),
+                ),
+            );
+        }
         $this->propertyGroupOptionsRepository->save(
             $channel->getId(),
-            $option->getAttributeId(),
+            $attributeId,
             $option->getId(),
             $shopwarePropertyGroupOptions->getId(),
         );
