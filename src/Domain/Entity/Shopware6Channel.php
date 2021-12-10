@@ -76,10 +76,16 @@ class Shopware6Channel extends AbstractChannel
     private array $crossSelling;
 
     /**
+     * @var AttributeId[]
+     */
+    private array $productRelationAttributes;
+
+    /**
      * @param Language[]                  $languages
      * @param array|AttributeId[]         $propertyGroup
      * @param array|AttributeId[]         $customField
      * @param array|ProductCollectionId[] $crossSelling
+     * @param array|AttributeId[]         $productRelationAttributes
      */
     public function __construct(
         ChannelId $id,
@@ -104,7 +110,8 @@ class Shopware6Channel extends AbstractChannel
         ?CategoryTreeId $categoryTree,
         array $propertyGroup,
         array $customField,
-        array $crossSelling
+        array $crossSelling,
+        array $productRelationAttributes
     ) {
         parent::__construct($id, $name);
 
@@ -129,6 +136,7 @@ class Shopware6Channel extends AbstractChannel
         $this->propertyGroup = $propertyGroup;
         $this->customField = $customField;
         $this->crossSelling = $crossSelling;
+        $this->productRelationAttributes = $productRelationAttributes;
     }
 
     public static function getType(): string
@@ -253,6 +261,14 @@ class Shopware6Channel extends AbstractChannel
         return $this->crossSelling;
     }
 
+    /**
+     * @return AttributeId[]
+     */
+    public function getProductRelationAttributes(): array
+    {
+        return $this->productRelationAttributes;
+    }
+
     public function setHost(string $host): void
     {
         $this->host = $host;
@@ -368,5 +384,13 @@ class Shopware6Channel extends AbstractChannel
     public function setCrossSelling(array $crossSelling): void
     {
         $this->crossSelling = $crossSelling;
+    }
+
+    /**
+     * @param AttributeId[] $productRelationAttributes
+     */
+    public function setProductRelationAttributes(array $productRelationAttributes): void
+    {
+        $this->productRelationAttributes = $productRelationAttributes;
     }
 }

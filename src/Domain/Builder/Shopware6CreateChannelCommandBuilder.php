@@ -56,7 +56,8 @@ class Shopware6CreateChannelCommandBuilder implements CreateChannelCommandBuilde
         $attributeProductMetaDescription = $data->attributeProductMetaDescription;
         $attributeProductKeywords = $data->attributeProductKeywords;
         $categoryTree = $data->categoryTree;
-        $crossSelling = $data->crossSelling;
+        $crossSelling = $data->relations->crossSelling;
+        $productRelationAttributes = $data->relations->relationAttributes;
 
         $propertyGroup = [];
         foreach ($data->propertyGroup as $attribute) {
@@ -76,6 +77,11 @@ class Shopware6CreateChannelCommandBuilder implements CreateChannelCommandBuilde
         $crossSellingObjects = [];
         foreach ($crossSelling as $crossSell) {
             $crossSellingObjects[] = new ProductCollectionId($crossSell);
+        }
+
+        $productRelationAttributesObjects = [];
+        foreach ($productRelationAttributes as $productRelationAttribute) {
+            $productRelationAttributesObjects[] = new AttributeId($productRelationAttribute);
         }
 
         return new CreateShopware6ChannelCommand(
@@ -102,6 +108,7 @@ class Shopware6CreateChannelCommandBuilder implements CreateChannelCommandBuilde
             $propertyGroup,
             $customField,
             $crossSellingObjects,
+            $productRelationAttributesObjects,
         );
     }
 }

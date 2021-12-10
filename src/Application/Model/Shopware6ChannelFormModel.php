@@ -11,6 +11,7 @@ namespace Ergonode\ExporterShopware6\Application\Model;
 
 use Ergonode\Core\Application\Validator as CoreAssert;
 use Ergonode\ExporterShopware6\Application\Model\Type\CustomFieldAttributeModel;
+use Ergonode\ExporterShopware6\Application\Model\Type\ProductRelationModel;
 use Ergonode\ExporterShopware6\Application\Model\Type\PropertyGroupAttributeModel;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -119,9 +120,9 @@ class Shopware6ChannelFormModel
     public array $customField = [];
 
     /**
-     * @var array
+     * @Assert\Valid()
      */
-    public array $crossSelling = [];
+    public ProductRelationModel $relations;
 
     public function __construct(Shopware6Channel $channel = null)
     {
@@ -150,7 +151,6 @@ class Shopware6ChannelFormModel
             $this->attributeProductKeywords = $channel->getAttributeProductKeywords()
                 ? $channel->getAttributeProductKeywords()->getValue() : null;
             $this->categoryTree = $channel->getCategoryTree() ? $channel->getCategoryTree()->getValue() : null;
-            $this->crossSelling = $channel->getCrossSelling();
 
             foreach ($channel->getPropertyGroup() as $string) {
                 $this->propertyGroup[] = new PropertyGroupAttributeModel($string->getValue());
@@ -160,5 +160,9 @@ class Shopware6ChannelFormModel
                 $this->customField[] = new CustomFieldAttributeModel($string->getValue());
             }
         }
+
+        $crossSelling = $channel ? $channel->getCrossSelling() : [];
+        $relationAttributes = $channel ? $channel->getProductRelationAttributes() : [];
+        $this->relations = new ProductRelationModel($crossSelling, $relationAttributes);
     }
 }
