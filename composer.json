@@ -9,7 +9,7 @@
     },
     "require": {
         "php": "^7.4",
-        "ergonode/attribute": "dev-feature/attribute-option-sorting as 1.3.0-dev",
+        "ergonode/attribute": "dev-main as 1.3.0-dev",
         "ergonode/channel": "^1.2.0",
         "ergonode/product-collection": "^1.2.0",
         "guzzlehttp/guzzle": "^6.3"
