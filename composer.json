@@ -9,16 +9,17 @@
     },
     "require": {
         "php": "^7.4",
-        "ergonode/channel": "^1.0.0",
-        "ergonode/product-collection": "^1.0.0",
+        "ergonode/attribute": "dev-main as 1.3.0-dev",
+        "ergonode/channel": "^1.2.0",
+        "ergonode/product-collection": "^1.2.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^6.5",
         "doctrine/doctrine-bundle": "^2.3",
-        "ergonode/authentication": "^1.0",
-        "ergonode/core": "^1.0.1",
-        "ergonode/fixture": "dev-main as 1.1.0-dev",
+        "ergonode/authentication": "^1.2",
+        "ergonode/core": "^1.2",
+        "ergonode/fixture": "^1.2",
         "limenius/liform-bundle": "^0.17.0",
         "malukenho/docheader": "^0.1.8",
         "phpstan/phpstan": "^0.12.85",
