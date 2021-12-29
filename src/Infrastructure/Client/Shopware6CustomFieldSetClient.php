@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
+ * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
  */
 
@@ -18,7 +18,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField
 
 class Shopware6CustomFieldSetClient
 {
-
     private Shopware6Connector $connector;
 
     public function __construct(Shopware6Connector $connector)

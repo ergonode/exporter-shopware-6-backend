@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
+ * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
  */
 
@@ -11,5 +11,4 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Exception;
 
 class Shopware6ExporterMapperException extends \Exception
 {
-
 }

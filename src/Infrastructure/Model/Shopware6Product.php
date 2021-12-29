@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © Bold Brand Commerce Sp. z o.o. All rights reserved.
+ * Copyright © Ergonode Sp. z o.o. All rights reserved.
  * See LICENSE.txt for license details.
  */
 
@@ -16,7 +16,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPric
 
 class Shopware6Product implements \JsonSerializable
 {
-
     private ?string $id;
 
     private ?string $sku;
