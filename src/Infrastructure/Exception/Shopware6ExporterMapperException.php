@@ -11,5 +11,4 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Exception;
 
 class Shopware6ExporterMapperException extends \Exception
 {
-
 }

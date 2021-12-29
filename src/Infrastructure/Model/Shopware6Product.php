@@ -16,7 +16,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPric
 
 class Shopware6Product implements \JsonSerializable
 {
-
     private ?string $id;
 
     private ?string $sku;

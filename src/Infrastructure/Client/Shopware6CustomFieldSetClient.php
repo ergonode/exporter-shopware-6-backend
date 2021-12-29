@@ -18,7 +18,6 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField
 
 class Shopware6CustomFieldSetClient
 {
-
     private Shopware6Connector $connector;
 
     public function __construct(Shopware6Connector $connector)

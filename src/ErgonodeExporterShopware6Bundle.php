@@ -13,5 +13,4 @@ use Ergonode\SharedKernel\Application\AbstractModule;
 
 class ErgonodeExporterShopware6Bundle extends AbstractModule
 {
-
 }
