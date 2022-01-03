@@ -73,17 +73,7 @@ services:
 
     Ergonode\ExporterShopware6\Infrastructure\Builder\CustomFieldBuilder:
         arguments:
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldNameMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldLabelMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigTextMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigTextareaMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigDateMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigMediaMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigNumericMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigSelectMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigMultiSelectMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigOptionsMapper'
-            - '@Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField\CustomFieldConfigUnitMapper'
+            - !tagged_iterator 'component.exporter_shopware6.custom_field_mapper_interface'
 
     Ergonode\ExporterShopware6\Infrastructure\Builder\CategoryBuilder:
         arguments:

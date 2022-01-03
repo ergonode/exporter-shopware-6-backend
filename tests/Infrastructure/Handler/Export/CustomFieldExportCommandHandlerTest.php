@@ -16,7 +16,7 @@ use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Command\Export\CustomFieldExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Handler\Export\CustomFieldExportCommandHandler;
-use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CustomFiledShopware6ExportProcess;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CustomFieldShopware6ExportProcess;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -38,9 +38,9 @@ class CustomFieldExportCommandHandlerTest extends TestCase
     private AttributeRepositoryInterface $attributeRepository;
 
     /**
-     * @var CustomFiledShopware6ExportProcess|MockObject
+     * @var CustomFieldShopware6ExportProcess|MockObject
      */
-    private CustomFiledShopware6ExportProcess $process;
+    private CustomFieldShopware6ExportProcess $process;
 
     protected function setUp(): void
     {
@@ -59,7 +59,7 @@ class CustomFieldExportCommandHandlerTest extends TestCase
             ->willReturn($this->createMock(AbstractAttribute::class));
         $this->attributeRepository->expects(self::once())->method('load');
 
-        $this->process = $this->createMock(CustomFiledShopware6ExportProcess::class);
+        $this->process = $this->createMock(CustomFieldShopware6ExportProcess::class);
         $this->process->expects(self::once())->method('process');
     }
 

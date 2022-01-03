@@ -6,31 +6,23 @@
 
 declare(strict_types=1);
 
-namespace Ergonode\ExporterShopware6\Infrastructure\Builder;
+namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomField;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
-use Ergonode\BatchAction\Application\Form\BatchActionFormInterface;
+use Ergonode\Attribute\Domain\Entity\Attribute\FileAttribute;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\CustomFieldMapperInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField;
-use Webmozart\Assert\Assert;
 
-class CustomFieldBuilder
+class CustomFieldConfigFileMapper implements CustomFieldMapperInterface
 {
-    /**
-     * @var CustomFieldMapperInterface[]
-     */
-    private iterable $collection;
+    private const TYPE = 'text';
+    private const CUSTOM_FIELD_TYPE = 'media';
+    private const COMPONENT_NAME = 'sw-media-field';
 
-    public function __construct(iterable $collection)
-    {
-        Assert::allIsInstanceOf($collection, CustomFieldMapperInterface::class);
-        $this->collection = $collection;
-    }
-
-    public function build(
+    public function map(
         Shopware6Channel $channel,
         Export $export,
         AbstractShopware6CustomField $shopware6CustomField,
@@ -38,8 +30,10 @@ class CustomFieldBuilder
         ?Language $language = null
     ): AbstractShopware6CustomField {
 
-        foreach ($this->collection as $mapper) {
-            $shopware6CustomField = $mapper->map($channel, $export, $shopware6CustomField, $attribute, $language);
+        if ($attribute->getType() === FileAttribute::TYPE) {
+            $shopware6CustomField->setType(self::TYPE);
+            $shopware6CustomField->getConfig()->setCustomFieldType(self::CUSTOM_FIELD_TYPE);
+            $shopware6CustomField->getConfig()->setComponentName(self::COMPONENT_NAME);
         }
 
         return $shopware6CustomField;

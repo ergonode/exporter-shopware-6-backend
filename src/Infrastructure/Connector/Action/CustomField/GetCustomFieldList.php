@@ -56,7 +56,7 @@ class GetCustomFieldList extends AbstractAction
                     $row['attributes']['config']['options'] ?? null
                 );
 
-                $result[] = new Shopware6CustomField(
+                $result[$row['id']] = new Shopware6CustomField(
                     $row['id'],
                     $row['attributes']['name'],
                     $row['attributes']['type'],

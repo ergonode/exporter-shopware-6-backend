@@ -16,6 +16,8 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField
 
 interface CustomFieldMapperInterface
 {
+    public const TAG = 'component.exporter_shopware6.custom_field_mapper_interface';
+
     public function map(
         Shopware6Channel $channel,
         Export $export,

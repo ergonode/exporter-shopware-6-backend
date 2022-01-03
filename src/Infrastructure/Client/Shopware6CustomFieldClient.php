@@ -11,7 +11,7 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\CustomFieldRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\GetCustomField;
+use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\BatchPostCustomFieldAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\GetCustomFieldList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\PatchCustomFieldAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\CustomField\PostCustomFieldAction;
@@ -19,7 +19,10 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6InstanceOfException;
 use Ergonode\ExporterShopware6\Infrastructure\Model\AbstractShopware6CustomField;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Basic\Shopware6CustomField;
+use Ergonode\ExporterShopware6\Infrastructure\Model\CustomField\BatchCustomField;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
+use Ergonode\SharedKernel\Domain\Aggregate\AttributeId;
 
 class Shopware6CustomFieldClient
 {
@@ -68,12 +71,19 @@ class Shopware6CustomFieldClient
         return null;
     }
 
-    public function get(
+    /**
+     * @param Shopware6Channel $channel
+     * @param Shopware6Language|null $shopware6Language
+     *
+     * @return Shopware6CustomField[]
+     *
+     * @throws \Exception
+     */
+    public function getAll(
         Shopware6Channel $channel,
-        string $shopwareId,
         ?Shopware6Language $shopware6Language = null
-    ): ?AbstractShopware6CustomField {
-        $action = new GetCustomField($shopwareId);
+    ): array {
+        $action = new GetCustomFieldList(new Shopware6QueryBuilder());
         if ($shopware6Language) {
             $action->addHeader('sw-language-id', $shopware6Language->getId());
         }
@@ -82,6 +92,10 @@ class Shopware6CustomFieldClient
     }
 
     /**
+     * @param Shopware6Channel $channel
+     * @param AbstractShopware6CustomField $customField
+     * @param AbstractAttribute $attribute
+     * @return AbstractShopware6CustomField|null
      * @throws Shopware6InstanceOfException
      */
     public function insert(
@@ -104,6 +118,32 @@ class Shopware6CustomFieldClient
         );
 
         return $shopwareCustomField;
+    }
+
+    /**
+     * @param Shopware6Channel $channel
+     * @param BatchCustomField $batchCustomField
+     * @return void
+     * @throws \Exception
+     */
+    public function insertBatch(
+        Shopware6Channel $channel,
+        BatchCustomField $batchCustomField
+    ): void {
+        $action = new BatchPostCustomFieldAction($batchCustomField);
+
+        $ids = $this->connector->execute($channel, $action);
+
+        foreach ($ids as $requestId => $shopwareId) {
+            [$id, $type] = explode('_', $requestId, 2);
+            $this->repository->save(
+                $channel->getId(),
+                new AttributeId($id),
+                $shopwareId,
+                $type
+            );
+        }
+
     }
 
     public function update(

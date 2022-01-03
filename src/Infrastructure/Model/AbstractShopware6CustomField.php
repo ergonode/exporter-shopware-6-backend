@@ -24,6 +24,8 @@ class AbstractShopware6CustomField implements \JsonSerializable
 
     protected bool $modified = false;
 
+    protected string $requestName = '';
+
     public function __construct(
         ?string $id = null,
         ?string $name = null,
@@ -107,6 +109,20 @@ class AbstractShopware6CustomField implements \JsonSerializable
             $data['config'] = $this->config->jsonSerialize();
         }
 
+        if (!is_null($this->id)) {
+            $data['id'] = $this->id;
+        }
+
         return $data;
+    }
+
+    public function getRequestName(): string
+    {
+        return $this->requestName;
+    }
+
+    public function setRequestName(string $requestName): void
+    {
+        $this->requestName = $requestName;
     }
 }
