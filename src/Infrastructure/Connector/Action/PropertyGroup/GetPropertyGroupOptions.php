@@ -15,16 +15,13 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetPropertyGroupOptions extends AbstractAction
 {
-    private const URI = '/api/property-group/%s/options/%s';
+    private const URI = '/api/property-group/%s/options';
 
     private string $propertyGroupId;
 
-    private string $propertyGroupOptionId;
-
-    public function __construct(string $propertyGroupId, string $propertyGroupOptionId)
+    public function __construct(string $propertyGroupId)
     {
         $this->propertyGroupId = $propertyGroupId;
-        $this->propertyGroupOptionId = $propertyGroupOptionId;
     }
 
     public function getRequest(): Request
@@ -39,20 +36,35 @@ class GetPropertyGroupOptions extends AbstractAction
     /**
      * @throws \JsonException
      */
-    public function parseContent(?string $content): Shopware6PropertyGroupOption
+    public function parseContent(?string $content): ?array
     {
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-        return new Shopware6PropertyGroupOption(
-            $data['data']['id'],
-            $data['data']['attributes']['name'],
-            $data['data']['attributes']['mediaId'],
-            $data['data']['attributes']['position']
-        );
+        $result = [];
+        foreach ($data['data'] as $row) {
+            $result[$row['id']] = new Shopware6PropertyGroupOption(
+                $row['id'],
+                $row['attributes']['name'],
+                $row['attributes']['mediaId'],
+                $row['attributes']['position'],
+                $row['attributes']['groupId'] ?? null
+            );
+        }
+
+        foreach ($data['included'] as $included) {
+            $propertyGroupOptionId = $included['attributes']['groupId'];
+            if (isset($result[$propertyGroupOptionId])) {
+                $propertyGroup = $result[$propertyGroupOptionId];
+
+                $propertyGroup->addTranslations($included['languageId'], 'name', $included['name']);
+            }
+        }
+
+        return $result;
     }
 
     private function getUri(): string
     {
-        return sprintf(self::URI, $this->propertyGroupId, $this->propertyGroupOptionId);
+        return sprintf(self::URI, $this->propertyGroupId);
     }
 }

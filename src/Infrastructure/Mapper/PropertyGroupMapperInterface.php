@@ -12,6 +12,7 @@ use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6PropertyGroup;
 
 interface PropertyGroupMapperInterface
@@ -21,6 +22,7 @@ interface PropertyGroupMapperInterface
         Export $export,
         Shopware6PropertyGroup $shopware6PropertyGroup,
         AbstractAttribute $attribute,
-        ?Language $language = null
+        ?Language $language = null,
+        ?Shopware6Language $shopware6Language = null
     ): Shopware6PropertyGroup;
 }

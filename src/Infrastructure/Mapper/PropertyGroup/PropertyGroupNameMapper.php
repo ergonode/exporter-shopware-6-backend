@@ -9,10 +9,11 @@ declare(strict_types=1);
 namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\PropertyGroup;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\PropertyGroupMapperInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6PropertyGroup;
 
 class PropertyGroupNameMapper implements PropertyGroupMapperInterface
@@ -25,15 +26,19 @@ class PropertyGroupNameMapper implements PropertyGroupMapperInterface
         Export $export,
         Shopware6PropertyGroup $shopware6PropertyGroup,
         AbstractAttribute $attribute,
-        ?Language $language = null
+        ?Language $language = null,
+        ?Shopware6Language $shopware6Language = null
     ): Shopware6PropertyGroup {
-        $name = $attribute->getLabel()->get($language ?: $channel->getDefaultLanguage());
+        $name = $attribute->getLabel()->get($channel->getDefaultLanguage());
         if ($name) {
             $shopware6PropertyGroup->setName($name);
         }
 
-        if (null === $language && null === $name) {
-            $shopware6PropertyGroup->setName($attribute->getCode()->getValue());
+        if ($language && $shopware6Language && $shopware6Language->getId()) {
+            $translatedName = $attribute->getLabel()->get($language);
+            if ($translatedName) {
+                $shopware6PropertyGroup->addTranslations($shopware6Language->getId(), 'name', $translatedName);
+            }
         }
 
         return $shopware6PropertyGroup;

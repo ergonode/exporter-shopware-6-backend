@@ -10,7 +10,6 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\ExporterShopware6\Domain\Repository\PropertyGroupRepositoryInterface;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\GetPropertyGroup;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\GetPropertyGroupList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\PatchPropertyGroupAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PropertyGroup\PostPropertyGroupAction;
@@ -22,6 +21,10 @@ use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class Shopware6PropertyGroupClient
 {
+    private const ENTITY_NAME = 'property_group';
+    private const TRANSLATION_ENTITY_NAME = 'property_group_translation';
+    private const REQUIRED_FIELDS = ['id', 'name', 'displayType', 'sortingType'];
+
     private Shopware6Connector $connector;
 
     private PropertyGroupRepositoryInterface $repository;
@@ -35,24 +38,15 @@ class Shopware6PropertyGroupClient
     /**
      * @return Shopware6PropertyGroup[]|null
      */
-    public function load(Shopware6Channel $channel): ?array
+    public function getAll(Shopware6Channel $channel): ?array
     {
         $query = new Shopware6QueryBuilder();
-        $query->limit(500);
+        $query->limit(1000);
+        // weird format required by Shopware
+        $query->association('translations', [0 => '']);
+        $query->include(self::ENTITY_NAME, self::REQUIRED_FIELDS);
+        $query->include(self::TRANSLATION_ENTITY_NAME, self::REQUIRED_FIELDS);
         $action = new GetPropertyGroupList($query);
-
-        return $this->connector->execute($channel, $action);
-    }
-
-    /**
-     * @return array|object|string|null
-     */
-    public function get(Shopware6Channel $channel, string $shopwareId, ?Shopware6Language $shopware6Language = null)
-    {
-        $action = new GetPropertyGroup($shopwareId);
-        if ($shopware6Language) {
-            $action->addHeader('sw-language-id', $shopware6Language->getId());
-        }
 
         return $this->connector->execute($channel, $action);
     }

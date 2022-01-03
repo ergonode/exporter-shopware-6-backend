@@ -13,6 +13,7 @@ use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\PropertyGroupOptionMapperInterface;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6PropertyGroupOption;
 
 class PropertyGroupOptionBuilder
@@ -32,10 +33,11 @@ class PropertyGroupOptionBuilder
         Export $export,
         Shopware6PropertyGroupOption $propertyGroupOption,
         AbstractOption $option,
-        ?Language $language = null
+        ?Language $language = null,
+        ?Shopware6Language $shopware6Language = null
     ): Shopware6PropertyGroupOption {
         foreach ($this->collection as $mapper) {
-            $propertyGroupOption = $mapper->map($channel, $export, $propertyGroupOption, $option, $language);
+            $propertyGroupOption = $mapper->map($channel, $export, $propertyGroupOption, $option, $language, $shopware6Language);
         }
 
         return $propertyGroupOption;

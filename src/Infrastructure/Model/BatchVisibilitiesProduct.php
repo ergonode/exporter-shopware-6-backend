@@ -33,7 +33,7 @@ class BatchVisibilitiesProduct implements \JsonSerializable
         return $this->visibilities;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $result[self::REQUEST_NAME] =
             [

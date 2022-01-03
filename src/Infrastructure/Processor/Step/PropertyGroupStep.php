@@ -1,17 +1,10 @@
 <?php
-/**
- * Copyright © Ergonode Sp. z o.o. All rights reserved.
- * See LICENSE.txt for license details.
- */
-
 declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Step;
 
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
-use Ergonode\Channel\Domain\ValueObject\ExportLineId;
+use Ergonode\ExporterShopware6\Domain\Command\Export\BatchPropertyGroupExportCommand;
 use Ergonode\SharedKernel\Domain\Bus\CommandBusInterface;
-use Ergonode\ExporterShopware6\Domain\Command\Export\PropertyGroupExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Processor\ExportStepProcessInterface;
 use Ergonode\Product\Domain\Entity\VariableProduct;
@@ -32,35 +25,28 @@ class PropertyGroupStep implements ExportStepProcessInterface
 
     private CommandBusInterface $commandBus;
 
-    private ExportRepositoryInterface $exportRepository;
-
     public function __construct(
         ProductQueryInterface $productQuery,
         SegmentProductsQueryInterface $segmentProductsQuery,
         ProductRepositoryInterface $productRepository,
-        CommandBusInterface $commandBus,
-        ExportRepositoryInterface $exportRepository
+        CommandBusInterface $commandBus
     ) {
         $this->productQuery = $productQuery;
         $this->segmentProductsQuery = $segmentProductsQuery;
         $this->productRepository = $productRepository;
         $this->commandBus = $commandBus;
-        $this->exportRepository = $exportRepository;
     }
 
     public function export(ExportId $exportId, Shopware6Channel $channel): void
     {
         $attributeList = array_unique(array_merge($this->getBindingAttributes($channel), $channel->getPropertyGroup()));
 
-        foreach ($attributeList as $attributeId) {
-            $lineId = ExportLineId::generate();
-            $processCommand = new PropertyGroupExportCommand($lineId, $exportId, $attributeId);
-            $this->exportRepository->addLine($lineId, $exportId, $attributeId);
-            $this->commandBus->dispatch($processCommand, true);
-        }
+        $processCommand = new BatchPropertyGroupExportCommand($exportId, $attributeList);
+        $this->commandBus->dispatch($processCommand, true);
     }
 
     /**
+     * @param Shopware6Channel $channel
      * @return AttributeId[]
      */
     private function getBindingAttributes(Shopware6Channel $channel): array

@@ -65,25 +65,6 @@ abstract class AbstractProductPropertyGroupMapper implements ProductMapperInterf
         return $this->getType() === $type;
     }
 
-    protected function createPropertyGroupOptions(
-        Shopware6Channel $channel,
-        AbstractAttribute $attribute,
-        ValueInterface $value
-    ): Shopware6PropertyGroupOption {
-        $name = $this->calculator->calculate($attribute, $value, $channel->getDefaultLanguage());
-
-        $propertyGroupOption = new Shopware6PropertyGroupOption(null, $name);
-
-        foreach ($channel->getLanguages() as $language) {
-            $calculateValue = $this->calculator->calculate($attribute, $value, $language);
-            if ($calculateValue) {
-                $propertyGroupOption->addTranslations($language, 'name', $calculateValue);
-            }
-        }
-
-        return $propertyGroupOption;
-    }
-
     abstract protected function addProperty(
         Shopware6Product $shopware6Product,
         AbstractAttribute $attribute,

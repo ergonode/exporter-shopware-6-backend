@@ -43,12 +43,21 @@ class GetPropertyGroupList extends AbstractAction
         $data = json_decode($content, true);
 
         foreach ($data['data'] as $row) {
-            $result[] = new Shopware6PropertyGroup(
+            $result[$row['id']] = new Shopware6PropertyGroup(
                 $row['id'],
                 $row['attributes']['name'],
                 $row['attributes']['displayType'],
                 $row['attributes']['sortingType']
             );
+        }
+
+        foreach ($data['included'] as $included) {
+            $propertyGroupId = $included['attributes']['propertyGroupId'];
+            if (isset($result[$propertyGroupId])) {
+                $propertyGroup = $result[$propertyGroupId];
+
+                $propertyGroup->addTranslations($included['languageId'], 'name', $included['name']);
+            }
         }
 
         return $result;

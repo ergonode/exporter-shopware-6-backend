@@ -143,7 +143,6 @@ class Shopware6CustomFieldClient
                 $type
             );
         }
-
     }
 
     public function update(

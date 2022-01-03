@@ -24,4 +24,6 @@ interface PropertyGroupOptionsRepositoryInterface
     ): void;
 
     public function exists(ChannelId $channelId, AttributeId $attributeId, AggregateId $optionId): bool;
+
+    public function delete(ChannelId $channelId, string $shopwareId): void;
 }

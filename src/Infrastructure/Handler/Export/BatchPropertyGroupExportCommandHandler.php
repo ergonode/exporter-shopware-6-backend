@@ -1,34 +1,29 @@
 <?php
-/**
- * Copyright © Ergonode Sp. z o.o. All rights reserved.
- * See LICENSE.txt for license details.
- */
-
 declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Handler\Export;
 
-use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\Channel\Domain\Repository\ChannelRepositoryInterface;
+use Ergonode\Channel\Domain\Entity\Export;
 use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
-use Ergonode\ExporterShopware6\Domain\Command\Export\BatchCustomFieldExportCommand;
+use Ergonode\ExporterShopware6\Domain\Command\Export\BatchPropertyGroupExportCommand;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
-use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\CustomFieldShopware6ExportProcess;
+use Ergonode\ExporterShopware6\Infrastructure\Processor\Process\PropertyGroupShopware6ExportProcess;
 
-class BatchCustomFieldExportCommandHandler extends AbstractBatchExportCommandHandler
+class BatchPropertyGroupExportCommandHandler extends AbstractBatchExportCommandHandler
 {
-    private CustomFieldShopware6ExportProcess $process;
+    private PropertyGroupShopware6ExportProcess $process;
 
     public function __construct(
         ExportRepositoryInterface $exportRepository,
         ChannelRepositoryInterface $channelRepository,
-        CustomFieldShopware6ExportProcess $process
+        PropertyGroupShopware6ExportProcess $process
     ) {
         parent::__construct($exportRepository, $channelRepository);
         $this->process = $process;
     }
 
-    public function __invoke(BatchCustomFieldExportCommand $command): void
+    public function __invoke(BatchPropertyGroupExportCommand $command): void
     {
         $this->validateAndProcessCommand($command);
     }

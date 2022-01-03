@@ -13,6 +13,7 @@
   },
   "require": {
     "php": "^7.4",
+    "ext-json": "*",
     "ergonode/channel": "^1.0.0",
     "guzzlehttp/guzzle": "^6.3"
   },

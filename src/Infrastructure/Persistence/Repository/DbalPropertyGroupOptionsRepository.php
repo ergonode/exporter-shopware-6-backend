@@ -107,4 +107,23 @@ class DbalPropertyGroupOptionsRepository implements PropertyGroupOptionsReposito
 
         return false;
     }
+
+    /**
+     * @param ChannelId $channelId
+     * @param string $shopwareId
+     *
+     * @return void
+     *
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public function delete(ChannelId $channelId, string $shopwareId): void
+    {
+        $this->connection->delete(
+            self::TABLE,
+            [
+                'shopware6_id' => $shopwareId,
+                'channel_id' => $channelId->getValue(),
+            ]
+        );
+    }
 }

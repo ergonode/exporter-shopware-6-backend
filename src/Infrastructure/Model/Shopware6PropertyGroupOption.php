@@ -24,6 +24,10 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
 
     protected bool $modified = false;
 
+    protected ?string $groupId;
+
+    protected string $requestName = '';
+
     /**
      * @param array|null $translations
      */
@@ -32,6 +36,7 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
         ?string $name = null,
         ?string $mediaId = null,
         ?int $position = null,
+        ?string $groupId = null,
         ?array $translations = null
     ) {
         $this->id = $id;
@@ -39,6 +44,7 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
         $this->mediaId = $mediaId;
         $this->position = $position;
         $this->translations = $translations;
+        $this->groupId = $groupId;
     }
 
     public function getId(): ?string
@@ -85,11 +91,12 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
         }
     }
 
-    public function addTranslations(Language $language, string $field, string $value): void
+    public function addTranslations(string $shopwareLanguageId, string $field, string $value): void
     {
-        $code = str_replace('_', '-', $language->getCode());
-
-        $this->translations[$code][$field] = $value;
+        if (!(isset($this->translations[$shopwareLanguageId][$field]) && $this->translations[$shopwareLanguageId][$field] === $value)) {
+            $this->modified = true;
+            $this->translations[$shopwareLanguageId][$field] = $value;
+        }
     }
 
     public function isModified(): bool
@@ -101,7 +108,9 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
     {
         $data = [
             'name' => $this->name,
+            'groupId' => $this->groupId
         ];
+
         if (null !== $this->mediaId) {
             $data['mediaId'] = $this->mediaId;
         }
@@ -112,6 +121,30 @@ class Shopware6PropertyGroupOption implements \JsonSerializable
             $data['translations'] = $this->translations;
         }
 
+        if (null !== $this->id) {
+            $data['id'] = $this->id;
+        }
+
         return $data;
+    }
+
+    public function getGroupId(): ?string
+    {
+        return $this->groupId;
+    }
+
+    public function setGroupId(?string $groupId): void
+    {
+        $this->groupId = $groupId;
+    }
+
+    public function getRequestName(): string
+    {
+        return $this->requestName;
+    }
+
+    public function setRequestName(string $requestName): void
+    {
+        $this->requestName = $requestName;
     }
 }
