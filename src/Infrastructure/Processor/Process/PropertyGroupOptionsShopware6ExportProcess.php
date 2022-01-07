@@ -27,6 +27,8 @@ use Webmozart\Assert\Assert;
 
 class PropertyGroupOptionsShopware6ExportProcess
 {
+    private const CHUNK_SIZE = 30;
+
     protected PropertyGroupRepositoryInterface $propertyGroupRepository;
 
     protected OptionQueryInterface $optionQuery;
@@ -106,7 +108,13 @@ class PropertyGroupOptionsShopware6ExportProcess
             $propertyGroupOptions[] = $propertyGroupOption;
         }
 
-        $this->propertyGroupOptionClient->insertBatch($channel, new BatchPropertyGroupOption($propertyGroupOptions));
+        $optionsChunk = array_chunk($propertyGroupOptions, self::CHUNK_SIZE);
+        foreach ($optionsChunk as $row) {
+            $this->propertyGroupOptionClient->insertBatch(
+                $channel,
+                new BatchPropertyGroupOption($row)
+            );
+        }
         // delete remaining options not existing in Ergonode
         if (!empty($shopwareOptions)) {
             foreach ($shopwareOptions as $shopwareId => $option) {
