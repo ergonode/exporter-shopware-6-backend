@@ -99,8 +99,6 @@ class PropertyGroupShopware6ExportProcess
                     $exception->getParameters()
                 );
             }
-
-            return;
         }
     }
 
