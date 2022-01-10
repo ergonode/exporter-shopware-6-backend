@@ -116,11 +116,11 @@ class PropertyGroupOptionsShopware6ExportProcess
             );
         }
         // delete remaining options not existing in Ergonode
-        if (!empty($shopwareOptions)) {
-            foreach ($shopwareOptions as $shopwareId => $option) {
-                $this->propertyGroupOptionClient->delete($channel, $shopwareId);
-            }
-        }
+        //if (!empty($shopwareOptions)) {
+        //    foreach ($shopwareOptions as $shopwareId => $option) {
+        //        $this->propertyGroupOptionClient->delete($channel, $shopwareId);
+        //    }
+        //}
     }
 
     private function buildPropertyGroupOptionWithLanguage(
