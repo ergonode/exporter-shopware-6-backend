@@ -41,6 +41,10 @@ class PropertyGroupOptionNameMapper implements PropertyGroupOptionMapperInterfac
             }
         }
 
+        if (null === $language && null === $name) {
+            $propertyGroupOption->setName($option->getCode()->getValue());
+        }
+
         return $propertyGroupOption;
     }
 }
