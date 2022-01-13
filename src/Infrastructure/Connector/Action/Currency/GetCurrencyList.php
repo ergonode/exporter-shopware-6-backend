@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 class GetCurrencyList extends AbstractAction
 {
-    private const URI = '/api/v2/currency?%s';
+    private const URI = '/api/currency?%s';
 
     private Shopware6QueryBuilder $query;
 
