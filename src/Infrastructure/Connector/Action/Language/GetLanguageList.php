@@ -37,18 +37,35 @@ class GetLanguageList extends AbstractAction
 
     /**
      * @return Shopware6Language[]
+     * @throws \JsonException
      */
     public function parseContent(?string $content): array
     {
         $result = [];
-        $data = json_decode($content, true);
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $locales = [];
+
+        foreach ($data['included'] as $includedAssociation) {
+            if ($includedAssociation['type'] === 'locale'
+                && isset($includedAssociation['id'], $includedAssociation['attributes']['code'])
+                && false === isset($locales[$includedAssociation['id']])
+            ) {
+                $locales[$includedAssociation['id']] = str_replace(
+                    '-',
+                    '_',
+                    $includedAssociation['attributes']['code']
+                );
+            }
+        }
 
         foreach ($data['data'] as $row) {
             $result[$row['id']] = new Shopware6Language(
                 $row['id'],
                 $row['attributes']['name'],
                 $row['attributes']['localeId'],
-                $row['attributes']['translationCodeId']
+                $row['attributes']['translationCodeId'],
+                $locales[$row['attributes']['localeId']] ?? null
             );
         }
 

@@ -10,11 +10,9 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Language\GetLanguageList;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Language\GetLocate;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Locate;
 
 class Shopware6LanguageClient
 {
@@ -26,30 +24,24 @@ class Shopware6LanguageClient
     }
 
     /**
+     * @param Shopware6Channel $channel
      * @return Shopware6Language[]
+     * @throws \Exception
      */
     public function getLanguageList(Shopware6Channel $channel): array
     {
-        $query = new Shopware6QueryBuilder();
-        $query->limit(500);
-
+        $query = $this->getQueryBuilder();
         $action = new GetLanguageList($query);
 
-        $languageList = $this->connector->execute($channel, $action);
-
-        /** @var Shopware6Language $language */
-        foreach ($languageList as $language) {
-            $locate = $this->getLocate($channel, $language->getTranslationCodeId());
-            $language->setIso(str_replace('-', '_', $locate->getCode()));
-        }
-
-        return $languageList;
+        return $this->connector->execute($channel, $action);
     }
 
-    private function getLocate(Shopware6Channel $channel, string $locateId): Shopware6Locate
+    private function getQueryBuilder(): Shopware6QueryBuilder
     {
-        $action = new GetLocate($locateId);
-
-        return $this->connector->execute($channel, $action);
+        $query = new Shopware6QueryBuilder();
+        $query->limit(500);
+        // associations[locale][]=
+        $query->association('locale', ['' => '']);
+        return $query;
     }
 }
