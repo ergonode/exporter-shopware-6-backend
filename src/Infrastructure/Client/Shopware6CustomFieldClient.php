@@ -131,6 +131,7 @@ class Shopware6CustomFieldClient
         BatchCustomField $batchCustomField
     ): void {
         $action = new BatchPostCustomFieldAction($batchCustomField);
+        $action->addHeader('indexing-behavior', 'use-queue-indexing');
 
         $ids = $this->connector->execute($channel, $action);
 

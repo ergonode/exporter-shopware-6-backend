@@ -98,6 +98,7 @@ class Shopware6PropertyGroupOptionClient
         BatchPropertyGroupOption $batchCustomField
     ): void {
         $action = new BatchPostPropertyGroupOptionAction($batchCustomField);
+        $action->addHeader('indexing-behavior', 'use-queue-indexing');
 
         $ids = $this->connector->execute($channel, $action);
 
