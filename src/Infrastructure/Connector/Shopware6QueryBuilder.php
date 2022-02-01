@@ -45,7 +45,7 @@ class Shopware6QueryBuilder
     public function add(string $type, string $field, string $value): Shopware6QueryBuilder
     {
         $this->parts[] = [
-            'type'  => $type,
+            'type' => $type,
             'field' => $field,
             'value' => $value,
         ];
@@ -108,8 +108,9 @@ class Shopware6QueryBuilder
         $this->includes[$entityName] = $fields;
     }
 
-    public function association(string $entityName, array $fields)
+    public function association(string $entityName, array $fields): Shopware6QueryBuilder
     {
         $this->associations[$entityName] = $fields;
+        return $this;
     }
 }

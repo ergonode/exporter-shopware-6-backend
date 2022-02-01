@@ -12,25 +12,21 @@ use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Query\CategoryQueryInterface;
 use Ergonode\ExporterShopware6\Domain\Repository\ProductRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Category\DeleteProductCategory;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Category\GetProductCategory;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\ConfiguratorSettings\GetConfiguratorSettings;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\GetProductList;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\DeleteProductMedia;
-use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Media\GetProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Options\DeleteOptions;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PatchProductAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\PostProductAction;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Product\Properties\DeleteProperties;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductCategory;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductConfiguratorSettings;
-use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
 use Ergonode\SharedKernel\Domain\Aggregate\ProductId;
+use Exception;
 use Psr\Log\LoggerInterface;
+use Throwable;
 
 class Shopware6ProductClient
 {
@@ -59,10 +55,13 @@ class Shopware6ProductClient
         AbstractProduct $product,
         ?Shopware6Language $shopware6Language = null
     ): ?Shopware6Product {
-
         $query = new Shopware6QueryBuilder();
         $query
             ->equals('productNumber', $product->getSku()->getValue())
+            ->association('media', ['' => ''])
+            ->association('configuratorSettings', ['' => ''])
+            ->association('categories', ['' => ''])
+            ->association('translations', ['' => ''])
             ->limit(1);
 
         $action = new GetProductList($query);
@@ -138,62 +137,28 @@ class Shopware6ProductClient
     }
 
     /**
+     * @param Shopware6Channel $channel
+     * @param GetProductList $getAction
      * @return Shopware6Product[]
+     * @throws Exception
      */
     private function load(Shopware6Channel $channel, GetProductList $getAction): array
     {
         $productList = $this->connector->execute($channel, $getAction);
         if (is_array($productList) && count($productList) > 0) {
-            /** @var Shopware6Product $product */
-            foreach ($productList as $product) {
-                $product->setConfiguratorSettings($this->loadConfiguratorSettings($channel, $product->getId()));
-                $product->setMedia($this->loadMedia($channel, $product->getId()));
-                $product->setCategories($this->loadCategory($channel, $product->getId()));
-            }
-
             return $productList;
         }
 
         return [];
     }
 
-    /**
-     * @return Shopware6ProductConfiguratorSettings[]|null
-     */
-    private function loadConfiguratorSettings(Shopware6Channel $channel, string $shopwareId): ?array
-    {
-        $action = new GetConfiguratorSettings($shopwareId);
-
-        return $this->connector->execute($channel, $action);
-    }
-
-    /**
-     * @return Shopware6ProductMedia[]|null
-     */
-    private function loadMedia(Shopware6Channel $channel, string $shopwareId): ?array
-    {
-        $action = new GetProductMedia($shopwareId);
-
-        return $this->connector->execute($channel, $action);
-    }
-
-    /**
-     * @return Shopware6ProductCategory[] |null
-     */
-    private function loadCategory(Shopware6Channel $channel, string $shopwareId): ?array
-    {
-        $action = new GetProductCategory($shopwareId);
-
-        return $this->connector->execute($channel, $action);
-    }
-
-    private function removeOptions(Shopware6Channel $channel, Shopware6Product $product)
+    private function removeOptions(Shopware6Channel $channel, Shopware6Product $product): void
     {
         foreach ($product->getOptionsToRemove() as $optionId) {
             try {
                 $action = new DeleteOptions($product->getId(), $optionId);
                 $this->connector->execute($channel, $action);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $this->logger->error(
                     sprintf(
                         'Failed to remove option %s for product %s',

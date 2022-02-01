@@ -1,16 +1,14 @@
 <?php
-/**
- * Copyright © Ergonode Sp. z o.o. All rights reserved.
- * See LICENSE.txt for license details.
- */
 
 declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Processor\Process;
 
+use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 use Ergonode\Channel\Domain\ValueObject\ExportLineId;
 use Ergonode\Core\Domain\ValueObject\Language;
-use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\LanguageRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Builder\ProductBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6ProductClient;
@@ -18,9 +16,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6ExporterExcepti
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Language;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Product\Domain\Entity\AbstractProduct;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Webmozart\Assert\Assert;
-use Ergonode\Channel\Domain\Repository\ExportRepositoryInterface;
 
 class ProductShopware6ExportProcess
 {
@@ -28,7 +24,7 @@ class ProductShopware6ExportProcess
 
     private Shopware6ProductClient $productClient;
 
-    private LanguageRepositoryInterface  $languageRepository;
+    private LanguageRepositoryInterface $languageRepository;
 
     private ExportRepositoryInterface $exportRepository;
 
@@ -66,7 +62,7 @@ class ProductShopware6ExportProcess
 
             foreach ($channel->getLanguages() as $language) {
                 if ($this->languageRepository->exists($channel->getId(), $language->getCode())) {
-                    $this->updateProductWithLanguage($channel, $export, $language, $product);
+                    $this->updateProductWithLanguage($channel, $export, $language, $product, $shopwareProduct);
                 }
             }
         } catch (Shopware6ExporterException $exception) {
@@ -97,14 +93,13 @@ class ProductShopware6ExportProcess
         Shopware6Channel $channel,
         Export $export,
         Language $language,
-        AbstractProduct $product
+        AbstractProduct $product,
+        Shopware6Product $shopware6Product
     ): void {
         $shopwareLanguage = $this->languageRepository->load($channel->getId(), $language->getCode());
         Assert::notNull($shopwareLanguage);
 
-        $shopwareProduct = $this->productClient->find($channel, $product, $shopwareLanguage);
-        Assert::notNull($shopwareProduct);
-
-        $this->updateProduct($channel, $export, $shopwareProduct, $product, $language, $shopwareLanguage);
+        $translatedShopwareProduct = $shopware6Product->getTranslated($shopwareLanguage);
+        $this->updateProduct($channel, $export, $translatedShopwareProduct, $product, $language, $shopwareLanguage);
     }
 }

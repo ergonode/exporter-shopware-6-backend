@@ -12,8 +12,11 @@ use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductCate
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductConfiguratorSettings;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductPrice;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductTranslation;
+use JsonSerializable;
+use Webmozart\Assert\Assert;
 
-class Shopware6Product implements \JsonSerializable
+class Shopware6Product implements JsonSerializable
 {
 
     private ?string $id;
@@ -25,9 +28,9 @@ class Shopware6Product implements \JsonSerializable
     private ?string $description;
 
     /**
-     * @var Shopware6ProductCategory[]|null
+     * @var Shopware6ProductCategory[]
      */
-    private ?array $categories = null;
+    private array $categories = [];
 
     /**
      * @var array|null
@@ -63,14 +66,14 @@ class Shopware6Product implements \JsonSerializable
     private array $optionsToRemove = [];
 
     /**
-     * @var Shopware6ProductMedia[]|null
+     * @var Shopware6ProductMedia[]
      */
-    private ?array $media = null;
+    private array $media = [];
 
     /**
-     * @var Shopware6ProductConfiguratorSettings[]|null
+     * @var Shopware6ProductConfiguratorSettings[]
      */
-    private ?array $configuratorSettings = null;
+    private array $configuratorSettings = [];
 
     private ?string $coverId;
 
@@ -98,10 +101,31 @@ class Shopware6Product implements \JsonSerializable
     private bool $modified = false;
 
     /**
+     * @var Shopware6ProductTranslation[]
+     */
+    private array $translations;
+
+    /**
+     * @param string|null $id
+     * @param string|null $sku
+     * @param string|null $name
+     * @param string|null $description
      * @param array|null $properties
      * @param array|null $customFields
+     * @param string|null $parentId
      * @param array|null $options
+     * @param bool $active
+     * @param int|null $stock
+     * @param string|null $taxId
      * @param array|null $price
+     * @param string|null $coverId
+     * @param string|null $metaTitle
+     * @param string|null $metaDescription
+     * @param string|null $keywords
+     * @param Shopware6ProductCategory[] $categories
+     * @param Shopware6ProductMedia[] $media
+     * @param Shopware6ProductConfiguratorSettings[] $configuratorSettings
+     * @param Shopware6ProductTranslation[] $translations
      */
     public function __construct(
         ?string $id = null,
@@ -119,7 +143,11 @@ class Shopware6Product implements \JsonSerializable
         ?string $coverId = null,
         ?string $metaTitle = null,
         ?string $metaDescription = null,
-        ?string $keywords = null
+        ?string $keywords = null,
+        array $categories = [],
+        array $media = [],
+        array $configuratorSettings = [],
+        array $translations = []
     ) {
         $this->id = $id;
         $this->sku = $sku;
@@ -137,7 +165,11 @@ class Shopware6Product implements \JsonSerializable
         $this->metaTitle = $metaTitle;
         $this->metaDescription = $metaDescription;
         $this->keywords = $keywords;
+        $this->translations = $translations;
         $this->setPropertyToRemove($properties);
+        $this->setCategories($categories);
+        $this->setMedia($media);
+        $this->setConfiguratorSettings($configuratorSettings);
     }
 
     public function getId(): ?string
@@ -154,7 +186,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($sku !== $this->sku) {
             $this->sku = $sku;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -167,7 +199,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($name !== $this->name) {
             $this->name = $name;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -180,15 +212,16 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($description !== $this->description) {
             $this->description = $description;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
     /**
-     * @param Shopware6ProductCategory[]|null $categories
+     * @param Shopware6ProductCategory[] $categories
      */
-    public function setCategories(?array $categories): void
+    public function setCategories(array $categories): void
     {
+        Assert::allIsInstanceOf($categories, Shopware6ProductCategory::class);
         $this->categories = $categories;
         $this->setCategoryToRemove($categories);
     }
@@ -198,18 +231,14 @@ class Shopware6Product implements \JsonSerializable
      */
     public function getCategories(): array
     {
-        if ($this->categories) {
-            return $this->categories;
-        }
-
-        return [];
+        return $this->categories;
     }
 
     public function addCategory(Shopware6ProductCategory $category): void
     {
         if (!$this->hasCategory($category)) {
             $this->categories[] = $category;
-            $this->modified = true;
+            $this->setModified();
         }
         unset($this->categoryToRemove[$category->getId()]);
     }
@@ -251,7 +280,7 @@ class Shopware6Product implements \JsonSerializable
             $this->properties[] = [
                 'id' => $propertyId,
             ];
-            $this->modified = true;
+            $this->setModified();
         }
         unset($this->propertyToRemove[$propertyId]);
     }
@@ -295,11 +324,11 @@ class Shopware6Product implements \JsonSerializable
         if ($this->hasCustomField($customFieldId)) {
             if ($this->customFields[$customFieldId] !== $value) {
                 $this->customFields[$customFieldId] = $value;
-                $this->modified = true;
+                $this->setModified();
             }
         } else {
             $this->customFields[$customFieldId] = $value;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -323,7 +352,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($active !== $this->active) {
             $this->active = $active;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -336,7 +365,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($stock !== $this->stock) {
             $this->stock = $stock;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -349,7 +378,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($taxId !== $this->taxId) {
             $this->taxId = $taxId;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -369,7 +398,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if (!$this->hasPrice($price)) {
             $this->price[] = $price;
-            $this->modified = true;
+            $this->setModified();
         }
         $this->changePrice($price);
     }
@@ -394,7 +423,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($parentId !== $this->parentId) {
             $this->parentId = $parentId;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -416,7 +445,7 @@ class Shopware6Product implements \JsonSerializable
             $this->options[] = [
                 'id' => $option,
             ];
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -447,10 +476,11 @@ class Shopware6Product implements \JsonSerializable
     }
 
     /**
-     * @param Shopware6ProductMedia[]|null $media
+     * @param Shopware6ProductMedia[] $media
      */
-    public function setMedia(?array $media): void
+    public function setMedia(array $media): void
     {
+        Assert::allIsInstanceOf($media, Shopware6ProductMedia::class);
         $this->media = $media;
         $this->setMediaToRemove($media);
     }
@@ -460,18 +490,14 @@ class Shopware6Product implements \JsonSerializable
      */
     public function getMedia(): array
     {
-        if ($this->media) {
-            return $this->media;
-        }
-
-        return [];
+        return $this->media;
     }
 
     public function addMedia(Shopware6ProductMedia $media): void
     {
         if (!$this->hasMedia($media)) {
             $this->media[] = $media;
-            $this->modified = true;
+            $this->setModified();
         }
         unset($this->mediaToRemove[$media->getMediaId()]);
     }
@@ -496,10 +522,11 @@ class Shopware6Product implements \JsonSerializable
     }
 
     /**
-     * @param Shopware6ProductConfiguratorSettings[]|null $configuratorSettings
+     * @param Shopware6ProductConfiguratorSettings[] $configuratorSettings
      */
-    public function setConfiguratorSettings(?array $configuratorSettings): void
+    public function setConfiguratorSettings(array $configuratorSettings): void
     {
+        Assert::allIsInstanceOf($configuratorSettings, Shopware6ProductConfiguratorSettings::class);
         $this->configuratorSettings = $configuratorSettings;
     }
 
@@ -508,18 +535,14 @@ class Shopware6Product implements \JsonSerializable
      */
     public function getConfiguratorSettings(): array
     {
-        if ($this->configuratorSettings) {
-            return $this->configuratorSettings;
-        }
-
-        return [];
+        return $this->configuratorSettings;
     }
 
     public function addConfiguratorSettings(Shopware6ProductConfiguratorSettings $configuratorSetting): void
     {
         if (!$this->hasConfiguratorSettings($configuratorSetting)) {
             $this->configuratorSettings[] = $configuratorSetting;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -543,7 +566,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($this->coverId !== $coverId) {
             $this->coverId = $coverId;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -556,7 +579,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($this->metaTitle !== $metaTitle) {
             $this->metaTitle = $metaTitle;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -569,7 +592,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($this->metaDescription !== $metaDescription) {
             $this->metaDescription = $metaDescription;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -582,7 +605,7 @@ class Shopware6Product implements \JsonSerializable
     {
         if ($this->keywords !== $keywords) {
             $this->keywords = $keywords;
-            $this->modified = true;
+            $this->setModified();
         }
     }
 
@@ -615,10 +638,8 @@ class Shopware6Product implements \JsonSerializable
         if (null !== $this->description) {
             $data['description'] = $this->description;
         }
-        if (null !== $this->categories) {
-            foreach ($this->categories as $category) {
-                $data['categories'][] = $category->jsonSerialize();
-            }
+        foreach ($this->categories as $category) {
+            $data['categories'][] = $category->jsonSerialize();
         }
         if (null !== $this->properties) {
             $data['properties'] = $this->properties;
@@ -646,15 +667,11 @@ class Shopware6Product implements \JsonSerializable
         if (null !== $this->options) {
             $data['options'] = $this->options;
         }
-        if (null !== $this->media) {
-            foreach ($this->media as $media) {
-                $data['media'][] = $media->jsonSerialize();
-            }
+        foreach ($this->media as $media) {
+            $data['media'][] = $media->jsonSerialize();
         }
-        if (null !== $this->configuratorSettings) {
-            foreach ($this->configuratorSettings as $configuratorSetting) {
-                $data['configuratorSettings'][] = $configuratorSetting->jsonSerialize();
-            }
+        foreach ($this->configuratorSettings as $configuratorSetting) {
+            $data['configuratorSettings'][] = $configuratorSetting->jsonSerialize();
         }
         if (null !== $this->coverId) {
             $data['coverId'] = $this->coverId;
@@ -685,26 +702,23 @@ class Shopware6Product implements \JsonSerializable
     }
 
     /**
-     * @param Shopware6ProductCategory[]|null $category
+     * @param Shopware6ProductCategory[] $categories
      */
-    private function setCategoryToRemove(?array $category): void
+    private function setCategoryToRemove(array $categories): void
     {
-        if ($category) {
-            foreach ($category as $item) {
-                $this->categoryToRemove[$item->getId()] = $item->getId();
-            }
+        foreach ($categories as $item) {
+            $id = $item->getId();
+            $this->categoryToRemove[$id] = $id;
         }
     }
 
     /**
-     * @param array|null $media
+     * @param array $media
      */
-    private function setMediaToRemove(?array $media): void
+    private function setMediaToRemove(array $media): void
     {
-        if ($media) {
-            foreach ($media as $item) {
-                $this->mediaToRemove[$item->getMediaId()] = $item;
-            }
+        foreach ($media as $item) {
+            $this->mediaToRemove[$item->getMediaId()] = $item;
         }
     }
 
@@ -714,8 +728,64 @@ class Shopware6Product implements \JsonSerializable
             if (!$item->isEqual($price) && $item->getCurrencyId() === $price->getCurrencyId()) {
                 $item->setNet($price->getNet());
                 $item->setGross($price->getGross());
-                $this->modified = true;
+                $this->setModified();
             }
         }
+    }
+
+    private function setModified(): void
+    {
+        $this->modified = false;
+    }
+
+    public function getTranslated(Shopware6Language $language): Shopware6Product
+    {
+        $translation = null;
+        $languageId = $language->getId();
+        foreach ($this->translations as $translationEntry) {
+            if ($translationEntry->getLanguageId() === $languageId) {
+                $translation = $translationEntry;
+                break;
+            }
+        }
+
+        $name = null;
+        $description = null;
+        $customFields = null;
+        $metaTitle = null;
+        $metaDescription = null;
+        $keywords = null;
+
+        if (null !== $translation) {
+            $name = $translation->getName();
+            $description = $translation->getDescription();
+            $customFields = $translation->getCustomFields();
+            $metaTitle = $translation->getMetaTitle();
+            $metaDescription = $translation->getMetaDescription();
+            $keywords = $translation->getKeywords();
+        }
+
+        return new Shopware6Product(
+            $this->id,
+            $this->sku,
+            $name,
+            $description,
+            $this->properties,
+            $customFields,
+            $this->parentId,
+            $this->options,
+            $this->active,
+            $this->stock,
+            $this->taxId,
+            $this->price,
+            $this->coverId,
+            $metaTitle,
+            $metaDescription,
+            $keywords,
+            $this->categories,
+            $this->media,
+            $this->configuratorSettings,
+            $this->translations
+        );
     }
 }

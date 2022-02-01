@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Ergonode Sp. z o.o. All rights reserved.
- * See LICENSE.txt for license details.
- */
 
 declare(strict_types=1);
 
@@ -35,6 +31,8 @@ class Shopware6ProductMediaClient
     private FilesystemInterface $multimediaStorage;
 
     private MultimediaRepositoryInterface $multimediaRepository;
+
+    private array $inMemoryCache = [];
 
     public function __construct(
         Shopware6Connector $connector,
@@ -82,6 +80,7 @@ class Shopware6ProductMediaClient
             $this->upload($channel, $media, $multimedia);
             $this->multimediaRepository->save($channel->getId(), $multimedia->getId(), $media->getId());
 
+            $this->inMemoryCache['has-media'][$channel->getHost()][$media->getId()] = true;
             return $media;
         } catch (\Exception $exception) {
             if ($media) {
@@ -113,7 +112,7 @@ class Shopware6ProductMediaClient
                 if ($decode['errors'][0]['code'] !== 'CONTENT__MEDIA_DUPLICATED_FILE_NAME') {
                     throw $exception;
                 }
-                $name = $multimedia->getHash()->getValue().'_'.$iteration++;
+                $name = $multimedia->getHash()->getValue() . '_' . $iteration++;
             }
         }
     }
@@ -137,17 +136,23 @@ class Shopware6ProductMediaClient
 
     private function getProductFolderId(Shopware6Channel $channel): ?Shopware6MediaDefaultFolder
     {
+        if (isset($this->inMemoryCache['product-folder-id'][$channel->getId()])) {
+            return $this->inMemoryCache['product-folder-id'][$channel->getId()];
+        }
+
         $query = new Shopware6QueryBuilder();
         $query->equals('entity', 'product');
 
         $action = new GetMediaDefaultFolderList($query);
 
+        $productFolderId = null;
         $folderList = $this->connector->execute($channel, $action);
         if (is_array($folderList) && count($folderList) > 0) {
-            return reset($folderList);
+            $productFolderId = reset($folderList);
+            $this->inMemoryCache['product-folder-id'][$channel->getId()] = $productFolderId;
         }
 
-        return null;
+        return $productFolderId;
     }
 
     private function check(Shopware6Channel $channel, Multimedia $multimedia): ?string
@@ -171,17 +176,24 @@ class Shopware6ProductMediaClient
     {
         $action = new HasMedia($shopwareId);
 
+        $channelHost = $channel->getHost();
+        if (isset($this->inMemoryCache['has-media'][$channelHost][$shopwareId])) {
+            return $this->inMemoryCache['has-media'][$channelHost][$shopwareId];
+        }
+
+        $hasMedia = false;
         try {
             $shopware6MediaId = $this->connector->execute($channel, $action);
             if (!is_string($shopware6MediaId)) {
                 throw new Shopware6InstanceOfException(Shopware6Media::class);
             }
 
-            return true;
+            $hasMedia = true;
         } catch (ClientException $exception) {
         }
 
-        return false;
+        $this->inMemoryCache['has-media'][$channelHost][$shopwareId] = $hasMedia;
+        return $hasMedia;
     }
 
     private function delete(Shopware6Channel $channel, string $shopwareId, MultimediaId $multimediaId): void
@@ -198,7 +210,7 @@ class Shopware6ProductMediaClient
     {
         $query = new Shopware6QueryBuilder();
         $query->equals('fileName', $filename)
-              ->limit(1);
+            ->limit(1);
 
         $action = new GetMediaByFilename($query);
 

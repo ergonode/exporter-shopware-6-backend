@@ -133,12 +133,15 @@ class Shopware6Connector
 
     private function logRequest(string $uid, ActionInterface $action): void
     {
+        $requestMethod = $action->getRequest()->getMethod();
+        $requestPath = $action->getRequest()->getUri()->getPath();
+
         $this->logger->debug(
             'Shopware6 REQUEST',
             [
                 'action_id' => $uid,
-                'patch' => $action->getRequest()->getUri()->getPath(),
-                'method' => $action->getRequest()->getMethod(),
+                'path' => $requestPath,
+                'method' => $requestMethod,
                 'headers' => $action->getRequest()->getHeaders(),
                 'body' => $action->getRequest()->getBody()->getContents(),
                 'query' => $action->getRequest()->getUri()->getQuery(),
