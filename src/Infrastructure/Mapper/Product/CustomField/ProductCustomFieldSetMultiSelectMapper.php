@@ -15,6 +15,7 @@ use Ergonode\Attribute\Domain\Repository\OptionRepositoryInterface;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\AbstractProductCustomFieldSetMapper;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\SharedKernel\Domain\AggregateId;
 
 class ProductCustomFieldSetMultiSelectMapper extends AbstractProductCustomFieldSetMapper
@@ -41,8 +42,12 @@ class ProductCustomFieldSetMultiSelectMapper extends AbstractProductCustomFieldS
     /**
      * {@inheritDoc}
      */
-    protected function getValue(Shopware6Channel $channel, AbstractAttribute $attribute, $calculateValue): array
-    {
+    protected function getValue(
+        Shopware6Channel $channel,
+        AbstractAttribute $attribute,
+        $calculateValue,
+        Shopware6Product $shopware6Product = null
+    ): array {
         $options = explode(',', $calculateValue);
         $result = [];
         foreach ($options as $optionValue) {

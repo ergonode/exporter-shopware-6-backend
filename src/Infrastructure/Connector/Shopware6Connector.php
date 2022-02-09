@@ -8,15 +8,20 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Connector;
 
+use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
+use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\PostAccessToken;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6AuthenticationException;
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\Response;
-use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 
 class Shopware6Connector
 {
@@ -26,7 +31,7 @@ class Shopware6Connector
 
     private ?string $token;
 
-    private \DateTimeInterface $expiresAt;
+    private DateTimeInterface $expiresAt;
 
     public function __construct(Configurator $configurator, LoggerInterface $logger)
     {
@@ -34,17 +39,18 @@ class Shopware6Connector
         $this->logger = $logger;
 
         $this->token = null;
-        $this->expiresAt = new \DateTimeImmutable();
+        $this->expiresAt = new DateTimeImmutable();
     }
 
     /**
      * @return array|object|string|null
      *
-     * @throws \Exception
+     * @throws Exception
+     * @throws GuzzleException
      */
-    public function execute(Shopware6Channel $channel, ActionInterface $action)
+    public function execute(Shopware6Channel $channel, AbstractAction $action)
     {
-        if ($this->token === null || $this->expiresAt <= (new \DateTime())) {
+        if ($this->token === null || $this->expiresAt <= (new DateTime())) {
             $this->requestToken($channel);
         }
 
@@ -52,11 +58,13 @@ class Shopware6Connector
     }
 
     /**
+     * @param Shopware6Channel $channel
+     * @param AbstractAction $action
      * @return array|object|string|null
      *
-     * @throws \Exception
+     * @throws GuzzleException
      */
-    private function request(Shopware6Channel $channel, ActionInterface $action)
+    private function request(Shopware6Channel $channel, AbstractAction $action)
     {
         $actionUid = uniqid('sh6_', true);
         try {
@@ -81,17 +89,15 @@ class Shopware6Connector
         } catch (ClientException $exception) {
             $this->logClientException($exception, $actionUid);
             throw $exception;
-        } catch (GuzzleException $exception) {
-            $this->logger->error($exception, ['action_id' => $actionUid]);
-            throw  $exception;
-        } catch (\Exception $exception) {
+        } catch (GuzzleException|Exception $exception) {
             $this->logger->error($exception, ['action_id' => $actionUid]);
             throw  $exception;
         }
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
+     * @throws GuzzleException
      */
     private function requestToken(Shopware6Channel $channel): void
     {
@@ -99,7 +105,7 @@ class Shopware6Connector
             $post = new PostAccessToken($channel);
             $data = $this->request($channel, $post);
             $this->token = $data['access_token'];
-            $this->expiresAt = $this->calculateExpiryTime((int) $data['expires_in']);
+            $this->expiresAt = $this->calculateExpiryTime((int)$data['expires_in']);
         } catch (ClientException $exception) {
             if ($exception->getCode() === 401) {
                 throw new Shopware6AuthenticationException($exception);
@@ -108,11 +114,11 @@ class Shopware6Connector
         }
     }
 
-    private function calculateExpiryTime(int $expiresIn): \DateTimeInterface
+    private function calculateExpiryTime(int $expiresIn): DateTimeInterface
     {
-        $expiryTimestamp = (new \DateTime())->getTimestamp() + $expiresIn;
+        $expiryTimestamp = (new DateTime())->getTimestamp() + $expiresIn;
 
-        return (new \DateTimeImmutable())->setTimestamp($expiryTimestamp);
+        return (new DateTimeImmutable())->setTimestamp($expiryTimestamp);
     }
 
     private function resolveResponse(ResponseInterface $response): ?string
@@ -128,13 +134,18 @@ class Shopware6Connector
             case Response::HTTP_NO_CONTENT:
                 return null;
         }
-        throw new \RuntimeException(sprintf('Unsupported response status "%s" ', $statusCode));
+        throw new RuntimeException(sprintf('Unsupported response status "%s" ', $statusCode));
     }
 
     private function logRequest(string $uid, ActionInterface $action): void
     {
         $requestMethod = $action->getRequest()->getMethod();
         $requestPath = $action->getRequest()->getUri()->getPath();
+        $body = $action->getRequest()->getBody();
+        $bodyContents = null;
+        if ($body !== null) {
+            $bodyContents = $body->getContents();
+        }
 
         $this->logger->debug(
             'Shopware6 REQUEST',
@@ -143,7 +154,7 @@ class Shopware6Connector
                 'path' => $requestPath,
                 'method' => $requestMethod,
                 'headers' => $action->getRequest()->getHeaders(),
-                'body' => $action->getRequest()->getBody()->getContents(),
+                'body' => $bodyContents,
                 'query' => $action->getRequest()->getUri()->getQuery(),
             ]
         );
@@ -163,12 +174,17 @@ class Shopware6Connector
 
     private function logClientException(ClientException $exception, string $actionUid): void
     {
+        $response = $exception->getResponse();
+        $bodyContents = null;
+        if ($response !== null) {
+            $bodyContents = $response->getBody()->getContents();
+        }
         $this->logger->error(
             $exception,
             [
                 'action_id' => $actionUid,
                 'exception_message' => $exception->getMessage(),
-                'body' => json_decode($exception->getResponse()->getBody()->getContents(), true),
+                'body' => json_decode($bodyContents, true),
             ]
         );
     }

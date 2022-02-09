@@ -87,7 +87,7 @@ class ProductGalleryMapper implements ProductMapperInterface
 
         $multimedia = $this->multimediaRepository->load($multimediaId);
         if ($multimedia) {
-            $shopwareId = $this->mediaClient->findOrCreateMedia($channel, $multimedia);
+            $shopwareId = $this->mediaClient->findOrCreateMedia($channel, $multimedia, $shopware6Product);
             if ($shopwareId) {
                 $shopware6Product->addMedia(new Shopware6ProductMedia(null, $shopwareId, $position));
             }

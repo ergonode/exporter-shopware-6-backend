@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ergonode\ExporterShopware6\Infrastructure\Client;
 
+use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Domain\Repository\MultimediaRepositoryInterface;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Action\Media\DeleteMedia;
@@ -16,8 +17,10 @@ use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6Connector;
 use Ergonode\ExporterShopware6\Infrastructure\Connector\Shopware6QueryBuilder;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6DefaultFolderException;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Shopware6InstanceOfException;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Product\Shopware6ProductMedia;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Media;
 use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6MediaDefaultFolder;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Multimedia\Domain\Entity\Multimedia;
 use Ergonode\SharedKernel\Domain\Aggregate\MultimediaId;
 use GuzzleHttp\Exception\ClientException;
@@ -48,9 +51,13 @@ class Shopware6ProductMediaClient
      * @throws Shopware6DefaultFolderException
      * @throws \Exception
      */
-    public function findOrCreateMedia(Shopware6Channel $channel, Multimedia $multimedia): string
-    {
-        $shopwareId = $this->check($channel, $multimedia);
+    public function findOrCreateMedia(
+        Shopware6Channel $channel,
+        Multimedia $multimedia,
+        Shopware6Product $shopware6Product,
+        ?AbstractAttribute $attribute = null
+    ): string {
+        $shopwareId = $this->check($channel, $multimedia, $shopware6Product, $attribute);
         if ($shopwareId) {
             return $shopwareId;
         }
@@ -155,15 +162,30 @@ class Shopware6ProductMediaClient
         return $productFolderId;
     }
 
-    private function check(Shopware6Channel $channel, Multimedia $multimedia): ?string
-    {
+    private function check(
+        Shopware6Channel $channel,
+        Multimedia $multimedia,
+        Shopware6Product $shopware6Product,
+        ?AbstractAttribute $abstractAttribute = null
+    ): ?string {
         if (!$this->multimediaRepository->exists($channel->getId(), $multimedia->getId())) {
             return null;
         }
         $shopwareId = $this->multimediaRepository->load($channel->getId(), $multimedia->getId());
-        $mediaExist = $this->hasMedia($channel, $shopwareId);
-        if (!$mediaExist) {
-            return null;
+        $hasMediaInProduct = $shopware6Product->hasMedia(new Shopware6ProductMedia(null, $shopwareId));
+
+        if (false === $hasMediaInProduct) {
+            $hasCustomFieldInProduct = false;
+            if (null !== $abstractAttribute) {
+                $hasCustomFieldInProduct = $shopware6Product->hasCustomField($abstractAttribute->getCode()->getValue());
+            }
+
+            if (false === $hasCustomFieldInProduct) {
+                $hasMediaInShopware = $this->hasMedia($channel, $shopwareId);
+                if (false === $hasMediaInShopware) {
+                    return null;
+                }
+            }
         }
 
         return $shopwareId;

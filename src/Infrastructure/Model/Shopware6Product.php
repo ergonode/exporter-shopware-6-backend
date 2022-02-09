@@ -735,7 +735,7 @@ class Shopware6Product implements JsonSerializable
 
     private function setModified(): void
     {
-        $this->modified = false;
+        $this->modified = true;
     }
 
     public function getTranslated(Shopware6Language $language): Shopware6Product

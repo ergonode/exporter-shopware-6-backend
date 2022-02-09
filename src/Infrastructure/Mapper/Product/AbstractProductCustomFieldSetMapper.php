@@ -10,8 +10,8 @@ namespace Ergonode\ExporterShopware6\Infrastructure\Mapper\Product;
 
 use Ergonode\Attribute\Domain\Entity\AbstractAttribute;
 use Ergonode\Attribute\Domain\Repository\AttributeRepositoryInterface;
-use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\Channel\Domain\Entity\Export;
+use Ergonode\Core\Domain\ValueObject\Language;
 use Ergonode\ExporterShopware6\Domain\Entity\Shopware6Channel;
 use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInheritanceCalculator;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\ProductMapperInterface;
@@ -44,7 +44,6 @@ abstract class AbstractProductCustomFieldSetMapper implements ProductMapperInter
         AbstractProduct $product,
         ?Language $language = null
     ): Shopware6Product {
-
         foreach ($channel->getCustomField() as $attributeId) {
             $this->attributeMap($shopware6Product, $attributeId, $product, $channel, $language);
         }
@@ -67,7 +66,8 @@ abstract class AbstractProductCustomFieldSetMapper implements ProductMapperInter
     abstract protected function getValue(
         Shopware6Channel $channel,
         AbstractAttribute $attribute,
-        $calculateValue
+        $calculateValue,
+        Shopware6Product $shopware6Product = null
     );
 
     private function attributeMap(
@@ -95,7 +95,7 @@ abstract class AbstractProductCustomFieldSetMapper implements ProductMapperInter
             if ($calculateValue) {
                 $shopware6Product->addCustomField(
                     $attribute->getCode()->getValue(),
-                    $this->getValue($channel, $attribute, $calculateValue)
+                    $this->getValue($channel, $attribute, $calculateValue, $shopware6Product)
                 );
             }
         }

@@ -16,6 +16,7 @@ use Ergonode\ExporterShopware6\Infrastructure\Calculator\AttributeTranslationInh
 use Ergonode\ExporterShopware6\Infrastructure\Client\Shopware6ProductMediaClient;
 use Ergonode\ExporterShopware6\Infrastructure\Exception\Mapper\Shopware6ExporterMultimediaException;
 use Ergonode\ExporterShopware6\Infrastructure\Mapper\Product\AbstractProductCustomFieldSetMapper;
+use Ergonode\ExporterShopware6\Infrastructure\Model\Shopware6Product;
 use Ergonode\Multimedia\Domain\Repository\MultimediaRepositoryInterface;
 use Ergonode\SharedKernel\Domain\Aggregate\MultimediaId;
 
@@ -49,21 +50,29 @@ class ProductCustomFieldSetMultimediaMapper extends AbstractProductCustomFieldSe
      *
      * @throws Shopware6ExporterMultimediaException
      */
-    protected function getValue(Shopware6Channel $channel, AbstractAttribute $attribute, $calculateValue): string
-    {
+    protected function getValue(
+        Shopware6Channel $channel,
+        AbstractAttribute $attribute,
+        $calculateValue,
+        Shopware6Product $shopware6Product = null
+    ): string {
         $multimediaId = new MultimediaId($calculateValue);
 
-        return $this->getShopware6MultimediaId($channel, $multimediaId);
+        return $this->getShopware6MultimediaId($channel, $multimediaId, $shopware6Product, $attribute);
     }
 
     /**
      * @throws Shopware6ExporterMultimediaException
      */
-    private function getShopware6MultimediaId(Shopware6Channel $channel, MultimediaId $multimediaId): string
-    {
+    private function getShopware6MultimediaId(
+        Shopware6Channel $channel,
+        MultimediaId $multimediaId,
+        Shopware6Product $shopware6Product,
+        AbstractAttribute $attribute
+    ): string {
         $multimedia = $this->multimediaRepository->load($multimediaId);
         if ($multimedia) {
-            return $this->mediaClient->findOrCreateMedia($channel, $multimedia);
+            return $this->mediaClient->findOrCreateMedia($channel, $multimedia, $shopware6Product, $attribute);
         }
         throw new Shopware6ExporterMultimediaException($multimediaId);
     }
